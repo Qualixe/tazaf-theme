@@ -18,80 +18,9 @@
     <div class="swiper card-slider">
       <div class="swiper-wrapper">
         {% for product in search.results %}
-          {% liquid
-            assign hover_image = product.images[1] | default: product.featured_image
-            assign featured_alt = product.featured_image.alt | default: product.title | escape
-            assign title_escaped = product.title | escape
-            assign current_variant = product.selected_or_first_available_variant
-          %}
           <div class="swiper-slide">
             <div class="card-slider-item">
-              <div class="product-card card_hover">
-                <div class="card-image-wrap">
-                  {% if product.metafields.reviews.rating.value != blank %}
-                    <div class="card-rattings">
-                      <span class="icon">
-                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="pdp-star-icon is-filled">
-                          <path
-                            d="M8 1.333l2.06 4.174 4.607.67-3.333 3.249.786 4.587L8 11.846l-4.12 2.167.787-4.587L1.333 6.177l4.607-.67L8 1.333Z"
-                            fill="currentColor"
-                          ></path>
-                        </svg>
-                      </span>
-                      <span class="rattings-count">{{ product.metafields.reviews.rating.value }}</span>
-                      <span class="rattings-number">({{ product.metafields.reviews.rating_count.value | default: 0 }} +)</span>
-                    </div>
-                  {% endif %}
-                  <div class="card-img">
-                    <a class="main-img" href="{{ product.url }}">
-                      {% if product.featured_image != blank %}
-                        {{ product.featured_image | image_url: width: 500 | image_tag: class: 'card_img', alt: featured_alt, loading: 'lazy' }}
-                      {% endif %}
-                    </a>
-                    <a class="hover-img" href="{{ product.url }}">
-                      {% if hover_image != blank %}
-                        {{ hover_image | image_url: width: 500 | image_tag: class: 'card_hover_img', alt: title_escaped, loading: 'lazy' }}
-                      {% endif %}
-                    </a>
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title-wrap">
-                    <a href="{{ product.url }}" class="card-title">{{ product.title }}</a>
-                  </div>
-                  <div class="card-price-wrap">
-                    <p class="latest-price">{{ product.price | money }}</p>
-                    {% if product.compare_at_price > product.price %}
-                      <p class="previous-price">{{ product.compare_at_price | money }}</p>
-                      <span class="card-badge">
-                        {{
-                          product.compare_at_price
-                          | minus: product.price
-                          | times: 100.0
-                          | divided_by: product.compare_at_price
-                          | round
-                        }}% off
-                      </span>
-                    {% endif %}
-                  </div>
-                  <div class="card-btn">
-                    <button
-                      type="button"
-                      class="btn"
-                      data-variant-id="{{ current_variant.id }}"
-                      {% unless current_variant.available %}
-                        disabled
-                      {% endunless %}
-                    >
-                      {% if current_variant.available %}
-                        add to cart
-                      {% else %}
-                        sold out
-                      {% endif %}
-                    </button>
-                  </div>
-                </div>
-              </div>
+              {% render 'slider-product-card', product: product %}
             </div>
           </div>
         {% endfor %}
