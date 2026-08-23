@@ -1,0 +1,59 @@
+{%- doc -%}
+  Renders one item in the image + text grid: a title, body text, and an image,
+  stacked content-then-image by default or image-then-content when reversed.
+{%- enddoc -%}
+
+<div
+  class="img-text-grid-item{% if block.settings.reverse %} reverse-item{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="img-text-grid-content">
+    <h3 class="title h6">{{ block.settings.title }}</h3>
+    {{ block.settings.text }}
+  </div>
+  <div class="img-text-grid-img">
+    {% if block.settings.image != blank %}
+      {% liquid
+        assign image_alt = block.settings.image.alt | default: block.settings.title | escape
+      %}
+      {{ block.settings.image | image_url: width: 800 | image_tag: alt: image_alt, loading: 'lazy' }}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Grid item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Lorem ipsum dolor"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Add your content here.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Show image above text",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid item"
+    }
+  ]
+}
+{% endschema %}

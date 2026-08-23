@@ -1,0 +1,27 @@
+{%- doc -%}
+  Renders the heading above the image + text grid.
+{%- enddoc -%}
+
+<div class="section-heading-wrapper" {{ block.shopify_attributes }}>
+  <h2 class="section-heading h2">{{ block.settings.heading }}</h2>
+</div>
+
+{% schema %}
+{
+  "name": "Heading",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Most popular brand"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading"
+    }
+  ]
+}
+{% endschema %}
