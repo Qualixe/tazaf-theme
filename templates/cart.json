@@ -276,9 +276,7 @@
     "cart_page_iiHyUz": {
       "type": "cart-page",
       "name": "Cart page",
-      "settings": {
-        "heading": "My Shopping Cart"
-      }
+      "settings": {}
     }
   },
   "order": [
