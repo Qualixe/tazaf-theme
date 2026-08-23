@@ -26,7 +26,7 @@
 
 .img-text-section-content-title {
     text-transform: capitalize;
-    color: var(--brand-color);
+    color: var(--brand-color) !important;
 }
 
 .img-text-section-content-text {

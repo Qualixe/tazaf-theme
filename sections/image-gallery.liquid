@@ -1,0 +1,29 @@
+<div class="image-gallary-section">
+  <div class="image-gallary-items">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image gallery",
+  "blocks": [
+    { "type": "image-gallery-item" },
+    { "type": "@theme" },
+    { "type": "@app" }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Image gallery",
+      "blocks": {
+        "item-1": { "type": "image-gallery-item" },
+        "item-2": { "type": "image-gallery-item" },
+        "item-3": { "type": "image-gallery-item" },
+        "item-4": { "type": "image-gallery-item" }
+      },
+      "block_order": ["item-1", "item-2", "item-3", "item-4"]
+    }
+  ]
+}
+{% endschema %}
