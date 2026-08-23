@@ -1,0 +1,27 @@
+{%- doc -%}
+  Renders the heading for the contact icon items section.
+{%- enddoc -%}
+
+<div class="section-heading-wrapper" {{ block.shopify_attributes }}>
+  <h1 class="section-heading h2">{{ block.settings.heading }}</h1>
+</div>
+
+{% schema %}
+{
+  "name": "Heading",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Contact us"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,44 @@
+{%- doc -%}
+  Renders one contact method (icon + title + description) inside the contact icon items grid.
+{%- enddoc -%}
+
+<div class="contact-icon-item" {{ block.shopify_attributes }}>
+  <span class="icon">
+    {% if block.settings.icon != blank %}
+      {{ block.settings.icon | image_url: width: 80 | image_tag: alt: block.settings.title | escape, loading: 'lazy' }}
+    {% endif %}
+  </span>
+  <h2 class="contact-icon-item-title">{{ block.settings.title }}</h2>
+  <div class="contact-icon-item-text">{{ block.settings.text }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Visit store"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Description goes here.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact item"
+    }
+  ]
+}
+{% endschema %}

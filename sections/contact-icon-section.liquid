@@ -1,0 +1,47 @@
+<section class="contact-icon-item-section">
+  <div class="container">
+    {% content_for 'block', type: 'contact-icon-heading', id: 'heading' %}
+    <div class="contact-icon-items">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact icon items",
+  "blocks": [
+    { "type": "contact-icon-item" }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Contact icon items",
+      "blocks": {
+        "item-1": {
+          "type": "contact-icon-item",
+          "settings": {
+            "title": "Visit store",
+            "text": "<p><strong>Physical address:</strong> House-06, Block-A, Road-3, Mirpur-11, Dhaka-1216, Mirpur, Bangladesh</p>"
+          }
+        },
+        "item-2": {
+          "type": "contact-icon-item",
+          "settings": {
+            "title": "Email us",
+            "text": "<p>Have a quick question? Send us a message on E-Mail: <strong>tazaf@gmail.com</strong></p>"
+          }
+        },
+        "item-3": {
+          "type": "contact-icon-item",
+          "settings": {
+            "title": "Call Us",
+            "text": "<p>Directly for immediate assistance: <strong>24 hours open.</strong> <strong>call (01521-481618)</strong></p>"
+          }
+        }
+      },
+      "block_order": ["item-1", "item-2", "item-3"]
+    }
+  ]
+}
+{% endschema %}
