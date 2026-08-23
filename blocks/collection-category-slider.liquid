@@ -1,21 +1,34 @@
 {%- doc -%}
   Renders a swiper slider of linked collections (category navigation) above the product grid.
+  The collections come from a "List of collections" metafield on the current collection,
+  rather than a manual picker, so each collection page can show its own sub-categories.
+
+  Create the metafield once in Shopify admin under Settings > Custom data > Collections:
+  type "List of collections". The namespace/key below must match what you create there.
 {%- enddoc -%}
+
+{% liquid
+  assign metafield = collection.metafields[block.settings.metafield_namespace][block.settings.metafield_key]
+  assign category_list = metafield.value
+%}
 
 <div
   class="category-wrapper"
   {{ block.shopify_attributes }}
-  {% if block.settings.collection_list == blank and request.design_mode == false %}
+  {% if category_list == blank and request.design_mode == false %}
     hidden
   {% endif %}
 >
   <div class="category-slider-wrapper">
-    {% if block.settings.collection_list == blank and request.design_mode %}
-      <p class="card-slider-section-placeholder">Select collections in the block settings to show category cards here.</p>
+    {% if category_list == blank and request.design_mode %}
+      <p class="card-slider-section-placeholder">
+        No collections found in the "{{ block.settings.metafield_namespace }}.{{ block.settings.metafield_key }}"
+        metafield for this collection.
+      </p>
     {% endif %}
     <div class="swiper collection-category-slider">
       <div class="swiper-wrapper">
-        {% for category in block.settings.collection_list %}
+        {% for category in category_list %}
           {% liquid
             assign category_alt = category.featured_image.alt | default: category.title | escape
           %}
@@ -45,10 +58,17 @@
   "tag": null,
   "settings": [
     {
-      "type": "collection_list",
-      "id": "collection_list",
-      "label": "Collections",
-      "info": "Shown as a slider of category cards."
+      "type": "text",
+      "id": "metafield_namespace",
+      "label": "Metafield namespace",
+      "default": "custom"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Metafield key",
+      "default": "category_slider",
+      "info": "Must be a \"List of collections\" metafield defined on the Collection resource."
     }
   ],
   "presets": [

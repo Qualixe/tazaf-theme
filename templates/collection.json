@@ -19,12 +19,7 @@
         },
         "category_slider": {
           "type": "collection-category-slider",
-          "settings": {
-            "collection_list": [
-              "frontpage",
-              "slippers"
-            ]
-          },
+          "settings": {},
           "blocks": {}
         },
         "filters": {
