@@ -1,0 +1,60 @@
+{%- doc -%}
+  Renders a swiper slider of linked collections (category navigation) above the product grid.
+{%- enddoc -%}
+
+<div
+  class="category-wrapper"
+  {{ block.shopify_attributes }}
+  {% if block.settings.collection_list == blank and request.design_mode == false %}
+    hidden
+  {% endif %}
+>
+  <div class="category-slider-wrapper">
+    {% if block.settings.collection_list == blank and request.design_mode %}
+      <p class="card-slider-section-placeholder">Select collections in the block settings to show category cards here.</p>
+    {% endif %}
+    <div class="swiper collection-category-slider">
+      <div class="swiper-wrapper">
+        {% for category in block.settings.collection_list %}
+          {% liquid
+            assign category_alt = category.featured_image.alt | default: category.title | escape
+          %}
+          <div class="swiper-slide">
+            <a href="{{ category.url }}" class="category-item">
+              <div class="img">
+                {% if category.featured_image != blank %}
+                  {{ category.featured_image | image_url: width: 200 | image_tag: alt: category_alt, loading: 'lazy' }}
+                {% endif %}
+              </div>
+              <div class="content">
+                <p class="title">{{ category.title }}</p>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-prev collection-category-button-prev"></div>
+      <div class="swiper-button-next collection-category-button-next"></div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Category slider",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "Collections",
+      "info": "Shown as a slider of category cards."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category slider"
+    }
+  ]
+}
+{% endschema %}

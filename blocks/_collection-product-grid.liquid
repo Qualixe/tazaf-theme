@@ -1,0 +1,49 @@
+{%- doc -%}
+  Renders the paginated product grid, empty state, and pagination controls.
+{%- enddoc -%}
+
+<div {{ block.shopify_attributes }}>
+  {% paginate collection.products by block.settings.products_per_page %}
+    <div class="product-items">
+      {% for product in collection.products %}
+        <div class="product-item">
+          {% render 'slider-product-card', product: product %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if collection.products.size == 0 %}
+      <p class="collection-empty-message">No products found. Try removing some filters.</p>
+    {% endif %}
+
+    {% if paginate.pages > 1 %}
+      <div class="collection-pagination">
+        {% if paginate.previous %}
+          <a href="{{ paginate.previous.url }}" class="btn pagination-btn">Previous</a>
+        {% endif %}
+        <span class="pagination-current">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+        {% if paginate.next %}
+          <a href="{{ paginate.next.url }}" class="btn pagination-btn">Next</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endpaginate %}
+</div>
+
+{% schema %}
+{
+  "name": "Collection product grid",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 24
+    }
+  ]
+}
+{% endschema %}

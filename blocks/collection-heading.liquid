@@ -1,0 +1,22 @@
+{%- doc -%}
+  Renders the collection page heading: title and total product count.
+{%- enddoc -%}
+
+<div class="category-section-heading" {{ block.shopify_attributes }}>
+  <h1 class="title h5">{{ collection.title }}</h1>
+  <span class="category-heading-separator"></span>
+  <span class="collection-count">{{ collection.all_products_count }} Products</span>
+</div>
+
+{% schema %}
+{
+  "name": "Collection heading",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection heading"
+    }
+  ]
+}
+{% endschema %}

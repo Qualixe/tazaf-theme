@@ -1,0 +1,42 @@
+{%- doc -%}
+  Renders the cart totals and checkout button. Hidden when the cart is empty.
+{%- enddoc -%}
+
+{% if cart.item_count > 0 %}
+  <div class="cart-summary" {{ block.shopify_attributes }}>
+    <p class="cart-summary-title">Cart Total</p>
+    <div class="cart-summary-items">
+      <div class="cart-summary-item">
+        <p class="title">Subtotal:</p>
+        <p class="price">{{ cart.items_subtotal_price | money }}</p>
+      </div>
+      <div class="cart-summary-item">
+        <p class="title">Shipping:</p>
+        <p class="price">Calculated at checkout</p>
+      </div>
+      {% if cart.total_discount > 0 %}
+        <div class="cart-summary-item">
+          <p class="title">Discount:</p>
+          <p class="price">-{{ cart.total_discount | money }}</p>
+        </div>
+      {% endif %}
+      <div class="cart-summary-item summary-total">
+        <p class="title">Total:</p>
+        <p class="price">{{ cart.total_price | money }}</p>
+      </div>
+    </div>
+    <div class="cart-summary-btn">
+      <a href="{{ routes.root_url }}checkout" class="btn primary-btn" aria-label="go to checkout" title="go to checkout">
+        Proceed to checkout<span></span>
+      </a>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Cart summary",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}

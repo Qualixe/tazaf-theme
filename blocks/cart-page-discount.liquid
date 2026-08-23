@@ -1,0 +1,35 @@
+{%- doc -%}
+  Renders the coupon code box. Redirects through Shopify's /discount/CODE flow on
+  submit, since there's no storefront AJAX endpoint for applying a discount code.
+{%- enddoc -%}
+
+{% if cart.item_count > 0 %}
+  <div class="cart-dicount-box" {{ block.shopify_attributes }}>
+    <p class="cart-dicount-title">Coupon Code</p>
+    <form class="cart-product-discount" data-cart-discount-form>
+      <input
+        class="cart-product-discount-field"
+        type="text"
+        name="discount_code"
+        placeholder="Enter code"
+        autocomplete="off"
+      >
+      <button class="btn primary-btn" type="submit" aria-label="Apply Coupon button" title="Apply Coupon button">
+        Apply Coupon<span></span>
+      </button>
+    </form>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Coupon code",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "Coupon code"
+    }
+  ]
+}
+{% endschema %}
