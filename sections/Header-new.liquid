@@ -131,6 +131,7 @@
   </div>
 </header>
 
+
 <!-- search-bar popup start -->
 <div class="search-bar-wrap">
   <button class="search-bar-window-cls-btn" aria-label="Close search"></button>
@@ -274,7 +275,7 @@
             href="#{{ block.settings.title | handleize }}"
             class="mobile-menu-tab{% if forloop.first %} active{% endif %}"
           >
-            {% comment %} <span class="mobile-menu-tab-img">
+            <span class="mobile-menu-tab-img">
               {% if block.settings.tab_image != blank %}
                 <img
                   src="{{ block.settings.tab_image | image_url: width: 80 }}"
@@ -284,7 +285,7 @@
                   loading="lazy"
                 >
               {% endif %}
-            </span> {% endcomment %}
+            </span> 
             <span class="mobile-menu-tab-title">{{ block.settings.title }}</span>
           </a>
         {% endfor %}
