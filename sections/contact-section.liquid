@@ -1,0 +1,53 @@
+<section class="contact-section">
+  <div class="container">
+    {% content_for 'block', type: 'contact-heading', id: 'heading' %}
+    {% content_for 'block', type: 'contact-form', id: 'form' %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .contact-section {
+    background: var(--item-bg);
+    padding: 42px 0;
+  }
+
+  @media only screen and (max-width: 575px) {
+    .contact-section {
+      padding: 24px 0;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Contact form",
+  "blocks": [
+    { "type": "contact-heading" },
+    { "type": "contact-form" }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Contact form",
+      "blocks": {
+        "heading": {
+          "type": "contact-heading",
+          "settings": { "heading": "Get in touch" }
+        },
+        "form": {
+          "type": "contact-form",
+          "blocks": {
+            "submit-button": {
+              "type": "contact-form-submit-button",
+              "static": true,
+              "settings": { "label": "Send" }
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": ["heading", "form"]
+    }
+  ]
+}
+{% endschema %}

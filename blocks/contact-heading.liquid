@@ -1,0 +1,45 @@
+{%- doc -%}
+  Renders a heading above the contact form.
+{%- enddoc -%}
+
+<div class="section-heading-wrapper" {{ block.shopify_attributes }}>
+  <h2 class="section-heading h2">{{ block.settings.heading }}</h2>
+</div>
+
+{% stylesheet %}
+  .contact-section .section-heading-wrapper {
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .contact-section .section-heading-wrapper .section-heading {
+    color: var(--brand-color);
+  }
+
+  @media only screen and (max-width: 575px) {
+    .contact-section .section-heading-wrapper .section-heading {
+      font-size: 24px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Heading",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get in touch"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading"
+    }
+  ]
+}
+{% endschema %}
