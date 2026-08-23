@@ -1,0 +1,31 @@
+{%- doc -%}
+  Renders the image side of the image + text section.
+{%- enddoc -%}
+
+<div class="img-text-section-img" {{ block.shopify_attributes }}>
+  {% if block.settings.image != blank %}
+    {% liquid
+      assign image_alt = block.settings.image.alt | default: ''
+    %}
+    {{ block.settings.image | image_url: width: 1000 | image_tag: alt: image_alt, loading: 'lazy' }}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Image",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image"
+    }
+  ]
+}
+{% endschema %}
