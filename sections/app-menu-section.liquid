@@ -1,0 +1,43 @@
+<section class="app-menu-section">
+  <div class="app-menu-items">
+    {% content_for 'blocks' %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "App menu",
+  "blocks": [
+    { "type": "app-menu-item" }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "App menu",
+      "blocks": {
+        "home": {
+          "type": "app-menu-item",
+          "settings": { "action": "home", "icon": "home", "label": "home" }
+        },
+        "category": {
+          "type": "app-menu-item",
+          "settings": { "action": "open_menu", "icon": "category", "label": "category" }
+        },
+        "search": {
+          "type": "app-menu-item",
+          "settings": { "action": "open_search", "icon": "search", "label": "search" }
+        },
+        "cart": {
+          "type": "app-menu-item",
+          "settings": { "action": "open_cart", "icon": "cart", "label": "cart", "show_count": true }
+        },
+        "account": {
+          "type": "app-menu-item",
+          "settings": { "action": "account", "icon": "account", "label": "account" }
+        }
+      },
+      "block_order": ["home", "category", "search", "cart", "account"]
+    }
+  ]
+}
+{% endschema %}
