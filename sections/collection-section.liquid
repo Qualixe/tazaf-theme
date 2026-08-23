@@ -1,0 +1,264 @@
+<section class="category-section collection-category" {% if section.settings.collection_list == blank and request.design_mode == false %}hidden{% endif %}>
+  <div class="container">
+    <div class="category-section-heading">
+      <h1 class="title h5">{{ collection.title }}</h1>
+      <span class="category-heading-separator"></span>
+      <span class="collection-count">{{ collection.all_products_count }} Products</span>
+    </div>
+    <div class="category-wrapper">
+      <div class="category-slider-wrapper">
+        {% if section.settings.collection_list == blank and request.design_mode %}
+          <p class="card-slider-section-placeholder">Select collections in the section settings to show category cards here.</p>
+        {% endif %}
+        <div class="swiper collection-category-slider">
+          <div class="swiper-wrapper">
+            {% for category in section.settings.collection_list %}
+              {% liquid
+                assign category_alt = category.featured_image.alt | default: category.title | escape
+              %}
+              <div class="swiper-slide">
+                <a href="{{ category.url }}" class="category-item">
+                  <div class="img">
+                    {% if category.featured_image != blank %}
+                      {{ category.featured_image | image_url: width: 200 | image_tag: alt: category_alt, loading: 'lazy' }}
+                    {% endif %}
+                  </div>
+                  <div class="content">
+                    <p class="title">{{ category.title }}</p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev collection-category-button-prev"></div>
+          <div class="swiper-button-next collection-category-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- collection-category-section end -->
+
+<!-- collection section start -->
+<section class="collection-section">
+  <div class="container">
+    <form id="CollectionFilterForm" method="get" action="{{ collection.url }}">
+      <div class="collection-wrapper">
+        <div class="collection-filter">
+          <span class="filter-window-close-btn"></span>
+          <div class="filter-box">
+            <h6 class="filter-sidebar-heading h6">
+              Filter
+              <span class="filter-close-btn">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M3 15L15 3"
+                    stroke="#232323"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M15 15L3 3"
+                    stroke="#232323"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </span>
+            </h6>
+            <div class="filter-accordion">
+              <div class="filter-accordion-items">
+                {% for filter in collection.filters %}
+                  <div class="filter-accordion-item active">
+                    <div class="item-title-wrapper accordion-toggle-btn">
+                      <h6 class="item-title">{{ filter.label }}</h6>
+                      <span class="icon">
+                        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="filter-accordion-item-content">
+                      {% if filter.type == 'price_range' %}
+                        <div class="filter-price-range-wrap">
+                          <div class="price-range-field">
+                            <input
+                              type="text"
+                              inputmode="decimal"
+                              name="{{ filter.min_value.param_name }}"
+                              {% if filter.min_value.value %}
+                                value="{{ filter.min_value.value | money_without_currency }}"
+                              {% endif %}
+                              placeholder="Minimum {{ cart.currency.symbol }}"
+                            >
+                          </div>
+                          <div class="price-range-field">
+                            <input
+                              type="text"
+                              inputmode="decimal"
+                              name="{{ filter.max_value.param_name }}"
+                              {% if filter.max_value.value %}
+                                value="{{ filter.max_value.value | money_without_currency }}"
+                              {% endif %}
+                              placeholder="Maximum {{ cart.currency.symbol }}"
+                            >
+                          </div>
+                          <button type="submit" class="btn filter-price-apply-btn">Apply</button>
+                        </div>
+                      {% else %}
+                        <div class="filter-options-wrapper">
+                          {% for value in filter.values %}
+                            {% liquid
+                              assign input_id = 'Filter-' | append: value.param_name | append: '-' | append: forloop.index | replace: '.', '-'
+                              assign is_disabled = false
+                              if value.count == 0 and value.active == false
+                                assign is_disabled = true
+                              endif
+                            %}
+                            <div class="filter-options">
+                              <div class="filter-option">
+                                <input
+                                  type="checkbox"
+                                  id="{{ input_id }}"
+                                  name="{{ value.param_name }}"
+                                  value="{{ value.value }}"
+                                  {% if value.active %}
+                                    checked
+                                  {% endif %}
+                                  {% if is_disabled %}
+                                    disabled
+                                  {% endif %}
+                                  onchange="this.form.submit()"
+                                >
+                                <label for="{{ input_id }}">{{ value.label }}</label>
+                              </div>
+                              <span class="filter-item-number">{{ value.count }}</span>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="collection-content">
+          <div class="collection-top">
+            <div class="collection-filter-btn">
+              <span class="filter-open-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Layer_2"
+                  data-name="Layer 2"
+                  viewBox="0 0 19.61 18.75"
+                  style="fill: #fff; width: 20px;"
+                >
+                  <g id="Layer_1-2" data-name="Layer 1">
+                    <g>
+                      <path
+                        d="M0,2.89c0,.23.18.41.41.41h3.73c.32,1.04,1.28,1.81,2.43,1.81s2.11-.76,2.43-1.81h10.2c.23,0,.41-.18.41-.41v-.68c0-.23-.18-.41-.41-.41h-10.2c-.32-1.04-1.28-1.81-2.43-1.81s-2.11.76-2.43,1.81H.41c-.23,0-.41.18-.41.41v.68ZM6.57,1.5c.58,0,1.06.47,1.06,1.06s-.47,1.06-1.06,1.06-1.06-.47-1.06-1.06.47-1.06,1.06-1.06Z"
+                      ></path>
+                      <path
+                        d="M.41,10.12h9.08c.32,1.04,1.28,1.81,2.43,1.81s2.11-.76,2.43-1.81h4.85c.23,0,.41-.18.41-.41v-.68c0-.23-.18-.41-.41-.41h-4.85c-.32-1.04-1.28-1.81-2.43-1.81s-2.11.76-2.43,1.81H.41c-.23,0-.41.18-.41.41v.68c0,.23.18.41.41.41ZM11.92,8.32c.58,0,1.06.47,1.06,1.06s-.47,1.06-1.06,1.06-1.06-.47-1.06-1.06.47-1.06,1.06-1.06Z"
+                      ></path>
+                      <path
+                        d="M19.61,15.85c0-.23-.18-.41-.41-.41h-10.2c-.32-1.04-1.28-1.81-2.43-1.81s-2.11.76-2.43,1.81H.41c-.23,0-.41.18-.41.41v.68c0,.23.18.41.41.41h3.73c.32,1.04,1.28,1.81,2.43,1.81s2.11-.76,2.43-1.81h10.2c.23,0,.41-.18.41-.41v-.68ZM6.57,17.25c-.58,0-1.06-.47-1.06-1.06s.47-1.06,1.06-1.06,1.06.47,1.06,1.06-.47,1.06-1.06,1.06Z"
+                      ></path>
+                    </g>
+                  </g>
+                </svg>
+                Filter
+              </span>
+              <p class="collection-product-count">{{ collection.products_count }} products</p>
+            </div>
+            <div class="filter-select-field">
+              <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+                {% for option in collection.sort_options %}
+                  <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>
+                    {{ option.name }}
+                  </option>
+                {% endfor %}
+              </select>
+              <span class="filter-select-field-icon">
+                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          {% paginate collection.products by section.settings.products_per_page %}
+            <div class="product-items">
+              {% for product in collection.products %}
+                <div class="product-item">
+                  {% render 'slider-product-card', product: product %}
+                </div>
+              {% endfor %}
+            </div>
+
+            {% if collection.products.size == 0 %}
+              <p class="collection-empty-message">No products found. Try removing some filters.</p>
+            {% endif %}
+
+            {% if paginate.pages > 1 %}
+              <div class="collection-pagination">
+                {% if paginate.previous %}
+                  <a href="{{ paginate.previous.url }}" class="btn pagination-btn">Previous</a>
+                {% endif %}
+                <span class="pagination-current">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+                {% if paginate.next %}
+                  <a href="{{ paginate.next.url }}" class="btn pagination-btn">Next</a>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endpaginate %}
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection page",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "Category slider collections",
+      "info": "Shown as a slider of category cards above the product grid."
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection page"
+    }
+  ]
+}
+{% endschema %}

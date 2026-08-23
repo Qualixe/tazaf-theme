@@ -350,12 +350,39 @@
     border-color: var(--black);
 }
 
+.filter-price-apply-btn {
+    grid-column: 1 / -1;
+}
+
 /* collection filter css end */
 
 .product-items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+}
+
+.collection-empty-message {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--muted);
+}
+
+.collection-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.collection-pagination .pagination-btn {
+    width: auto;
+}
+
+.pagination-current {
+    font-size: 14px;
+    color: var(--muted);
 }
 
 /* collection section css end */
