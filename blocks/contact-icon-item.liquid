@@ -5,7 +5,10 @@
 <div class="contact-icon-item" {{ block.shopify_attributes }}>
   <span class="icon">
     {% if block.settings.icon != blank %}
-      {{ block.settings.icon | image_url: width: 80 | image_tag: alt: block.settings.title | escape, loading: 'lazy' }}
+      {% liquid
+        assign icon_alt = block.settings.title | escape
+      %}
+      {{ block.settings.icon | image_url: width: 80 | image_tag: alt: icon_alt, loading: 'lazy' }}
     {% endif %}
   </span>
   <h2 class="contact-icon-item-title">{{ block.settings.title }}</h2>
