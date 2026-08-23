@@ -1,7 +1,7 @@
 <section class="contact-section">
   <div class="container">
     {% content_for 'block', type: 'contact-heading', id: 'heading' %}
-    {% content_for 'block', type: 'contact-form', id: 'form' %}
+    {% content_for 'block', type: 'contact-form-new', id: 'form' %}
   </div>
 </section>
 
@@ -23,7 +23,7 @@
   "name": "Contact form",
   "blocks": [
     { "type": "contact-heading" },
-    { "type": "contact-form" }
+    { "type": "contact-form-new" }
   ],
   "settings": [],
   "presets": [
@@ -35,7 +35,7 @@
           "settings": { "heading": "Get in touch" }
         },
         "form": {
-          "type": "contact-form",
+          "type": "contact-form-new",
           "blocks": {
             "submit-button": {
               "type": "contact-form-submit-button",
