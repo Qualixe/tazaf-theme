@@ -173,13 +173,6 @@
     "img_text_grid_7nxRAp": {
       "type": "img-text-grid",
       "blocks": {
-        "img_text_grid_heading_wVyraP": {
-          "type": "img-text-grid-heading",
-          "settings": {
-            "heading": "Most popular brand"
-          },
-          "blocks": {}
-        },
         "img_text_grid_item_QdBGqw": {
           "type": "img-text-grid-item",
           "settings": {
@@ -210,7 +203,6 @@
         }
       },
       "block_order": [
-        "img_text_grid_heading_wVyraP",
         "img_text_grid_item_QdBGqw",
         "img_text_grid_item_eNXq9f"
       ],
