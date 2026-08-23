@@ -1,0 +1,25 @@
+{%- doc -%}
+  Renders the title in the image + text section.
+{%- enddoc -%}
+
+<h1 class="img-text-section-content-title h2" {{ block.shopify_attributes }}>{{ block.settings.title }}</h1>
+
+{% schema %}
+{
+  "name": "Title",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Who we are?"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Title"
+    }
+  ]
+}
+{% endschema %}

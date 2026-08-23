@@ -1,9 +1,11 @@
-{{'img-text-section.css' | asset_url |stylesheet_tag }}
 <section class="section img-text-section{% if section.settings.reverse_layout %} img-text-section-reverse{% endif %}">
   <div class="container">
     <div class="img-text-section-wrapper">
       {% content_for 'block', type: 'image-text-image', id: 'image' %}
-      {% content_for 'block', type: 'image-text-content', id: 'content' %}
+      <div class="img-text-section-content">
+        {% content_for 'block', type: 'image-text-title', id: 'title' %}
+        {% content_for 'block', type: 'image-text-text', id: 'text' %}
+      </div>
     </div>
   </div>
 </section>
@@ -13,7 +15,8 @@
   "name": "Image with text",
   "blocks": [
     { "type": "image-text-image" },
-    { "type": "image-text-content" }
+    { "type": "image-text-title" },
+    { "type": "image-text-text" }
   ],
   "settings": [
     {
@@ -29,15 +32,18 @@
       "name": "Image with text",
       "blocks": {
         "image": { "type": "image-text-image" },
-        "content": {
-          "type": "image-text-content",
+        "title": {
+          "type": "image-text-title",
+          "settings": { "title": "Who we are?" }
+        },
+        "text": {
+          "type": "image-text-text",
           "settings": {
-            "title": "Who we are?",
             "text": "<p>Tazaf Ltd. one of the most popular and trusted brand names in the fashion industry of Bangladesh is mostly famous for the multi-collection of both domestic and internationally renowned brand products along with our brand products.</p><p>As a retailer of our parent brand Top Fabrics &amp; Tailors we started our journey in 2015. Within a short time, we achieved an astonishing improvement in the trendy sector. Now having 12 outlets at the prominent palaces, we have a strong setup in the fashion industry of Bangladesh. Tazaf Ltd. is inspired by our valued customers who are aware of modern and eccentric fashion. Since our inception we are offering world-class designed, aristocratic fashion items emphasizing the demand and desire of the customer at amazing prices.</p>"
           }
         }
       },
-      "block_order": ["image", "content"]
+      "block_order": ["image", "title", "text"]
     }
   ]
 }
