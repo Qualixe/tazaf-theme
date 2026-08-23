@@ -281,7 +281,7 @@
             href="#{{ block.settings.title | handleize }}"
             class="mobile-menu-tab{% if forloop.first %} active{% endif %}"
           >
-            <span class="mobile-menu-tab-img">
+            {% comment %} <span class="mobile-menu-tab-img">
               {% if block.settings.tab_image != blank %}
                 <img
                   src="{{ block.settings.tab_image | image_url: width: 80 }}"
@@ -291,7 +291,7 @@
                   loading="lazy"
                 >
               {% endif %}
-            </span>
+            </span> {% endcomment %}
             <span class="mobile-menu-tab-title">{{ block.settings.title }}</span>
           </a>
         {% endfor %}
