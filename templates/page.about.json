@@ -22,10 +22,12 @@
             "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-body--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
+            "text_color": "",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -38,7 +40,9 @@
         },
         "page-content": {
           "type": "page-content",
-          "settings": {},
+          "settings": {
+            "text_color": ""
+          },
           "blocks": {}
         }
       },
@@ -46,6 +50,7 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -53,9 +58,67 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "image_text_section_qjdqYq": {
+      "type": "image-text-section",
+      "blocks": {
+        "image_text_image_9qHPcp": {
+          "type": "image-text-image",
+          "settings": {},
+          "blocks": {}
+        },
+        "image_text_title_W8bVLF": {
+          "type": "image-text-title",
+          "settings": {
+            "title": "Who we are?"
+          },
+          "blocks": {}
+        },
+        "image_text_text_W7brpW": {
+          "type": "image-text-text",
+          "settings": {
+            "text": "<p>Tazaf Ltd. one of the most popular and trusted brand names in the fashion industry of Bangladesh is mostly famous for the multi-collection of both domestic and internationally renowned brand products along with our brand products.</p><p>As a retailer of our parent brand Top Fabrics &amp; Tailors we started our journey in 2015. Within a short time, we achieved an astonishing improvement in the trendy sector. Now having 12 outlets at the prominent palaces, we have a strong setup in the fashion industry of Bangladesh. Tazaf Ltd. is inspired by our valued customers who are aware of modern and eccentric fashion. Since our inception we are offering world-class designed, aristocratic fashion items emphasizing the demand and desire of the customer at amazing prices.</p>"
+          },
+          "blocks": {}
+        },
+        "image": {
+          "type": "image-text-image",
+          "static": true,
+          "settings": {
+            "image": "shopify://shop_images/toppick-img1.jpg"
+          },
+          "blocks": {}
+        },
+        "title": {
+          "type": "image-text-title",
+          "static": true,
+          "settings": {
+            "title": "Who we are?"
+          },
+          "blocks": {}
+        },
+        "text": {
+          "type": "image-text-text",
+          "static": true,
+          "settings": {
+            "text": "<p>Add your content here.</p>"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_text_image_9qHPcp",
+        "image_text_title_W8bVLF",
+        "image_text_text_W7brpW"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "reverse_layout": false
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_text_section_qjdqYq"
   ]
 }
