@@ -136,11 +136,45 @@
       ],
       "name": "Image gallery",
       "settings": {}
+    },
+    "image_text_section_ntcxrn": {
+      "type": "image-text-section",
+      "blocks": {
+        "image": {
+          "type": "image-text-image",
+          "static": true,
+          "settings": {
+            "image": "shopify://shop_images/toppick-img1.jpg"
+          },
+          "blocks": {}
+        },
+        "title": {
+          "type": "image-text-title",
+          "static": true,
+          "settings": {
+            "title": "why choose us?"
+          },
+          "blocks": {}
+        },
+        "text": {
+          "type": "image-text-text",
+          "static": true,
+          "settings": {
+            "text": "<p>Our product line includes a wide variety of T-Shirt, Polo Shirt, Pants, Panjabi, Kabli, Salwar Kamiz, Ladies Three-Piece, Saree, Kurti , Tops, Laggings, Undergarments, Nightwear, Grooming and Wellness, Fragrance, Gent’s and Lady’s Footwear, Bags, Jewelry, Baby Care, Kids Items, Food, and Beverage Items, Watches, Sunglasses, Babies and Kids Toys and many more. We are adding newer and newer items in our product line to meet the demand of the customers.</p><p>Through our branches, we are also marketing all types and world-renowned brands fabrics like Raymond, Arvind, Reid, and Tailor, DONEAR, Linen Club, Soktas, CENTURY, OCM, MORARJEE, GEORGIA GULLINI, DORMEUIL, MARTINO, ROGER LA VIALE, SIYARAMS, etc.</p>"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Image with text",
+      "settings": {
+        "reverse_layout": true
+      }
     }
   },
   "order": [
     "main",
     "image_text_section_6XFGmk",
-    "image_gallery_6DiDcX"
+    "image_gallery_6DiDcX",
+    "image_text_section_ntcxrn"
   ]
 }
