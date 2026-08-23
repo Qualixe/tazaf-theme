@@ -154,7 +154,7 @@
               "link": "shopify://collections/all",
               "show_count": true,
               "icon": "category",
-              "label": "Home"
+              "label": "Category"
             },
             "blocks": {}
           },
@@ -166,7 +166,31 @@
               "link": "",
               "show_count": true,
               "icon": "search",
-              "label": "Home"
+              "label": "Search"
+            },
+            "blocks": {}
+          },
+          "app_menu_item_J3UXVq": {
+            "type": "app-menu-item",
+            "name": "App menu item",
+            "settings": {
+              "action": "open_cart",
+              "link": "",
+              "show_count": true,
+              "icon": "cart",
+              "label": "Cart"
+            },
+            "blocks": {}
+          },
+          "app_menu_item_VMLypT": {
+            "type": "app-menu-item",
+            "name": "App menu item",
+            "settings": {
+              "action": "account",
+              "link": "",
+              "show_count": true,
+              "icon": "account",
+              "label": "Account"
             },
             "blocks": {}
           }
@@ -174,7 +198,9 @@
         "block_order": [
           "app_menu_item_p7LTyA",
           "app_menu_item_TNx4xj",
-          "app_menu_item_JmVdaX"
+          "app_menu_item_JmVdaX",
+          "app_menu_item_J3UXVq",
+          "app_menu_item_VMLypT"
         ],
         "settings": {}
       }
