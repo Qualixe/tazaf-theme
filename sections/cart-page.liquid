@@ -1,0 +1,178 @@
+<section class="cart-section" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="section-heading-wrapper">
+      <h1 class="section-heading">{{ section.settings.heading | default: 'My Shopping Cart' }}</h1>
+    </div>
+    {% if cart.item_count == 0 %}
+      <div class="cart-empty-message">
+        <p>Your cart is empty.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn primary-btn">Continue shopping</a>
+      </div>
+    {% else %}
+      <div class="cart-wrapper">
+        <div class="cart-content-wrap">
+          <div class="cart-table">
+            <div class="cart-table-heading">
+              <div class="cart-product-content">
+                <div class="Product">
+                  <p class="cart-table-product-title">Product</p>
+                </div>
+              </div>
+              <div class="cart-product-details">
+                <div class="price">
+                  <p class="cart-table-price-title">price</p>
+                </div>
+                <div class="Quantity">
+                  <p class="cart-table-quantity-title">Quantity</p>
+                </div>
+                <div class="Subtotal">
+                  <p class="cart-table-subtotal-title">Subtotal</p>
+                </div>
+                <div class="cart-remove">
+                  <p class="cart-table-cart-remove-title"></p>
+                </div>
+              </div>
+            </div>
+            <div class="cart-product-items">
+              {% for item in cart.items %}
+                {% liquid
+                  assign item_alt = item.image.alt | default: item.product.title | escape
+                %}
+                <div class="cart-product-item" data-cart-item-key="{{ item.key }}">
+                  <div class="cart-product-content">
+                    <a href="{{ item.url }}" class="cart-product-img">
+                      {% if item.image != blank %}
+                        {{ item.image | image_url: width: 200 | image_tag: alt: item_alt, loading: 'lazy' }}
+                      {% endif %}
+                    </a>
+                    <div class="content">
+                      <a href="{{ item.url }}" class="title">{{ item.product.title }}</a>
+                      {% unless item.variant.title == 'Default Title' %}
+                        <p class="cart-product-variant">{{ item.variant.title }}</p>
+                      {% endunless %}
+                      <div class="cart-product-mobile-details">
+                        <div class="price">
+                          <p class="cart-product-price">{{ item.final_price | money }}</p>
+                        </div>
+                        <div class="Quantity">
+                          {% render 'cart-page-quantity', item: item, id_suffix: 'mobile' %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cart-product-details">
+                    <div class="price">
+                      <p class="cart-product-price">{{ item.final_price | money }}</p>
+                    </div>
+                    <div class="Quantity">
+                      {% render 'cart-page-quantity', item: item, id_suffix: 'desktop' %}
+                    </div>
+                    <div class="Subtotal">
+                      <p class="cart-product-subtotal">{{ item.final_line_price | money }}</p>
+                    </div>
+                    <div class="cart-remove">
+                      <button
+                        class="cart-product-remove-btn"
+                        type="button"
+                        aria-label="Remove {{ item.product.title | escape }} from cart"
+                        title="Remove"
+                        data-cart-remove-key="{{ item.key }}"
+                      >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M12 23C18.0748 23 23 18.0748 23 12C23 5.92525 18.0748 1 12 1C5.92525 1 1 5.92525 1 12C1 18.0748 5.92525 23 12 23Z"
+                            stroke="#CCCCCC"
+                            stroke-miterlimit="10"
+                          ></path>
+                          <path
+                            d="M16 8L8 16"
+                            stroke="#666666"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path>
+                          <path
+                            d="M16 16L8 8"
+                            stroke="#666666"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="cart-dicount-box">
+            <p class="cart-dicount-title">Coupon Code</p>
+            <form class="cart-product-discount" data-cart-discount-form>
+              <input
+                class="cart-product-discount-field"
+                type="text"
+                name="discount_code"
+                placeholder="Enter code"
+                autocomplete="off"
+              >
+              <button class="btn primary-btn" type="submit" aria-label="Apply Coupon button" title="Apply Coupon button">
+                Apply Coupon<span></span>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="cart-summary">
+          <p class="cart-summary-title">Cart Total</p>
+          <div class="cart-summary-items">
+            <div class="cart-summary-item">
+              <p class="title">Subtotal:</p>
+              <p class="price">{{ cart.items_subtotal_price | money }}</p>
+            </div>
+            <div class="cart-summary-item">
+              <p class="title">Shipping:</p>
+              <p class="price">Calculated at checkout</p>
+            </div>
+            {% if cart.total_discount > 0 %}
+              <div class="cart-summary-item">
+                <p class="title">Discount:</p>
+                <p class="price">-{{ cart.total_discount | money }}</p>
+              </div>
+            {% endif %}
+            <div class="cart-summary-item summary-total">
+              <p class="title">Total:</p>
+              <p class="price">{{ cart.total_price | money }}</p>
+            </div>
+          </div>
+          <div class="cart-summary-btn">
+            <a href="{{ routes.root_url }}checkout" class="btn primary-btn" aria-label="go to checkout" title="go to checkout">
+              Proceed to checkout<span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart page",
+  "enabled_on": {
+    "templates": ["cart"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "My Shopping Cart"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart page"
+    }
+  ]
+}
+{% endschema %}

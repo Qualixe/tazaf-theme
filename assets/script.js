@@ -443,6 +443,99 @@ document
 })();
 // cart-drawer ajax js end---
 
+// cart-page js start---
+(() => {
+  function getCartSection() {
+    const trigger = document.querySelector(".cart-section[data-section-id]");
+    if (!trigger) return null;
+
+    const sectionId = trigger.dataset.sectionId;
+    const wrapper = document.getElementById(`shopify-section-${sectionId}`);
+    if (!wrapper) return null;
+
+    return { sectionId, wrapper };
+  }
+
+  // Re-fetches this section's markup via the Section Rendering API so quantities,
+  // subtotals, and the empty-cart state always reflect the server's own money
+  // formatting instead of being recomputed (and risking drift) in JS.
+  async function refreshCartSection() {
+    const current = getCartSection();
+    if (!current) return;
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("section_id", current.sectionId);
+
+    const response = await fetch(url);
+    const text = await response.text();
+    const html = new DOMParser().parseFromString(text, "text/html");
+    const newWrapper = html.getElementById(`shopify-section-${current.sectionId}`);
+
+    if (newWrapper) current.wrapper.replaceWith(newWrapper);
+  }
+
+  async function changeCartItem(key, quantity) {
+    await fetch("/cart/change.js", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: key, quantity }),
+    });
+
+    await refreshCartSection();
+  }
+
+  document.addEventListener("click", (e) => {
+    const decreaseBtn = e.target.closest("[data-quantity-decrease]");
+    const increaseBtn = e.target.closest("[data-quantity-increase]");
+    const removeBtn = e.target.closest("[data-cart-remove-key]");
+
+    if (decreaseBtn || increaseBtn) {
+      const wrapper = (decreaseBtn || increaseBtn).closest("[data-cart-quantity]");
+      const input = wrapper?.querySelector(".quantity-count");
+      const key = wrapper?.dataset.cartItemKey;
+      if (!input || !key) return;
+
+      const currentQty = parseInt(input.value, 10) || 0;
+      const quantity = increaseBtn ? currentQty + 1 : Math.max(0, currentQty - 1);
+      changeCartItem(key, quantity);
+      return;
+    }
+
+    if (removeBtn) {
+      changeCartItem(removeBtn.dataset.cartRemoveKey, 0);
+    }
+  });
+
+  document.addEventListener("change", (e) => {
+    const input = e.target.closest("[data-quantity-input]");
+    if (!input) return;
+
+    const wrapper = input.closest("[data-cart-quantity]");
+    const key = wrapper?.dataset.cartItemKey;
+    if (!key) return;
+
+    const quantity = Math.max(0, parseInt(input.value, 10) || 0);
+    changeCartItem(key, quantity);
+  });
+
+  // Shopify has no storefront AJAX endpoint for applying a discount code -
+  // redirecting through /discount/CODE is the standard way to apply one and
+  // land back on the cart.
+  document.addEventListener("submit", (e) => {
+    const form = e.target.closest("[data-cart-discount-form]");
+    if (!form) return;
+
+    e.preventDefault();
+    const code = new FormData(form).get("discount_code")?.toString().trim();
+    if (!code) return;
+
+    window.location.href = `/discount/${encodeURIComponent(code)}?redirect=${encodeURIComponent(
+      window.location.pathname
+    )}`;
+  });
+})();
+// cart-page js end---
+
 // cart-drawer slider js start--
 var swiper = new Swiper(".cart-drawer-slider", {
   slidesPerView: 2.1,

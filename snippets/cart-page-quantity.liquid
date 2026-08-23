@@ -1,0 +1,53 @@
+{%- doc -%}
+  Renders a quantity stepper for a cart line item on the cart page.
+  Rendered twice per item (desktop + mobile layout), so ids must stay unique via id_suffix.
+
+  @param {object} item - The cart line item.
+  @param {string} id_suffix - Unique suffix so the desktop/mobile instances don't share ids.
+{%- enddoc -%}
+
+<div class="product-quantity" data-cart-quantity data-cart-item-key="{{ item.key }}">
+  <button
+    class="quantity-decrease"
+    type="button"
+    aria-label="Decrease quantity"
+    title="Decrease quantity"
+    data-quantity-decrease
+  >
+    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M0.75 5.41667H10.0833"
+        stroke="#1A1A1A"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+    </svg>
+  </button>
+  <input
+    class="quantity-count"
+    type="number"
+    id="CartQuantity-{{ item.key }}-{{ id_suffix }}"
+    value="{{ item.quantity }}"
+    min="0"
+    aria-label="Quantity for {{ item.product.title | escape }}"
+    data-quantity-input
+  >
+  <button
+    class="quantity-increase"
+    type="button"
+    aria-label="Increase quantity"
+    title="Increase quantity"
+    data-quantity-increase
+  >
+    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M0.75 5.41667H10.0833M5.41667 0.75V10.0833V0.75Z"
+        stroke="#1A1A1A"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+    </svg>
+  </button>
+</div>
