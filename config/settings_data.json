@@ -130,6 +130,55 @@
     "social_pinterest_link": "shopify://blogs/news",
     "whatsapp_number": "#",
     "order_phone_number": "#",
+    "sections": {
+      "app-menu-section": {
+        "type": "app-menu-section",
+        "blocks": {
+          "app_menu_item_p7LTyA": {
+            "type": "app-menu-item",
+            "name": "App menu item",
+            "settings": {
+              "action": "home",
+              "link": "",
+              "show_count": true,
+              "icon": "home",
+              "label": "Home"
+            },
+            "blocks": {}
+          },
+          "app_menu_item_TNx4xj": {
+            "type": "app-menu-item",
+            "name": "App menu item",
+            "settings": {
+              "action": "link",
+              "link": "shopify://collections/all",
+              "show_count": true,
+              "icon": "category",
+              "label": "Home"
+            },
+            "blocks": {}
+          },
+          "app_menu_item_JmVdaX": {
+            "type": "app-menu-item",
+            "name": "App menu item",
+            "settings": {
+              "action": "home",
+              "link": "",
+              "show_count": true,
+              "icon": "search",
+              "label": "Home"
+            },
+            "blocks": {}
+          }
+        },
+        "block_order": [
+          "app_menu_item_p7LTyA",
+          "app_menu_item_TNx4xj",
+          "app_menu_item_JmVdaX"
+        ],
+        "settings": {}
+      }
+    },
     "content_for_index": [],
     "color_palette": {
       "background": "#ffffff",
