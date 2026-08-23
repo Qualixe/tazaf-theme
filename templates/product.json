@@ -565,13 +565,261 @@
         "specification_tab_MTmxj9",
         "return_policy_tab_8FexNx"
       ],
+      "disabled": true,
       "name": "Product information",
       "settings": {}
+    },
+    "product_info_MyF8x7": {
+      "type": "product-info",
+      "blocks": {
+        "product_info_rating_UB9VTr": {
+          "type": "product-info-rating",
+          "settings": {},
+          "blocks": {}
+        },
+        "product_info_title_nNxXtF": {
+          "type": "product-info-title",
+          "settings": {},
+          "blocks": {}
+        },
+        "product_info_price_UjtKhD": {
+          "type": "product-info-price",
+          "settings": {},
+          "blocks": {}
+        },
+        "product_info_variant_picker_nwNVew": {
+          "type": "product-info-variant-picker",
+          "settings": {
+            "show_size_guide": true
+          },
+          "blocks": {}
+        },
+        "product_info_combo_offer_M8iVUL": {
+          "type": "product-info-combo-offer",
+          "settings": {
+            "heading": "Choose combo offer:"
+          },
+          "blocks": {
+            "product_info_combo_option_jgQhFG": {
+              "type": "product-info-combo-option",
+              "settings": {
+                "title": "Buy 1 product",
+                "price": "tk1390.00",
+                "unit_price": "",
+                "savings_text": "",
+                "badge_text": "",
+                "checked": true
+              },
+              "blocks": {}
+            },
+            "product_info_combo_option_8FK8C9": {
+              "type": "product-info-combo-option",
+              "settings": {
+                "title": "Buy 2 product",
+                "price": "tk2290.00",
+                "unit_price": "tk1145/pair",
+                "savings_text": "save 15%",
+                "badge_text": "Best Seller",
+                "checked": false
+              },
+              "blocks": {}
+            },
+            "product_info_combo_option_xeTgdW": {
+              "type": "product-info-combo-option",
+              "settings": {
+                "title": "Buy 3 product",
+                "price": "tk3030.00",
+                "unit_price": "tk1010/pair",
+                "savings_text": "save 25%",
+                "badge_text": "Best value",
+                "checked": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_info_combo_option_jgQhFG",
+            "product_info_combo_option_8FK8C9",
+            "product_info_combo_option_xeTgdW"
+          ]
+        },
+        "product_info_quantity_VeMrAT": {
+          "type": "product-info-quantity",
+          "settings": {},
+          "blocks": {}
+        },
+        "product_info_buy_buttons_rRC9yb": {
+          "type": "product-info-buy-buttons",
+          "settings": {},
+          "blocks": {
+            "product_info_add_to_cart_button_X8bEin": {
+              "type": "product-info-add-to-cart-button",
+              "settings": {},
+              "blocks": {}
+            },
+            "product_info_buy_now_button_wFgggz": {
+              "type": "product-info-buy-now-button",
+              "settings": {},
+              "blocks": {}
+            },
+            "product_info_whatsapp_button_ptamhM": {
+              "type": "product-info-whatsapp-button",
+              "settings": {},
+              "blocks": {}
+            },
+            "product_info_call_button_BHPjjK": {
+              "type": "product-info-call-button",
+              "settings": {},
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_info_add_to_cart_button_X8bEin",
+            "product_info_buy_now_button_wFgggz",
+            "product_info_whatsapp_button_ptamhM",
+            "product_info_call_button_BHPjjK"
+          ]
+        },
+        "product_info_brand_logo_mzpW4g": {
+          "type": "product-info-brand-logo",
+          "settings": {},
+          "blocks": {}
+        },
+        "product_info_badges_8WaGef": {
+          "type": "product-info-badges",
+          "settings": {},
+          "blocks": {
+            "product_info_badge_Y9xJLi": {
+              "type": "product-info-badge",
+              "settings": {
+                "icon": "shipping",
+                "title": "Free expedited shipping"
+              },
+              "blocks": {}
+            },
+            "product_info_badge_PXeBkm": {
+              "type": "product-info-badge",
+              "settings": {
+                "icon": "returns",
+                "title": "Easy Returns Within 30 Days"
+              },
+              "blocks": {}
+            },
+            "product_info_badge_F3Amnn": {
+              "type": "product-info-badge",
+              "settings": {
+                "icon": "secure",
+                "title": "Safe & Secure Payments"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_info_badge_Y9xJLi",
+            "product_info_badge_PXeBkm",
+            "product_info_badge_F3Amnn"
+          ]
+        },
+        "product_info_accordion_cC6KmK": {
+          "type": "product-info-accordion",
+          "settings": {},
+          "blocks": {
+            "product_info_description_tab_8c3GEa": {
+              "type": "product-info-description-tab",
+              "settings": {
+                "label": "Description"
+              },
+              "blocks": {}
+            },
+            "product_info_specification_tab_DtFime": {
+              "type": "product-info-specification-tab",
+              "settings": {
+                "label": "Specification",
+                "content": "{{ closest.product.description }}"
+              },
+              "blocks": {}
+            },
+            "product_info_return_policy_tab_kzh9gz": {
+              "type": "product-info-return-policy-tab",
+              "settings": {
+                "label": "Return and refund",
+                "content": "{{ closest.product.description }}"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_info_description_tab_8c3GEa",
+            "product_info_specification_tab_DtFime",
+            "product_info_return_policy_tab_kzh9gz"
+          ]
+        }
+      },
+      "block_order": [
+        "product_info_rating_UB9VTr",
+        "product_info_title_nNxXtF",
+        "product_info_price_UjtKhD",
+        "product_info_variant_picker_nwNVew",
+        "product_info_combo_offer_M8iVUL",
+        "product_info_quantity_VeMrAT",
+        "product_info_buy_buttons_rRC9yb",
+        "product_info_brand_logo_mzpW4g",
+        "product_info_badges_8WaGef",
+        "product_info_accordion_cC6KmK"
+      ],
+      "name": "Product information",
+      "settings": {}
+    },
+    "review_section_qD8f8A": {
+      "type": "review-section",
+      "name": "Review tabs",
+      "settings": {
+        "heading": "Ratings & Reviews",
+        "write_review_url": "",
+        "all_product_reviews_url": "",
+        "category_collection": "",
+        "all_category_reviews_url": ""
+      }
+    },
+    "explore_more_4nBTUH": {
+      "type": "explore-more",
+      "name": "Explore more slider",
+      "settings": {
+        "heading": "Explore more",
+        "collection": "frontpage",
+        "max_products": 8,
+        "view_all_label": "View All products",
+        "view_all_link": ""
+      }
+    },
+    "recently_viewed_product_Q3cwMU": {
+      "type": "recently-viewed-product",
+      "name": "Recently viewed products",
+      "settings": {
+        "heading": "Recently Viewed Products",
+        "view_all_label": "View All products"
+      }
+    },
+    "collection_category_8mjDmJ": {
+      "type": "collection-category",
+      "name": "Category slider",
+      "settings": {
+        "heading": "Explore More in Categories",
+        "collection_list": [
+          "frontpage",
+          "slippers"
+        ]
+      }
     }
   },
   "order": [
     "main",
     "product_recommendations_qggXJq",
-    "single_product_MMiacE"
+    "single_product_MMiacE",
+    "product_info_MyF8x7",
+    "review_section_qD8f8A",
+    "explore_more_4nBTUH",
+    "recently_viewed_product_Q3cwMU",
+    "collection_category_8mjDmJ"
   ]
 }

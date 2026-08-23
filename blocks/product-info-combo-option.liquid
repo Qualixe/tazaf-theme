@@ -1,0 +1,76 @@
+{% liquid assign field_id = 'bundle-' | append: block.id %}
+<div class="bundle-item{% if block.settings.badge_text != blank %} badge{% endif %}" {{ block.shopify_attributes }}>
+  {% if block.settings.badge_text != blank %}
+    <span class="bundle-badge">{{ block.settings.badge_text }}</span>
+  {% endif %}
+  <input
+    type="radio"
+    name="bundle-{{ section.id }}"
+    value="{{ block.id }}"
+    id="{{ field_id }}"
+    {% if block.settings.checked %}
+      checked
+    {% endif %}
+  >
+  <label class="bundle-label" for="{{ field_id }}">
+    <div class="bundle-content-wrap">
+      <div class="bundle-content">
+        <p class="bundle-title">{{ block.settings.title }}</p>
+        {% if block.settings.savings_text != blank %}
+          <span class="bundle-savings">{{ block.settings.savings_text }}</span>
+        {% endif %}
+      </div>
+      <div class="bundle-price">
+        <p class="bundle-total-price">{{ block.settings.price }}</p>
+        {% if block.settings.unit_price != blank %}
+          <p class="bundle-single-price">{{ block.settings.unit_price }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </label>
+</div>
+
+{% schema %}
+{
+  "name": "Combo option",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Buy 1 product"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Total price",
+      "default": "tk1390.00"
+    },
+    {
+      "type": "text",
+      "id": "unit_price",
+      "label": "Unit price (optional)"
+    },
+    {
+      "type": "text",
+      "id": "savings_text",
+      "label": "Savings text (optional)"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "checked",
+      "label": "Selected by default",
+      "default": false
+    }
+  ],
+  "presets": [
+    { "name": "Combo option", "category": "Product" }
+  ]
+}
+{% endschema %}

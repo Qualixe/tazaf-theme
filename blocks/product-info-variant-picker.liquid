@@ -1,0 +1,108 @@
+{% liquid
+  assign product = closest.product
+  assign current_variant = product.selected_or_first_available_variant
+%}
+{% unless product.has_only_default_variant %}
+  <div {{ block.shopify_attributes }}>
+    {% for option in product.options_with_values %}
+      {% assign option_index = option.position | minus: 1 %}
+      <div class="product-varient">
+        <div class="product-varient-title-wrap">
+          <h2 class="product-varient-title">
+            <span>
+              <span class="title-count">{{ forloop.index }}.</span>
+              Choose {{ option.name }}:
+              <span class="varient-count" data-selected-value>{{ current_variant.options[option_index] }}</span>
+            </span>
+            {% if option.name == 'Size' and block.settings.show_size_guide %}
+              <button class="size-sidebar-btn" aria-label="size chart open" title="size chart open" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                  <path
+                    d="M241.1 580.2C222.4 598.9 192 598.9 173.2 580.2L60.1 467.1C41.4 448.4 41.4 418 60.1 399.2L77.1 382.2L150.6 455.7C160 465.1 175.2 465.1 184.5 455.7C193.8 446.3 193.9 431.1 184.5 421.8L111 348.3L144.9 314.4L195.8 365.3C205.2 374.7 220.4 374.7 229.7 365.3C239 355.9 239.1 340.7 229.7 331.4L178.8 280.5L212.7 246.6L286.2 320.1C295.6 329.5 310.8 329.5 320.1 320.1C329.4 310.7 329.5 295.5 320.1 286.2L246.6 212.7L280.5 178.8L331.4 229.7C340.8 239.1 356 239.1 365.3 229.7C374.6 220.3 374.7 205.1 365.3 195.8L314.4 144.9L348.3 111L421.8 184.5C431.2 193.9 446.4 193.9 455.7 184.5C465 175.1 465.1 159.9 455.7 150.6L382.2 77.1L399.2 60.1C417.9 41.4 448.3 41.4 467.1 60.1L580.5 172.9C599.2 191.6 599.2 222 580.5 240.8L241.1 580.2z"
+                  ></path>
+                </svg>
+                <span>Size guide</span>
+              </button>
+            {% endif %}
+          </h2>
+        </div>
+        <div class="product-varient-field-wrap{% if forloop.first %} product-color-wrap{% else %} product-size{% endif %}">
+          {% for value in option.values %}
+            {% liquid
+              assign value_handle = block.id | append: '-' | append: option.name | append: '-' | append: value | handleize
+              assign swatch_image = blank
+              assign value_available = false
+              for variant in product.variants
+                if variant.options[option_index] == value
+                  if swatch_image == blank and variant.featured_image != blank
+                    assign swatch_image = variant.featured_image
+                  endif
+                  if variant.available
+                    assign value_available = true
+                  endif
+                endif
+              endfor
+              assign is_checked = false
+              if current_variant.options[option_index] == value
+                assign is_checked = true
+              endif
+              assign value_escaped = value | escape
+            %}
+            <div class="product-varient-input-field{% if forloop.parentloop.first %} product-color{% endif %}{% unless value_available %} disabled{% endunless %}">
+              <input
+                class="product-varient-input"
+                type="radio"
+                id="{{ value_handle }}"
+                name="option-{{ block.id }}-{{ option_index }}"
+                value="{{ value | escape }}"
+                data-option-index="{{ option_index }}"
+                {% if is_checked %}
+                  checked
+                {% endif %}
+                {% unless value_available %}
+                  disabled
+                {% endunless %}
+              >
+              <label class="product-varient-label" for="{{ value_handle }}">
+                {% if forloop.parentloop.first %}
+                  <span class="varient-value">
+                    {% if swatch_image != blank %}
+                      {{
+                        swatch_image
+                        | image_url: width: 80
+                        | image_tag: alt: value_escaped, width: 40, height: 40, loading: 'lazy'
+                      }}
+                    {% endif %}
+                  </span>
+                {% else %}
+                  <span class="varient-value">{{ value }}</span>
+                {% endif %}
+              </label>
+              {% if forloop.parentloop.first %}
+                <p>{{ value }}</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endunless %}
+
+{% schema %}
+{
+  "name": "Variant picker",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_size_guide",
+      "label": "Show \"Size guide\" button",
+      "default": true
+    }
+  ],
+  "presets": [
+    { "name": "Variant picker", "category": "Product" }
+  ]
+}
+{% endschema %}

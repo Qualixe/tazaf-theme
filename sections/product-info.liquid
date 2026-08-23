@@ -1,0 +1,316 @@
+{{ 'product-section.css' | asset_url | stylesheet_tag: preload: true }}
+
+<section class="product-section">
+  <div class="container">
+    <div class="product-page-content-wrap">
+      <div class="product-slider-area">
+        <div class="product-slider-inner">
+          <div class="swiper product-slider">
+            <div class="swiper-wrapper">
+              {% for media in closest.product.media %}
+                {% if media.media_type == 'image' %}
+                  {% liquid
+                    assign media_alt = media.alt | default: closest.product.title | escape
+                    assign media_loading = 'lazy'
+                    if forloop.first
+                      assign media_loading = 'eager'
+                    endif
+                  %}
+                  <div class="swiper-slide" data-media-id="{{ media.id }}">
+                    <div class="product-slider-img">
+                      {{ media | image_url: width: 800 | image_tag: alt: media_alt, loading: media_loading }}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="swiper-pagination product-slider-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+          <div class="swiper product-slider-thumb">
+            <div class="swiper-wrapper">
+              {% for media in closest.product.media %}
+                {% if media.media_type == 'image' %}
+                  {% assign media_alt = media.alt | default: closest.product.title | escape %}
+                  <div class="swiper-slide">
+                    <div class="product-slider-img">
+                      {{ media | image_url: width: 200 | image_tag: alt: media_alt, loading: 'lazy' }}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-content-area">
+        <div class="product-content-inner">
+          {% content_for 'blocks' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% render 'product-modal' %}
+{% render 'size-chart-sidebar' %}
+
+<script type="application/json" data-product-variants>
+  {{ closest.product.variants | json }}
+</script>
+
+<script>
+  (function () {
+    var root = document.querySelector('.product-content-area');
+    var variantsEl = document.querySelector('[data-product-variants]');
+    if (!root || !variantsEl) return;
+
+    var variants = JSON.parse(variantsEl.textContent);
+    var optionInputs = root.querySelectorAll('.product-varient-input');
+    var priceEl = root.querySelector('[data-price]');
+    var comparePriceEl = root.querySelector('[data-compare-price]');
+    var priceSaveEl = root.querySelector('[data-price-save]');
+    var selectedLabels = root.querySelectorAll('[data-selected-value]');
+    var addToCartBtn = root.querySelector('.product-btn-wrap [data-variant-id]');
+    var buyNowForm = root.querySelector('.product-buy-now-form');
+    var buyNowIdInput = buyNowForm ? buyNowForm.querySelector('[data-buy-now-id]') : null;
+    var buyNowQtyInput = buyNowForm ? buyNowForm.querySelector('[data-buy-now-quantity]') : null;
+    var buyNowBtn = buyNowForm ? buyNowForm.querySelector('button') : null;
+    var quantityInput = root.querySelector('.quantity-count');
+
+    function formatMoney(cents) {
+      var format = window.themeMoneyFormat || '${{amount}}';
+      var value = Math.max(cents, 0) / 100;
+      var parts = value.toFixed(2).split('.');
+      var withComma = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return format
+        .replace(/\{\{\s*amount_no_decimals_with_comma_separator\s*\}\}/, withComma)
+        .replace(/\{\{\s*amount_with_comma_separator\s*\}\}/, withComma + '.' + parts[1])
+        .replace(/\{\{\s*amount_no_decimals\s*\}\}/, withComma)
+        .replace(/\{\{\s*amount\s*\}\}/, withComma + '.' + parts[1]);
+    }
+
+    function getSelections() {
+      var selections = [];
+      optionInputs.forEach(function (input) {
+        if (input.checked) selections[Number(input.dataset.optionIndex)] = input.value;
+      });
+      return selections;
+    }
+
+    function findMatchingVariant(selections) {
+      return variants.find(function (variant) {
+        return selections.every(function (value, index) {
+          return value === undefined || variant.options[index] === value;
+        });
+      });
+    }
+
+    function updateAvailability(selections) {
+      optionInputs.forEach(function (input) {
+        var index = Number(input.dataset.optionIndex);
+        var testSelections = selections.slice();
+        testSelections[index] = input.value;
+
+        var available = variants.some(function (variant) {
+          return (
+            variant.available &&
+            testSelections.every(function (value, i) {
+              return value === undefined || variant.options[i] === value;
+            })
+          );
+        });
+
+        input.disabled = !available;
+        var field = input.closest('.product-varient-input-field');
+        if (field) field.classList.toggle('disabled', !available);
+      });
+    }
+
+    function updateUI(variant) {
+      var available = !!(variant && variant.available);
+
+      if (addToCartBtn) {
+        addToCartBtn.dataset.variantId = variant ? variant.id : '';
+        addToCartBtn.disabled = !available;
+        addToCartBtn.lastChild.textContent = available ? 'Add to Cart' : 'Sold out';
+      }
+
+      if (buyNowIdInput) buyNowIdInput.value = variant ? variant.id : '';
+      if (buyNowBtn) buyNowBtn.disabled = !available;
+
+      if (!variant) return;
+
+      if (priceEl) priceEl.textContent = formatMoney(variant.price);
+
+      var onSale = variant.compare_at_price && variant.compare_at_price > variant.price;
+      if (comparePriceEl) {
+        comparePriceEl.hidden = !onSale;
+        if (onSale) comparePriceEl.textContent = formatMoney(variant.compare_at_price);
+      }
+      if (priceSaveEl) {
+        priceSaveEl.hidden = !onSale;
+        if (onSale) {
+          var pct = Math.round(((variant.compare_at_price - variant.price) / variant.compare_at_price) * 100);
+          priceSaveEl.textContent = pct + '% OFF';
+        }
+      }
+
+      selectedLabels.forEach(function (label, i) {
+        if (variant.options[i] !== undefined) label.textContent = variant.options[i];
+      });
+
+      if (variant.featured_image && window.productSwiper) {
+        var slide = document.querySelector('.product-slider [data-media-id="' + variant.featured_image.id + '"]');
+        if (slide) {
+          var index = Array.prototype.indexOf.call(slide.parentElement.children, slide);
+          window.productSwiper.slideToLoop(index);
+        }
+      }
+    }
+
+    root.addEventListener('change', function (e) {
+      if (!e.target.classList.contains('product-varient-input')) return;
+
+      var selections = getSelections();
+      updateAvailability(selections);
+      updateUI(findMatchingVariant(selections));
+    });
+
+    if (quantityInput) {
+      root.querySelector('.quantity-increase')?.addEventListener('click', function () {
+        quantityInput.value = (parseInt(quantityInput.value, 10) || 1) + 1;
+        if (buyNowQtyInput) buyNowQtyInput.value = quantityInput.value;
+      });
+      root.querySelector('.quantity-decrease')?.addEventListener('click', function () {
+        quantityInput.value = Math.max(1, (parseInt(quantityInput.value, 10) || 1) - 1);
+        if (buyNowQtyInput) buyNowQtyInput.value = quantityInput.value;
+      });
+      quantityInput.addEventListener('change', function () {
+        quantityInput.value = Math.max(1, parseInt(quantityInput.value, 10) || 1);
+        if (buyNowQtyInput) buyNowQtyInput.value = quantityInput.value;
+      });
+    }
+
+    updateAvailability(getSelections());
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product information",
+  "settings": [],
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "blocks": [
+    { "type": "product-info-rating" },
+    { "type": "product-info-title" },
+    { "type": "product-info-price" },
+    { "type": "product-info-variant-picker" },
+    { "type": "product-info-combo-offer" },
+    { "type": "product-info-quantity" },
+    { "type": "product-info-buy-buttons" },
+    { "type": "product-info-brand-logo" },
+    { "type": "product-info-badges" },
+    { "type": "product-info-accordion" }
+  ],
+  "presets": [
+    {
+      "name": "Product information",
+      "blocks": {
+        "rating": { "type": "product-info-rating" },
+        "title": { "type": "product-info-title" },
+        "price": { "type": "product-info-price" },
+        "variant_picker": {
+          "type": "product-info-variant-picker",
+          "settings": { "show_size_guide": true }
+        },
+        "combo_offer": {
+          "type": "product-info-combo-offer",
+          "blocks": {
+            "option-1": {
+              "type": "product-info-combo-option",
+              "settings": { "title": "Buy 1 product", "price": "tk1390.00", "checked": true }
+            },
+            "option-2": {
+              "type": "product-info-combo-option",
+              "settings": {
+                "title": "Buy 2 product",
+                "price": "tk2290.00",
+                "unit_price": "tk1145/pair",
+                "savings_text": "save 15%",
+                "badge_text": "Best Seller"
+              }
+            },
+            "option-3": {
+              "type": "product-info-combo-option",
+              "settings": {
+                "title": "Buy 3 product",
+                "price": "tk3030.00",
+                "unit_price": "tk1010/pair",
+                "savings_text": "save 25%",
+                "badge_text": "Best value"
+              }
+            }
+          },
+          "block_order": ["option-1", "option-2", "option-3"]
+        },
+        "quantity": { "type": "product-info-quantity" },
+        "buy_buttons": {
+          "type": "product-info-buy-buttons",
+          "blocks": {
+            "add_to_cart": { "type": "product-info-add-to-cart-button" },
+            "buy_now": { "type": "product-info-buy-now-button" },
+            "whatsapp": { "type": "product-info-whatsapp-button" },
+            "call": { "type": "product-info-call-button" }
+          },
+          "block_order": ["add_to_cart", "buy_now", "whatsapp", "call"]
+        },
+        "brand_logo": { "type": "product-info-brand-logo" },
+        "badges": {
+          "type": "product-info-badges",
+          "blocks": {
+            "badge-1": {
+              "type": "product-info-badge",
+              "settings": { "icon": "shipping", "title": "Free expedited shipping" }
+            },
+            "badge-2": {
+              "type": "product-info-badge",
+              "settings": { "icon": "returns", "title": "Easy Returns Within 30 Days" }
+            },
+            "badge-3": {
+              "type": "product-info-badge",
+              "settings": { "icon": "secure", "title": "Safe & Secure Payments" }
+            }
+          },
+          "block_order": ["badge-1", "badge-2", "badge-3"]
+        },
+        "accordion": {
+          "type": "product-info-accordion",
+          "blocks": {
+            "description": { "type": "product-info-description-tab" },
+            "specification": { "type": "product-info-specification-tab" },
+            "return_policy": { "type": "product-info-return-policy-tab" }
+          },
+          "block_order": ["description", "specification", "return_policy"]
+        }
+      },
+      "block_order": [
+        "rating",
+        "title",
+        "price",
+        "variant_picker",
+        "combo_offer",
+        "quantity",
+        "buy_buttons",
+        "brand_logo",
+        "badges",
+        "accordion"
+      ]
+    }
+  ]
+}
+{% endschema %}

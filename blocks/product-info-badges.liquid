@@ -1,0 +1,35 @@
+<div class="product-icon-items" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Trust badges",
+  "tag": null,
+  "blocks": [
+    { "type": "product-info-badge" }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Trust badges",
+      "category": "Product",
+      "blocks": {
+        "badge-1": {
+          "type": "product-info-badge",
+          "settings": { "icon": "shipping", "title": "Free expedited shipping" }
+        },
+        "badge-2": {
+          "type": "product-info-badge",
+          "settings": { "icon": "returns", "title": "Easy Returns Within 30 Days" }
+        },
+        "badge-3": {
+          "type": "product-info-badge",
+          "settings": { "icon": "secure", "title": "Safe & Secure Payments" }
+        }
+      },
+      "block_order": ["badge-1", "badge-2", "badge-3"]
+    }
+  ]
+}
+{% endschema %}

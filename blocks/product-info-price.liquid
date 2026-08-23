@@ -1,0 +1,46 @@
+{% liquid
+  assign product = closest.product
+  assign current_variant = product.selected_or_first_available_variant
+%}
+<div class="product-desktop-content" {{ block.shopify_attributes }}>
+  <div class="product-price-wrap">
+    <p class="latest-price" data-price>{{ current_variant.price | money }}</p>
+    <p
+      class="previous-price"
+      data-compare-price
+      {% unless current_variant.compare_at_price > current_variant.price %}
+        hidden
+      {% endunless %}
+    >
+      {{ current_variant.compare_at_price | money }}
+    </p>
+    <p
+      class="product-price-save"
+      data-price-save
+      {% unless current_variant.compare_at_price > current_variant.price %}
+        hidden
+      {% endunless %}
+    >
+      {% if current_variant.compare_at_price > current_variant.price %}
+        {{
+          current_variant.compare_at_price
+          | minus: current_variant.price
+          | times: 100.0
+          | divided_by: current_variant.compare_at_price
+          | round
+        }}% OFF
+      {% endif %}
+    </p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Price",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    { "name": "Price", "category": "Product" }
+  ]
+}
+{% endschema %}

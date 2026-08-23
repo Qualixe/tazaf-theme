@@ -1,0 +1,30 @@
+<div class="product-btn-wrap" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Buy buttons",
+  "tag": null,
+  "blocks": [
+    { "type": "product-info-add-to-cart-button" },
+    { "type": "product-info-buy-now-button" },
+    { "type": "product-info-whatsapp-button" },
+    { "type": "product-info-call-button" }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Buy buttons",
+      "category": "Product",
+      "blocks": {
+        "add_to_cart": { "type": "product-info-add-to-cart-button" },
+        "buy_now": { "type": "product-info-buy-now-button" },
+        "whatsapp": { "type": "product-info-whatsapp-button" },
+        "call": { "type": "product-info-call-button" }
+      },
+      "block_order": ["add_to_cart", "buy_now", "whatsapp", "call"]
+    }
+  ]
+}
+{% endschema %}

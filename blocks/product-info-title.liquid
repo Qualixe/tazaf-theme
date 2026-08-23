@@ -1,0 +1,15 @@
+{% liquid assign product = closest.product %}
+<div class="product-desktop-content" {{ block.shopify_attributes }}>
+  <h1 class="product-title">{{ product.title }}</h1>
+</div>
+
+{% schema %}
+{
+  "name": "Title",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    { "name": "Title", "category": "Product" }
+  ]
+}
+{% endschema %}

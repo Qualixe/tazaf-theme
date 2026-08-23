@@ -1,0 +1,31 @@
+<div class="product-description-accordion" {{ block.shopify_attributes }}>
+  <div class="product-accordion-items">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Accordion",
+  "tag": null,
+  "blocks": [
+    { "type": "product-info-description-tab" },
+    { "type": "product-info-specification-tab" },
+    { "type": "product-info-return-policy-tab" },
+    { "type": "product-info-custom-tab" }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Accordion",
+      "category": "Product",
+      "blocks": {
+        "description": { "type": "product-info-description-tab" },
+        "specification": { "type": "product-info-specification-tab" },
+        "return_policy": { "type": "product-info-return-policy-tab" }
+      },
+      "block_order": ["description", "specification", "return_policy"]
+    }
+  ]
+}
+{% endschema %}

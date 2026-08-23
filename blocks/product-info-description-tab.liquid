@@ -1,0 +1,41 @@
+{% liquid assign product = closest.product %}
+{% if product.description != blank %}
+  <div class="product-accordion-item" {{ block.shopify_attributes }}>
+    <div class="item-title-wrapper product-accordion-toggle-btn">
+      <h6 class="item-title">{{ block.settings.label | default: 'Description' }}</h6>
+      <span class="icon">
+        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </span>
+    </div>
+    <div class="product-accordion-item-content">
+      <div class="product-accordion-item-content-inner">
+        <div class="content">{{ product.description }}</div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Accordion: Description",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Tab label",
+      "default": "Description"
+    }
+  ],
+  "presets": [
+    { "name": "Accordion: Description", "category": "Product" }
+  ]
+}
+{% endschema %}

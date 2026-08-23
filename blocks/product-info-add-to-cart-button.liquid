@@ -1,0 +1,35 @@
+{% liquid
+  assign product = closest.product
+  assign current_variant = product.selected_or_first_available_variant
+%}
+<button
+  type="button"
+  class="btn"
+  data-variant-id="{{ current_variant.id }}"
+  {% unless current_variant.available %}
+    disabled
+  {% endunless %}
+  {{ block.shopify_attributes }}
+>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="9" cy="20" r="1"></circle>
+    <circle cx="18" cy="20" r="1"></circle>
+    <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"></path>
+  </svg>
+  {% if current_variant.available %}
+    Add to Cart
+  {% else %}
+    Sold out
+  {% endif %}
+</button>
+
+{% schema %}
+{
+  "name": "Add to cart button",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    { "name": "Add to cart button", "category": "Product" }
+  ]
+}
+{% endschema %}

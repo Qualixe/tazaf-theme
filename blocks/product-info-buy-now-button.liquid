@@ -1,0 +1,27 @@
+{% liquid
+  assign product = closest.product
+  assign current_variant = product.selected_or_first_available_variant
+%}
+<form action="{{ routes.cart_add_url }}" method="post" class="product-buy-now-form" {{ block.shopify_attributes }}>
+  <input type="hidden" name="id" value="{{ current_variant.id }}" data-buy-now-id>
+  <input type="hidden" name="quantity" value="1" data-buy-now-quantity>
+  <input type="hidden" name="return_to" value="/checkout">
+  <button type="submit" class="btn" {% unless current_variant.available %}disabled{% endunless %}>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6 8h12l1 12H5L6 8Z"></path>
+      <path d="M9 8a3 3 0 0 1 6 0"></path>
+    </svg>
+    buy now
+  </button>
+</form>
+
+{% schema %}
+{
+  "name": "Buy now button",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    { "name": "Buy now button", "category": "Product" }
+  ]
+}
+{% endschema %}
