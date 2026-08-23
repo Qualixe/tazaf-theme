@@ -169,12 +169,60 @@
       "settings": {
         "reverse_layout": true
       }
+    },
+    "img_text_grid_7nxRAp": {
+      "type": "img-text-grid",
+      "blocks": {
+        "img_text_grid_heading_wVyraP": {
+          "type": "img-text-grid-heading",
+          "settings": {
+            "heading": "Most popular brand"
+          },
+          "blocks": {}
+        },
+        "img_text_grid_item_QdBGqw": {
+          "type": "img-text-grid-item",
+          "settings": {
+            "image": "shopify://shop_images/img-text-grid-img1.jpg",
+            "title": "Lorem ipsum dolor",
+            "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod qui corrupti adipisci animi, facere earum eligendi neque repudiandae pariatur reprehenderit vero esse culpa aut odio nihil fugiat nam dignissimos vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quo libero, dignissimos exercitationem mollitia ex dolor earum dicta architecto sapiente, et, eius iste provident delectus facilis aliquid quam possimus dolores modi saepe! Sit perspiciatis error odit exercitationem eum voluptates optio sint, nesciunt dolore! Quibusdam minima labore cupiditate atque facilis adipisci.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod qui corrupti adipisci animi, facere earum eligendi neque repudiandae pariatur reprehenderit vero esse culpa aut odio nihil fugiat nam dignissimos vitae.</p>",
+            "reverse": false
+          },
+          "blocks": {}
+        },
+        "img_text_grid_item_eNXq9f": {
+          "type": "img-text-grid-item",
+          "settings": {
+            "image": "shopify://shop_images/img-text-grid-img1.jpg",
+            "title": "Lorem ipsum dolor",
+            "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod qui corrupti adipisci animi, facere earum eligendi neque repudiandae pariatur reprehenderit vero esse culpa aut odio nihil fugiat nam dignissimos vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quo libero, dignissimos exercitationem mollitia ex dolor earum dicta architecto sapiente, et, eius iste provident delectus facilis aliquid quam possimus dolores modi saepe! Sit perspiciatis error odit exercitationem eum voluptates optio sint, nesciunt dolore! Quibusdam minima labore cupiditate atque facilis adipisci.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod qui corrupti adipisci animi, facere earum eligendi neque repudiandae pariatur reprehenderit vero esse culpa aut odio nihil fugiat nam dignissimos vitae.</p>",
+            "reverse": true
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "img-text-grid-heading",
+          "static": true,
+          "settings": {
+            "heading": "Most popular brand"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "img_text_grid_heading_wVyraP",
+        "img_text_grid_item_QdBGqw",
+        "img_text_grid_item_eNXq9f"
+      ],
+      "name": "Image + text grid",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "image_text_section_6XFGmk",
     "image_gallery_6DiDcX",
-    "image_text_section_ntcxrn"
+    "image_text_section_ntcxrn",
+    "img_text_grid_7nxRAp"
   ]
 }
