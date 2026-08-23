@@ -356,7 +356,20 @@ document
   function addToCart(variantId, btn, quantity) {
     if (!variantId || (btn && btn.disabled)) return;
 
-    if (btn) btn.disabled = true;
+    // Product card buttons wrap their text in `.btn-label` and carry a
+    // `.btn-spinner` so we can show an "Adding..." state; other buttons that
+    // reuse this same handler (buy buttons, quick order rows, etc.) don't
+    // have that markup, so `label` stays null and they just get disabled.
+    const label = btn ? btn.querySelector(".btn-label") : null;
+    const originalLabel = label ? label.textContent : null;
+
+    if (btn) {
+      btn.disabled = true;
+      if (label) {
+        btn.classList.add("is-adding");
+        label.textContent = window.Theme?.translations?.adding || "Adding...";
+      }
+    }
 
     fetch("/cart/add.js", {
       method: "POST",
@@ -373,7 +386,13 @@ document
         openDrawer();
       })
       .finally(() => {
-        if (btn) btn.disabled = false;
+        if (btn) {
+          btn.disabled = false;
+          if (label && originalLabel !== null) {
+            btn.classList.remove("is-adding");
+            label.textContent = originalLabel;
+          }
+        }
       });
   }
 

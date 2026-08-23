@@ -73,17 +73,20 @@
     <div class="card-btn">
       <button
         type="button"
-        class="btn"
+        class="btn add-to-cart-btn"
         data-variant-id="{{ current_variant.id }}"
         {% unless current_variant.available %}
           disabled
         {% endunless %}
       >
-        {% if current_variant.available %}
-          {{ add_to_cart_label }}
-        {% else %}
-          {{ sold_out_label }}
-        {% endif %}
+        <span class="btn-label">
+          {% if current_variant.available %}
+            {{ add_to_cart_label }}
+          {% else %}
+            {{ sold_out_label }}
+          {% endif %}
+        </span>
+        <span class="btn-spinner" aria-hidden="true"></span>
       </button>
     </div>
   </div>
