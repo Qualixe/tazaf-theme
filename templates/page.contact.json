@@ -128,18 +128,6 @@
     "contact_section_wAe6DK": {
       "type": "contact-section",
       "blocks": {
-        "contact_heading_kBf6nn": {
-          "type": "contact-heading",
-          "settings": {
-            "heading": "Get in touch"
-          },
-          "blocks": {}
-        },
-        "contact_form_new_tVMQaz": {
-          "type": "contact-form-new",
-          "settings": {},
-          "blocks": {}
-        },
         "heading": {
           "type": "contact-heading",
           "static": true,
@@ -155,10 +143,6 @@
           "blocks": {}
         }
       },
-      "block_order": [
-        "contact_heading_kBf6nn",
-        "contact_form_new_tVMQaz"
-      ],
       "name": "Contact form",
       "settings": {}
     }
