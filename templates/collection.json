@@ -13,7 +13,9 @@
       "type": "collection-section",
       "blocks": {
         "heading": {
-          "type": "collection-heading"
+          "type": "collection-heading",
+          "settings": {},
+          "blocks": {}
         },
         "category_slider": {
           "type": "collection-category-slider",
@@ -22,28 +24,35 @@
               "frontpage",
               "slippers"
             ]
-          }
+          },
+          "blocks": {}
         },
         "filters": {
           "type": "_collection-filters",
-          "static": true
+          "static": true,
+          "settings": {},
+          "blocks": {}
         },
         "toolbar": {
           "type": "_collection-toolbar",
-          "static": true
+          "static": true,
+          "settings": {},
+          "blocks": {}
         },
         "product-grid": {
           "type": "_collection-product-grid",
           "static": true,
           "settings": {
             "products_per_page": 24
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading",
         "category_slider"
-      ]
+      ],
+      "settings": {}
     }
   },
   "order": [
