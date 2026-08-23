@@ -2,6 +2,7 @@
   <div class="container">
     {% content_for 'block', type: 'contact-heading', id: 'heading' %}
     {% content_for 'block', type: 'contact-form-new', id: 'form' %}
+    {% content_for 'blocks' %}
   </div>
 </section>
 
@@ -23,7 +24,9 @@
   "name": "Contact form",
   "blocks": [
     { "type": "contact-heading" },
-    { "type": "contact-form-new" }
+    { "type": "contact-form-new" },
+    { "type": "@theme" },
+    { "type": "@app" }
   ],
   "settings": [],
   "presets": [

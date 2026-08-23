@@ -5,6 +5,7 @@
       <div class="img-text-section-content">
         {% content_for 'block', type: 'image-text-title', id: 'title' %}
         {% content_for 'block', type: 'image-text-text', id: 'text' %}
+        {% content_for 'blocks' %}
       </div>
     </div>
   </div>
@@ -16,7 +17,9 @@
   "blocks": [
     { "type": "image-text-image" },
     { "type": "image-text-title" },
-    { "type": "image-text-text" }
+    { "type": "image-text-text" },
+    { "type": "@theme" },
+    { "type": "@app" }
   ],
   "settings": [
     {
