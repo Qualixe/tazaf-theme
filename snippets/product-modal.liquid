@@ -1,0 +1,25 @@
+<div class="product-slider-modal">
+  <button class="product-slider-modal-close" type="button" aria-label="product modal close" title="product modal close">
+    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 15L15 3" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M15 15L3 3" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+  <div class="product-slider-modal-content">
+    <div class="product-slider-modal-items">
+      {% for media in product.media %}
+        {% if media.media_type == 'image' %}
+          <div class="product-slider-modal-item">
+            <img
+              src="{{ media | image_url: width: 1200 }}"
+              alt="{{ media.alt | default: product.title | escape }}"
+              width="{{ media.width }}"
+              height="{{ media.height }}"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

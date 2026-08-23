@@ -1,0 +1,74 @@
+{% liquid
+  assign category_blocks = section.blocks | where: 'type', 'category'
+%}
+
+<section class="image-category-section">
+  <div class="container">
+    <div class="swiper image-category-slider">
+      <div class="swiper-wrapper">
+        {% for block in category_blocks %}
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link | default: '#' }}" class="image-category-slider-item">
+              <div class="img">
+                {% if block.settings.image != blank %}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 400 }}"
+                    alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="content">
+                <h2 class="title h5">{{ block.settings.title }}</h2>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image category slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image category slider",
+      "blocks": [
+        { "type": "category", "settings": { "title": "Joints Bones Muscles" } },
+        { "type": "category", "settings": { "title": "Skincare" } },
+        { "type": "category", "settings": { "title": "Weight Management" } },
+        { "type": "category", "settings": { "title": "Exercise & performance" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

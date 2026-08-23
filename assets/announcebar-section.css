@@ -1,0 +1,43 @@
+/* announcebar-section css start */
+.announcebar-section {
+    background: var(--brand-color);
+    padding: 10px 0;
+}
+
+.announcebar-text {
+    text-align: center;
+}
+
+.announcebar-text p {
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--white);
+}
+
+.announcebar-text p a{
+   color: var(--white);
+}
+
+.announcebar-text p a:hover{
+   text-decoration: underline;
+}
+
+/* announcebar-section css end */
+
+@media only screen and (max-width: 575px) {
+
+    /* announcebar-section css start */
+    .announcebar-section {
+        padding: 7px 0;
+    }
+
+    .announcebar-text p {
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0.5px;
+    }
+
+    /* announcebar-section css end */
+}

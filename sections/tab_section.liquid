@@ -1,0 +1,147 @@
+{% liquid
+  assign tab_blocks = section.blocks | where: 'type', 'tab'
+%}
+
+<section class="tab-section">
+  <div class="container">
+    <div class="tab-section-nav">
+      {% for block in tab_blocks %}
+        {% assign tab_handle = block.settings.title | handleize %}
+        <button
+          class="tab-section-nav-item{% if forloop.first %} active{% endif %}"
+          type="button"
+          data-tab="{{ tab_handle }}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="tab-section-nav-item-icon">
+            {% if block.settings.icon != blank %}
+              <img
+                src="{{ block.settings.icon | image_url: width: 100 }}"
+                alt="{{ block.settings.icon.alt | default: block.settings.title | escape }}"
+                width="{{ block.settings.icon.width }}"
+                height="{{ block.settings.icon.height }}"
+                loading="lazy"
+              >
+            {% endif %}
+          </span>
+          <span class="tab-section-nav-item-title">{{ block.settings.title }}</span>
+        </button>
+      {% endfor %}
+    </div>
+
+    <div class="tab-section-panels">
+      {% for block in tab_blocks %}
+        {% assign tab_handle = block.settings.title | handleize %}
+        <div class="tab-section-panel{% if forloop.first %} active{% endif %}" id="{{ tab_handle }}">
+          <div class="tab-section-panel-items">
+            {% for product in block.settings.collection.products limit: block.settings.max_products %}
+              <div class="tab-card">
+                <div class="tab-card-img-wrap">
+                  <a href="{{ product.url }}" class="tab-card-img">
+                    {% if product.featured_image != blank %}
+                      <img
+                        src="{{ product.featured_image | image_url: width: 400 }}"
+                        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                        width="{{ product.featured_image.width }}"
+                        height="{{ product.featured_image.height }}"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  </a>
+                  <button
+                    type="button"
+                    class="tab-card-add-btn"
+                    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                    {% unless product.selected_or_first_available_variant.available %}
+                      disabled
+                    {% endunless %}
+                  >
+                    {% if product.selected_or_first_available_variant.available %}
+                      + Add
+                    {% else %}
+                      Sold out
+                    {% endif %}
+                  </button>
+                </div>
+                <div class="tab-card-price-wrap">
+                  {% if product.price_varies %}
+                    <p class="tab-card-price"><span class="from">From</span>{{ product.price_min | money }}</p>
+                  {% else %}
+                    <p class="tab-card-price">{{ product.price | money }}</p>
+                  {% endif %}
+                  {% if product.compare_at_price > product.price %}
+                    <p class="tab-card-previous-price">{{ product.compare_at_price | money }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          {% if block.settings.collection != blank %}
+            <div class="tab-section-panel-btn">
+              <a href="{{ block.settings.view_all_link | default: block.settings.collection.url }}" class="btn">
+                View All {{ block.settings.title }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tabbed collections",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Tab"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "range",
+          "id": "max_products",
+          "label": "Maximum products",
+          "min": 2,
+          "max": 12,
+          "step": 1,
+          "default": 6
+        },
+        {
+          "type": "url",
+          "id": "view_all_link",
+          "label": "\"View all\" link",
+          "info": "Defaults to the collection page if left blank."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabbed collections",
+      "blocks": [
+        { "type": "tab", "settings": { "title": "Bath Mats" } },
+        { "type": "tab", "settings": { "title": "Mugs and Cups" } },
+        { "type": "tab", "settings": { "title": "Artificial Flowers" } },
+        { "type": "tab", "settings": { "title": "Table Lamps" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,99 @@
+/* shop-by-brand-section css start */
+.shop-by-brand-section {
+    padding: 24px 0;
+}
+
+.shop-by-brand-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.shop-by-brand-heading .title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.shop-by-brand-all-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+    text-wrap-mode: nowrap;
+}
+
+.shop-by-brand-all-link:hover {
+    color: var(--brand-color);
+}
+
+.swiper.shop-by-brand-slider {
+    border: 1px solid var(--border-color2);
+    border-radius: 10px;
+}
+
+.shop-by-brand-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 110px;
+    padding: 20px;
+    background-color: var(--white);
+    border-right: 1px solid var(--border-color2);
+    transition: all ease .3s;
+}
+
+.shop-by-brand-item:hover{
+    background: var(--item-bg);
+}
+
+.shop-by-brand-item img {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.shop-by-brand-item .wordmark {
+    font-family: var(--heading-font);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.swiper.shop-by-brand-slider .swiper-button-prev,
+.swiper.shop-by-brand-slider .swiper-button-next {
+    width: 40px;
+    height: 40px;
+}
+
+.swiper.shop-by-brand-slider .swiper-button-prev::after,
+.swiper.shop-by-brand-slider .swiper-button-next::after {
+    font-size: 14px;
+}
+
+/* shop-by-brand-section css end */
+
+@media only screen and (max-width: 767px) {
+
+    /* shop-by-brand-section css start */
+    .shop-by-brand-heading .title {
+        font-size: 18px;
+    }
+
+    .shop-by-brand-item {
+        height: 80px;
+        padding: 14px;
+    }
+
+    .shop-by-brand-item .wordmark {
+        font-size: 16px;
+    }
+
+    /* shop-by-brand-section css end */
+}

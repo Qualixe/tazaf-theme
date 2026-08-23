@@ -1,0 +1,244 @@
+{% liquid
+  assign review_blocks = section.blocks | where: 'type', 'review'
+%}
+
+<section class="community-review-section">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="community-review-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="community-review-items">
+      {% for block in review_blocks %}
+        <button class="community-review-item" type="button" data-review-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          {% if block.settings.video != blank %}
+            {{
+              block.settings.video
+              | video_tag:
+                class: 'community-review-item-video',
+                autoplay: true,
+                loop: true,
+                muted: true,
+                playsinline: true,
+                controls: false,
+                image_size: '400x'
+            }}
+          {% endif %}
+          <div class="community-review-item-content">
+            <p class="community-review-item-text">
+              {{- block.settings.text_before -}}
+              {% if block.settings.highlight != blank %}
+                <span class="highlight">{{ block.settings.highlight }}</span>
+              {% endif %}
+              {{- block.settings.text_after -}}
+            </p>
+          </div>
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if review_blocks.size > 0 %}
+    <div class="community-review-popup">
+      <button class="community-review-popup-close-window-btn" aria-label="Close"></button>
+      <div class="community-review-popup-inner">
+        <div class="community-review-popup-card">
+          <div class="community-review-popup-video-wrap">
+            <div class="community-review-popup-progress">
+              {% for block in review_blocks %}
+                <div class="community-review-popup-progress-bar"><i></i></div>
+              {% endfor %}
+            </div>
+
+            <div class="community-review-popup-top-btns">
+              <button class="community-review-popup-mute-btn" type="button" aria-label="Toggle sound">
+                <span class="waves">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M4 8v4h3l4 4V4L7 8H4Z" fill="currentColor"></path>
+                    <path
+                      d="M14 7a4 4 0 0 1 0 6M16.5 4.5a8 8 0 0 1 0 11"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                    ></path>
+                  </svg>
+                </span>
+              </button>
+              <button class="community-review-popup-share-btn" type="button" aria-label="Share">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path
+                    d="M10 12.5V3M10 3 6.5 6.5M10 3l3.5 3.5"
+                    stroke="currentColor"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M4 10v5.5A1.5 1.5 0 0 0 5.5 17h9a1.5 1.5 0 0 0 1.5-1.5V10"
+                    stroke="currentColor"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </button>
+              <button class="community-review-popup-close-btn" type="button" aria-label="Close">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M4 4l12 12M16 4 4 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+                </svg>
+              </button>
+            </div>
+
+            <button class="community-review-popup-nav-btn prev" type="button" aria-label="Previous">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M12.5 15 7.5 10l5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <button class="community-review-popup-nav-btn next" type="button" aria-label="Next">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+
+            <div class="community-review-popup-slides">
+              {% for block in review_blocks %}
+                <div
+                  class="community-review-popup-slide{% if forloop.first %} active{% endif %}"
+                  data-product-img="{% if block.settings.product.featured_image != blank %}{{ block.settings.product.featured_image | image_url: width: 200 }}{% endif %}"
+                  data-product-title="{{ block.settings.product.title | escape }}"
+                  data-product-price="{{ block.settings.product.price | money }}"
+                  data-product-previous-price="{% if block.settings.product.compare_at_price > block.settings.product.price %}{{ block.settings.product.compare_at_price | money }}{% endif %}"
+                >
+                  {% if block.settings.video != blank %}
+                    {{
+                      block.settings.video
+                      | video_tag:
+                        class: 'community-review-popup-video',
+                        loop: true,
+                        muted: true,
+                        playsinline: true,
+                        controls: false,
+                        image_size: '600x'
+                    }}
+                  {% endif %}
+                  <div class="community-review-popup-caption">
+                    <p>
+                      {{- block.settings.text_before -}}
+                      {% if block.settings.highlight != blank %}
+                        <span class="highlight">{{ block.settings.highlight }}</span>
+                      {% endif %}
+                      {{- block.settings.text_after -}}
+                    </p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="community-review-popup-product">
+            <div class="community-review-popup-product-img">
+              <img src="" alt="">
+            </div>
+            <div class="community-review-popup-product-info">
+              <p class="community-review-popup-product-title"></p>
+              <div class="community-review-popup-product-price">
+                <span class="prev"></span>
+                <span class="curr"></span>
+              </div>
+            </div>
+          </div>
+          <div class="community-review-popup-btn-wrap">
+            <a href="{{ section.settings.view_all_link | default: routes.all_products_collection_url }}" class="btn">
+              {{ section.settings.view_all_label | default: 'Shop now' }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Community reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Community Reviews"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "Popup button label",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "Popup button link",
+      "info": "Defaults to all products if left blank."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "text",
+          "id": "text_before",
+          "label": "Text (before highlight)",
+          "default": "why"
+        },
+        {
+          "type": "text",
+          "id": "highlight",
+          "label": "Highlighted text",
+          "default": "1000+"
+        },
+        {
+          "type": "text",
+          "id": "text_after",
+          "label": "Text (after highlight)",
+          "default": "customers trust us"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Featured product",
+          "info": "Shown in the video popup with live price and image."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": { "text_before": "why", "highlight": "1000+", "text_after": "customers trust us" }
+        },
+        {
+          "type": "review",
+          "settings": { "text_before": "Comfort you can", "highlight": "feel", "text_after": "instantly" }
+        },
+        {
+          "type": "review",
+          "settings": { "text_before": "Real people. Real", "highlight": "reviews", "text_after": "" }
+        },
+        {
+          "type": "review",
+          "settings": { "text_before": "Premium product", "highlight": "reviews", "text_after": "" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

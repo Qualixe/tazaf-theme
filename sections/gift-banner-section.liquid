@@ -1,0 +1,71 @@
+<section class="gifting-banner-section">
+  <div class="container">
+    <a href="{{ section.settings.link | default: '#' }}" class="gifting-banner-card">
+      <div class="gifting-banner-content">
+        {% if section.settings.badge_prefix != blank or section.settings.brand_name != blank %}
+          <div class="gifting-banner-badge">
+            <h2 class="gifting-banner-badge-title">
+              {{ section.settings.badge_prefix }} <span>{{ section.settings.brand_name }}</span>
+            </h2>
+          </div>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <p class="gifting-banner-text">{{ section.settings.text }}</p>
+        {% endif %}
+      </div>
+      <div class="gifting-banner-img">
+        {% if section.settings.image != blank %}
+          <img
+            src="{{ section.settings.image | image_url: width: 840 }}"
+            alt="{{ section.settings.image.alt | default: section.settings.brand_name | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gifting banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_prefix",
+      "label": "Badge prefix text",
+      "default": "Gifting by"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Badge highlighted text",
+      "default": "tazaf",
+      "info": "Shown in the brand color inside the badge."
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Curated for every occasion."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gifting banner"
+    }
+  ]
+}
+{% endschema %}

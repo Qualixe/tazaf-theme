@@ -1,0 +1,178 @@
+/* card-slider-section css start */
+.card-slider-section {
+    padding: 24px 0;
+}
+
+.explore-slider-section {
+    padding: 24px 0;
+}
+
+.card-slider-section.section-bg {
+    padding: 42px 0;
+    background: var(--item-bg);
+}
+
+.card-slider-section-heading {
+    margin-bottom: 20px;
+}
+
+.card-slider-section-heading-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 42px;
+}
+
+.card-slider-section-heading-wrap .img {
+    width: clamp(191px, 16vw, 192px);
+    height: 36px;
+    min-height: 36px;
+}
+
+.card-slider-section-heading .title {
+    font-family: var(--heading-font);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--brand-color);
+}
+
+/* count-down css start */
+.countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1;
+}
+
+.countdown-time {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown-days,
+.countdown-hours,
+.countdown-minutes,
+.countdown-seconds {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.countdown-unit {
+    font-size: 12px;
+    line-height: 1;
+}
+
+.countdown-separator {
+    margin: 0 1px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+/* count-down css end */
+
+.swiper.card-slider .swiper-wrapper {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.card-slider-section-btn {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-slider-section-btn .btn {
+    width: fit-content;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-slider-section-btn .btn:after {
+    content: "→";
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* card-slider-section css end */
+
+@media only screen and (max-width:992px) {
+
+    /* card-slider section css start */
+    .card-slider-section .container {
+        padding: 0;
+    }
+
+    .card-slider-section-heading,
+    .card-slider-section-heading-wrap {
+        padding: 0 20px;
+    }
+
+    .swiper.card-slider {
+        padding: 0 0 0 20px;
+    }
+
+    .swiper.explore-slider .swiper-button-prev {
+        left: 20px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .swiper.explore-slider .swiper-button-next {
+        right: 20px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* card-slider section css end */
+}
+
+@media only screen and (max-width:767px) {
+
+    /* card-slider section css start */
+    .card-slider-section-heading {
+        text-align: center;
+    }
+
+    .swiper.card-slider {
+        padding: 0;
+    }
+
+    /* card-slider section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* card-slider section css start */
+    .card-slider-section.section-bg {
+        padding: 24px 0;
+    }
+
+    .card-slider-section-heading,
+    .card-slider-section-heading-wrap {
+        padding: 0 16px;
+    }
+
+    .card-slider-section-heading-wrap {
+        gap: 10px;
+        flex-direction: column;
+        margin-bottom: 24px;
+    }
+
+    /* card-slider section css end */
+}

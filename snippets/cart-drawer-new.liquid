@@ -1,0 +1,227 @@
+{% liquid
+  assign free_shipping_threshold = 350000
+  assign percent = cart.total_price | times: 100 | divided_by: free_shipping_threshold
+  if percent > 100
+    assign percent = 100
+  endif
+  assign remaining = free_shipping_threshold | minus: cart.total_price
+%}
+
+<script>
+  window.themeMoneyFormat = {{ shop.money_format | json }};
+</script>
+
+<div class="cart-drawer{% if cart.item_count == 0 %} blank{% endif %}">
+  <span class="cart-drawer-close-window-btn"></span>
+  <div class="cart-drawer-inner">
+    <div class="cart-drawer-top">
+      <p class="cart-drawer-title">cart <span>({{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %})</span></p>
+      <button class="cart-drawer-close-btn" type="button" aria-label="close cart drawer">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
+            fill="#0B0802"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-drawer-progress">
+      <div class="cart-drawer-progress-content">
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 12 20 22 4 22 4 12"></polyline>
+            <rect x="2" y="7" width="20" height="5"></rect>
+            <line x1="12" y1="22" x2="12" y2="7"></line>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+          </svg>
+        </span>
+        <div class="content">
+          <p class="title">Free Shipping</p>
+          <p class="text">
+            {% if remaining > 0 %}
+              Add <strong>{{ remaining | money }}</strong> more to unlock!
+            {% else %}
+              You've unlocked free shipping!
+            {% endif %}
+          </p>
+        </div>
+      </div>
+      <input
+        type="range"
+        value="{{ percent }}"
+        min="0"
+        max="100"
+        step="1"
+        class="progress"
+        disabled
+        style="background: linear-gradient(to right, #d55a3c 0%, #422c26 {{ percent }}%, rgb(236 219 216) {{ percent }}%)"
+      >
+    </div>
+    <div class="cart-drawer-content">
+      <div class="cart-drawer-items">
+        {% for item in cart.items %}
+          <div class="cart-drawer-item" data-key="{{ item.key }}">
+            <div class="cart-drawer-item-img">
+              {% if item.image != blank %}
+                <img
+                  src="{{ item.image | image_url: width: 200 }}"
+                  alt="{{ item.image.alt | default: item.product.title | escape }}"
+                  width="56"
+                  height="56"
+                  loading="lazy"
+                >
+              {% endif %}
+            </div>
+            <div class="cart-drawer-item-content-wrap">
+              <div class="cart-drawer-item-content-inner">
+                <div class="cart-drawer-item-content">
+                  <a href="{{ item.url }}" class="cart-drawer-item-title">{{ item.product.title }}</a>
+                  <div class="content-btm">
+                    <div class="cart-drawer-item-qty-btn-wrap">
+                      <button class="cart-drawer-item-qty-btn" type="button" data-action="decrease" aria-label="Decrease quantity">-</button>
+                      <input type="text" class="cart-drawer-item-qty-input" value="{{ item.quantity }}" readonly>
+                      <button class="cart-drawer-item-qty-btn" type="button" data-action="increase" aria-label="Increase quantity">+</button>
+                    </div>
+                    <p class="cart-drawer-item-price">{{ item.final_line_price | money }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cart-drawer-item-remove-btn-wrap">
+                <button class="cart-drawer-item-remove-btn" type="button" aria-label="Remove item">
+                  <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M11.375 2H0.375C0.275544 2 0.180161 2.03951 0.109835 2.10983C0.0395088 2.18016 0 2.27554 0 2.375C0 2.47446 0.0395088 2.56984 0.109835 2.64017C0.180161 2.71049 0.275544 2.75 0.375 2.75H1V11.875C1 12.1071 1.09219 12.3296 1.25628 12.4937C1.42038 12.6578 1.64294 12.75 1.875 12.75H9.875C10.1071 12.75 10.3296 12.6578 10.4937 12.4937C10.6578 12.3296 10.75 12.1071 10.75 11.875V2.75H11.375C11.4745 2.75 11.5698 2.71049 11.6402 2.64017C11.7105 2.56984 11.75 2.47446 11.75 2.375C11.75 2.27554 11.7105 2.18016 11.6402 2.10983C11.5698 2.03951 11.4745 2 11.375 2ZM10 11.875C10 11.9082 9.98683 11.9399 9.96339 11.9634C9.93995 11.9868 9.90815 12 9.875 12H1.875C1.84185 12 1.81005 11.9868 1.78661 11.9634C1.76317 11.9399 1.75 11.9082 1.75 11.875V2.75H10V11.875ZM3 0.375C3 0.275544 3.03951 0.180161 3.10984 0.109835C3.18016 0.0395088 3.27554 0 3.375 0H8.375C8.47446 0 8.56984 0.0395088 8.64017 0.109835C8.71049 0.180161 8.75 0.275544 8.75 0.375C8.75 0.474456 8.71049 0.569839 8.64017 0.640165C8.56984 0.710491 8.47446 0.75 8.375 0.75H3.375C3.27554 0.75 3.18016 0.710491 3.10984 0.640165C3.03951 0.569839 3 0.474456 3 0.375Z"
+                      fill="black"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% liquid
+        assign last_item = cart.items.last
+        assign suggestion_collection = blank
+        if last_item and last_item.product.collections.size > 0
+          assign suggestion_collection = last_item.product.collections.first
+        endif
+      %}
+      {% if suggestion_collection != blank and suggestion_collection.products_count > 1 %}
+        <div class="cart-drawer-slider-area">
+          <div class="cart-drawer-slider-header">
+            <p class="cart-drawer-slider-title">You might also like...</p>
+            <div class="cart-drawer-slider-btn-wrap">
+              <div class="swiper-button-prev cart-drawer-slider-btn-prev"></div>
+              <div class="swiper-button-next cart-drawer-slider-btn-next"></div>
+            </div>
+          </div>
+          <div class="swiper cart-drawer-slider">
+            <div class="swiper-wrapper">
+              {% for product in suggestion_collection.products limit: 7 %}
+                {% unless product.id == last_item.product_id %}
+                    {% assign variant = product.selected_or_first_available_variant %}
+                    {% assign hover_image = product.images[1] | default: product.featured_image %}
+                    <div class="swiper-slide">
+                      <div class="cart-drawer-slider-item">
+                        <div class="product-card card_hover">
+                          <div class="card-image-wrap">
+                            {% if product.metafields.reviews.rating.value != blank %}
+                              <div class="card-rattings">
+                                <span class="icon">
+                                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="pdp-star-icon is-filled">
+                                    <path
+                                      d="M8 1.333l2.06 4.174 4.607.67-3.333 3.249.786 4.587L8 11.846l-4.12 2.167.787-4.587L1.333 6.177l4.607-.67L8 1.333Z"
+                                      fill="currentColor"
+                                    ></path>
+                                  </svg>
+                                </span>
+                                <span class="rattings-count">{{ product.metafields.reviews.rating.value }}</span>
+                                <span class="rattings-number">({{ product.metafields.reviews.rating_count.value | default: 0 }}+)</span>
+                              </div>
+                            {% endif %}
+                            <div class="card-img">
+                              <a class="main-img" href="{{ product.url }}">
+                                {% if product.featured_image != blank %}
+                                  <img
+                                    class="card_img"
+                                    src="{{ product.featured_image | image_url: width: 300 }}"
+                                    alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                                    width="{{ product.featured_image.width }}"
+                                    height="{{ product.featured_image.height }}"
+                                    loading="lazy"
+                                  >
+                                {% endif %}
+                              </a>
+                              <a class="hover-img" href="{{ product.url }}">
+                                {% if hover_image != blank %}
+                                  <img
+                                    class="card_hover_img"
+                                    src="{{ hover_image | image_url: width: 300 }}"
+                                    alt="{{ product.title | escape }}"
+                                    width="{{ hover_image.width }}"
+                                    height="{{ hover_image.height }}"
+                                    loading="lazy"
+                                  >
+                                {% endif %}
+                              </a>
+                            </div>
+                          </div>
+                          <div class="card-content">
+                            <div class="card-title-wrap">
+                              <a href="{{ product.url }}" class="card-title">{{ product.title }}</a>
+                            </div>
+                            <div class="card-price-wrap">
+                              <p class="latest-price">{{ product.price | money }}</p>
+                              {% if product.compare_at_price > product.price %}
+                                <p class="previous-price">{{ product.compare_at_price | money }}</p>
+                              {% endif %}
+                            </div>
+                            <div class="card-btn">
+                              <button
+                                type="button"
+                                class="btn"
+                                data-variant-id="{{ variant.id }}"
+                                {% unless variant.available %}
+                                  disabled
+                                {% endunless %}
+                              >
+                                {% if variant.available %}
+                                  add
+                                {% else %}
+                                  sold out
+                                {% endif %}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endunless %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="cart-drawer-empty">
+      <div class="cart-drawer-empty-text">
+        <p>Your Cart Is Empty</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn">shop now</a>
+      </div>
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-drawer-total-wrap">
+        <p class="cart-drawer-total-title">total</p>
+        <p class="cart-drawer-total-price">{{ cart.total_price | money }}</p>
+      </div>
+      <div class="cart-drawer-checkout-btn-wrap">
+        <form action="{{ routes.cart_url }}" method="post">
+          <button type="submit" name="checkout" class="btn">secure checkout</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

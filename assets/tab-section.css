@@ -1,0 +1,247 @@
+/* tab-section css start */
+.tab-section-nav {
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--border-color2);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.tab-section-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    text-wrap-mode: nowrap;
+    transition: ease .3s;
+}
+
+.tab-section-nav-item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.tab-section-nav-item-title {
+    font-family: var(--heading-font);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+    transition: ease .3s;
+}
+
+.tab-section-nav-item.active {
+    background-color: var(--item-bg);
+    border-color: var(--brand-color);
+    border-radius: 8px 8px 0 0;
+}
+
+.tab-section-nav-item.active .tab-section-nav-item-title {
+    color: var(--brand-color);
+    font-weight: 600;
+}
+
+.tab-section-panels {
+    margin-top: 16px;
+}
+
+.tab-section-panel {
+    display: none;
+}
+
+.tab-section-panel.active {
+    display: block;
+}
+
+.tab-section-panel-items {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.tab-card-img-wrap {
+    position: relative;
+}
+
+.tab-card-img {
+    display: block;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--item-bg3);
+}
+
+.tab-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tab-card-add-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    transform: translateY(50%);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--white);
+    border: 1px solid var(--border-color2);
+    border-radius: 20px;
+    padding: 7.5px 14px;
+    font-family: var(--paragraph-font);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--black);
+    box-shadow: 0px 4px 10px rgb(0 0 0 / 12%);
+    z-index: 2;
+    transition: ease .3s;
+    line-height: 1;
+}
+
+.tab-card-add-btn:hover {
+    background-color: var(--brand-color);
+    border-color: var(--brand-color);
+    color: var(--white);
+}
+
+.tab-card-price-wrap {
+    margin-top: 16px;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tab-card-price {
+    font-family: var(--paragraph-font);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.tab-card-price .from {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--paragraph-text-color);
+    opacity: .7;
+}
+
+.tab-card-previous-price {
+    font-family: var(--paragraph-font);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--paragraph-text-color);
+    text-decoration: line-through;
+    opacity: .6;
+}
+
+.tab-section-panel-btn {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab-section-panel-btn .btn {
+    width: fit-content;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab-section-panel-btn .btn:after {
+    content: "→";
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* tab-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* tab-section css start */
+    .tab-section-nav {
+        gap: 20px;
+    }
+
+    .tab-section-panel-items {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        row-gap: 20px;
+    }
+
+    /* tab-section css end */
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* tab-section css start */
+    .tab-section-nav {
+        gap: 10px;
+    }
+
+    .tab-section-nav-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .tab-section-panel-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* tab-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* tab-section css start */
+    .tab-section-nav {
+        gap: 4px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .tab-section-nav-item {
+        padding: 5px;
+    }
+
+    .tab-section-nav-item.active {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .tab-section-nav-item-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tab-section-nav-item-title {
+        font-size: 12px;
+        font-weight: 400;
+        text-wrap-mode: wrap;
+    }
+
+    .tab-section-nav-item.active .tab-section-nav-item-title {
+        font-weight: 400;
+    }
+
+    .tab-section-panels {
+        margin-top: 20px;
+    }
+
+    .tab-card-add-btn {
+        padding: 6.5px 10px;
+        font-size: 11px;
+    }
+
+    /* tab-section css end */
+}

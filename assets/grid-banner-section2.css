@@ -1,0 +1,96 @@
+/* grid-banner-section2 css start */
+.grid-banner-section2 {
+    padding: 24px 0;
+}
+
+.grid-banner2-items {
+    display: grid;
+    grid-template-areas: "one two three"
+        "one four five";
+    gap: 14px;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-banner2-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.grid-banner2-item1 {
+    grid-area: one;
+}
+
+.grid-banner2-item2 {
+    grid-area: two;
+}
+
+.grid-banner2-item3 {
+    grid-area: three;
+}
+
+.grid-banner2-item4 {
+    grid-area: four;
+}
+
+.grid-banner2-item5 {
+    grid-area: five;
+}
+
+.grid-banner2-item:before {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 2;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, #fff0, #ffffff4d);
+    transform: skew(-25deg);
+}
+
+.grid-banner2-item:hover:before {
+    animation: shine .95s;
+}
+
+@keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+
+.grid-banner2-item-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* grid-banner-section2 css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* grid-banner-section2 css start */
+    .grid-banner2-items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas: "one one"
+            "two three"
+            "four five";
+        gap: 12px;
+        grid-template-rows: auto;
+    }
+
+    /* grid-banner-section2 css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* grid-banner-section2 css start */
+    .grid-banner2-items {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "one""two""three""four""five";
+    }
+
+    /* grid-banner-section2 css end */
+}

@@ -1,0 +1,142 @@
+/* gifting-banner-section css start */
+.gifting-banner-section {
+    padding: 24px 0;
+}
+
+.gifting-banner-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 260px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--brand-color);
+    padding: 0 60px;
+}
+
+.gifting-banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    z-index: 1;
+}
+
+.gifting-banner-badge {
+    display: inline-block;
+    background-color: var(--white);
+    border-radius: 999px;
+    padding: 14px 32px;
+}
+
+.gifting-banner-badge-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--black);
+    text-transform: capitalize;
+    line-height: 1;
+}
+
+.gifting-banner-badge-title span {
+    color: var(--brand-color);
+    font-weight: 800;
+}
+
+.gifting-banner-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.gifting-banner-img {
+    flex-shrink: 0;
+    width: 420px;
+    height: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* gifting-banner-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* gifting-banner-section css start */
+    .gifting-banner-card {
+        padding: 0 30px;
+        min-height: 220px;
+    }
+
+    .gifting-banner-img {
+        width: 260px;
+        height: 180px;
+    }
+
+    .gifting-banner-badge {
+        padding: 10px 24px;
+    }
+
+    .gifting-banner-badge-title {
+        font-size: 20px;
+    }
+
+    .gifting-banner-text {
+        font-size: 18px;
+    }
+
+    /* gifting-banner-section css end */
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* gifting-banner-section css start */
+    .gifting-banner-card {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2px;
+        gap: 16px;
+        min-height: unset;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .gifting-banner-content {
+        align-items: center;
+        gap: 16px;
+        position: absolute;
+        z-index: 2;
+    }
+
+    .gifting-banner-text {
+        color: var(--black);
+    }
+
+    .gifting-banner-img {
+        width: 100%;
+        border-radius: 10px;
+        height: 200px;
+    }
+
+    /* gifting-banner-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* gifting-banner-section css start */
+    .gifting-banner-badge-title {
+        font-size: 18px;
+    }
+
+    .gifting-banner-text {
+        font-size: 15px;
+    }
+
+    .gifting-banner-img {
+        height: 160px;
+    }
+
+    /* gifting-banner-section css end */
+}

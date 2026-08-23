@@ -1,0 +1,77 @@
+{% liquid
+  assign banner_blocks = section.blocks | where: 'type', 'banner'
+%}
+
+<section class="grid-banner-section2">
+  <div class="container">
+    <div class="grid-banner2-items">
+      {% for block in banner_blocks %}
+        <div class="grid-banner2-item grid-banner2-item{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <a class="grid-banner2-item-inner" href="{{ block.settings.link | default: '#' }}">
+            <div class="grid-banner2-item-img">
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url: width: 800 }}"
+                  alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                  loading="lazy"
+                >
+              {% endif %}
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Grid banner (5 slot)",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This layout has 5 fixed slots: the 1st banner is the large left tile, the 2nd-3rd are the top row, the 4th-5th are the bottom row. Reordering blocks changes which banner appears in which slot."
+    }
+  ],
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Used as the image's alt text.",
+          "default": "Category"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid banner (5 slot)",
+      "blocks": [
+        { "type": "banner", "settings": { "title": "Rugs & Carpets" } },
+        { "type": "banner", "settings": { "title": "Mirror & Wall Shelves" } },
+        { "type": "banner", "settings": { "title": "Live Plants & Planters" } },
+        { "type": "banner", "settings": { "title": "Windchimes" } },
+        { "type": "banner", "settings": { "title": "Floor Cushions" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

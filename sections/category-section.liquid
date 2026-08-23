@@ -1,0 +1,85 @@
+{% liquid
+  assign category_blocks = section.blocks | where: 'type', 'category'
+%}
+
+<div class="category-section">
+  <div class="container">
+    <div class="category-wrapper">
+      <div class="category-slider-wrapper">
+        <div class="swiper category-slider">
+          <div class="swiper-wrapper">
+            {% for block in category_blocks %}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <a href="{{ block.settings.link | default: '#' }}" class="category-item">
+                  <div class="img">
+                    {% if block.settings.image != blank %}
+                      <img
+                        src="{{ block.settings.image | image_url: width: 300 }}"
+                        alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                        width="{{ block.settings.image.width }}"
+                        height="{{ block.settings.image.height }}"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="content">
+                    <p class="title">{{ block.settings.title }}</p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev category-button-prev"></div>
+          <div class="swiper-button-next category-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Category slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category slider",
+      "blocks": [
+        { "type": "category", "settings": { "title": "Women Fashion" } },
+        { "type": "category", "settings": { "title": "Women bottom" } },
+        { "type": "category", "settings": { "title": "Men topwear" } },
+        { "type": "category", "settings": { "title": "Women footwear" } },
+        { "type": "category", "settings": { "title": "Men bottomwear" } },
+        { "type": "category", "settings": { "title": "Men fashion accessories" } },
+        { "type": "category", "settings": { "title": "Men footwear" } },
+        { "type": "category", "settings": { "title": "Women accessories" } },
+        { "type": "category", "settings": { "title": "Health & beauty" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,95 @@
+/* app-menu-section css start */
+.app-menu-section {
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    padding: 10.5px 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--brand-color);
+    width: calc(100% - 20px);
+    display: none;
+    box-shadow: 0px 0px 7px rgb(213 90 60 / 30%);
+    backdrop-filter: blur(6px);
+}
+
+.app-menu-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.app-menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    user-select: none;
+}
+
+.app-menu-item.cart-drawer-open {
+    position: relative;
+}
+
+.app-menu-item.cart-drawer-open .cart-count {
+    top: -5px;
+    right: -8px;
+}
+
+.app-menu-item .icon {
+    display: flex;
+}
+
+.app-menu-item .icon svg {
+    width: 24px;
+    height: 24px;
+    transition: all ease .3s;
+}
+
+.app-menu-item .icon svg g {
+    fill: var(--brand-color);
+}
+
+.app-menu-item .icon svg g path {
+    stroke: var(--brand-color);
+}
+
+.app-menu-item .icon svg path {
+    stroke: var(--black);
+    transition: all ease .3s;
+}
+
+.app-menu-item:hover .icon svg path,
+.app-menu-item.active .icon svg path {
+    stroke: var(--brand-color);
+}
+
+.app-menu-item p {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 100%;
+    text-transform: capitalize;
+    font-weight: 500;
+    transition: all ease .3s;
+}
+
+.app-menu-item:hover p,
+.app-menu-item.active p {
+    color: var(--brand-color);
+}
+
+/* app-menu-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* app-menu-section css start */
+    .app-menu-section {
+        display: block;
+    }
+
+    /* app-menu-section css end */
+}

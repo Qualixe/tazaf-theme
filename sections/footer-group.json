@@ -1,0 +1,77 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:names.footer",
+  "sections": {
+    "footer_section_zU4gJV": {
+      "type": "footer-section",
+      "blocks": {
+        "menu_column_JKKe4r": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Bedroom Decor",
+            "menu": "bedding"
+          }
+        },
+        "menu_column_KteCtz": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Living Room Decor",
+            "menu": ""
+          }
+        },
+        "menu_column_8W9BMg": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Home Decorations",
+            "menu": ""
+          }
+        },
+        "menu_column_eXxFfE": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Kitchen Decor",
+            "menu": ""
+          }
+        },
+        "contact_column_b8xg8U": {
+          "type": "contact_column",
+          "settings": {
+            "title": "Get in Touch",
+            "contact_link_label": "Contact Us",
+            "contact_link_url": "",
+            "phone": "1-833-428-8824",
+            "email": "info@tazif.com",
+            "hours_text": "Open 24 Hours a Day, 7 Days a week"
+          }
+        }
+      },
+      "block_order": [
+        "menu_column_JKKe4r",
+        "menu_column_KteCtz",
+        "menu_column_8W9BMg",
+        "menu_column_eXxFfE",
+        "contact_column_b8xg8U"
+      ],
+      "name": "Footer",
+      "settings": {
+        "copyright_owner": "",
+        "credit_text": "Qualixe",
+        "credit_link": "",
+        "exchange_policy_label": "Exchange Policy",
+        "exchange_policy_url": ""
+      }
+    }
+  },
+  "order": [
+    "footer_section_zU4gJV"
+  ]
+}
