@@ -91,10 +91,56 @@
       "settings": {
         "reverse_layout": false
       }
+    },
+    "image_gallery_6DiDcX": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_gallery_item_THNEf4": {
+          "type": "image-gallery-item",
+          "settings": {
+            "image": "shopify://shop_images/toppick-img2.jpg",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "image_gallery_item_6LbEma": {
+          "type": "image-gallery-item",
+          "settings": {
+            "image": "shopify://shop_images/toppick-img3.jpg",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "image_gallery_item_AgLihq": {
+          "type": "image-gallery-item",
+          "settings": {
+            "image": "shopify://shop_images/toppick-img4.jpg",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "image_gallery_item_FjyRGT": {
+          "type": "image-gallery-item",
+          "settings": {
+            "image": "shopify://shop_images/toppick-img5.jpg",
+            "link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_gallery_item_THNEf4",
+        "image_gallery_item_6LbEma",
+        "image_gallery_item_AgLihq",
+        "image_gallery_item_FjyRGT"
+      ],
+      "name": "Image gallery",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "image_text_section_6XFGmk"
+    "image_text_section_6XFGmk",
+    "image_gallery_6DiDcX"
   ]
 }
