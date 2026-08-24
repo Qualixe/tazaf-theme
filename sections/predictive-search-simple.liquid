@@ -1,0 +1,38 @@
+{%- if predictive_search.performed -%}
+  {%- assign products = predictive_search.resources.products -%}
+  {%- if products.size > 0 -%}
+    {%- for product in products -%}
+      <a href="{{ product.url }}" class="search-result-item">
+        <div class="search-result-img">
+          {%- if product.featured_image -%}
+            <img
+              src="{{ product.featured_image | image_url: width: 128 }}"
+              alt="{{ product.featured_image.alt | default: product.title | escape }}"
+              width="64"
+              height="64"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="search-result-content">
+          <p class="title">{{ product.title }}</p>
+          <div class="price">
+            <span class="curr">{{ product.price | money }}</span>
+            {%- if product.compare_at_price > product.price -%}
+              <span class="pp">{{ product.compare_at_price | money }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      </a>
+    {%- endfor -%}
+  {%- else -%}
+    <p class="search-result-empty">{{ 'content.search_results_no_results' | t: terms: predictive_search.terms }}</p>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Predictive search (simple)",
+  "settings": []
+}
+{% endschema %}

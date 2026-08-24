@@ -370,6 +370,12 @@
     display: flex;
 }
 
+.search-result-empty {
+    padding: 16px 0;
+    font-size: 13px;
+    color: var(--paragraph-text-color);
+}
+
 /* search-bar end */
 
 .navbar-icons {

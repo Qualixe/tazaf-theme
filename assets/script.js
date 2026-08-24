@@ -93,6 +93,91 @@ document.addEventListener("keydown", (e) => {
 });
 // navbar search open js end ---
 
+// predictive search ajax js start ---
+(function () {
+  const searchBar = document.querySelector(".search-bar");
+  const form = searchBar?.querySelector(".search-form");
+  const input = form?.querySelector('input[name="q"]');
+  const resultsWrap = searchBar?.querySelector(".search-bar-btm");
+  const resultsContainer = searchBar?.querySelector(
+    "[data-predictive-search-results]",
+  );
+  const viewAllLink = searchBar?.querySelector(".search-result-btn a");
+
+  if (!form || !input || !resultsWrap || !resultsContainer) return;
+
+  const SECTION_ID = "predictive-search-simple";
+  let activeController = null;
+  let debounceTimer;
+
+  function updateViewAllLink(term) {
+    if (!viewAllLink) return;
+
+    const url = new URL(
+      (typeof Theme !== "undefined" && Theme.routes?.search_url) || "/search",
+      window.location.origin,
+    );
+    if (term) url.searchParams.set("q", term);
+    url.searchParams.set("type", "product");
+
+    viewAllLink.href = url.toString();
+  }
+
+  function renderResults(html) {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const section = doc.getElementById(`shopify-section-${SECTION_ID}`);
+
+    resultsContainer.innerHTML = section ? section.innerHTML.trim() : "";
+  }
+
+  function search(term) {
+    if (typeof Theme === "undefined" || !Theme.routes?.predictive_search_url) {
+      return;
+    }
+
+    activeController?.abort();
+    activeController = new AbortController();
+
+    const url = new URL(
+      Theme.routes.predictive_search_url,
+      window.location.origin,
+    );
+    url.searchParams.set("q", term);
+    url.searchParams.set("resources[type]", "product");
+    url.searchParams.set("resources[limit]", "6");
+    url.searchParams.set("section_id", SECTION_ID);
+
+    fetch(url, { signal: activeController.signal })
+      .then((res) => res.text())
+      .then(renderResults)
+      .catch((err) => {
+        if (err.name !== "AbortError") resultsContainer.innerHTML = "";
+      });
+  }
+
+  input.addEventListener("input", () => {
+    const term = input.value.trim();
+
+    updateViewAllLink(term);
+    clearTimeout(debounceTimer);
+
+    if (!term) {
+      activeController?.abort();
+      resultsWrap.classList.remove("active");
+      resultsContainer.innerHTML = "";
+      return;
+    }
+
+    resultsWrap.classList.add("active");
+    debounceTimer = setTimeout(() => search(term), 300);
+  });
+
+  form.addEventListener("submit", (e) => {
+    if (!input.value.trim()) e.preventDefault();
+  });
+})();
+// predictive search ajax js end ---
+
 // mobile-menu sidebar js start---
 const mobileMenu = document.querySelector(".mobile-menu-wrap");
 const mobileMenuContainer = document.querySelector(".mobile-menu-container");
