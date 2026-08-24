@@ -125,9 +125,8 @@ document.addEventListener("keydown", (e) => {
 
   function renderResults(html) {
     const doc = new DOMParser().parseFromString(html, "text/html");
-    const section = doc.getElementById(`shopify-section-${SECTION_ID}`);
 
-    resultsContainer.innerHTML = section ? section.innerHTML.trim() : "";
+    resultsContainer.innerHTML = doc.body.innerHTML.trim();
   }
 
   function search(term) {
