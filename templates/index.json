@@ -429,7 +429,7 @@
             "heading": "New premium dress",
             "text": "Explore living",
             "button_label": "Shop now",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "banner_Fb7pGz": {
@@ -440,7 +440,7 @@
             "heading": "Ready to wear",
             "text": "Explore living",
             "button_label": "Shop now",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "banner_9QYwtV": {
@@ -451,7 +451,7 @@
             "heading": "Ready to wear",
             "text": "Explore living",
             "button_label": "Shop now",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         }
       },
