@@ -483,7 +483,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/grid-category-img1.webp",
-            "link": ""
+            "link": "shopify://pages/about-us"
           }
         },
         "item_hyPL3X": {
