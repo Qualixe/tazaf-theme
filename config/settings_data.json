@@ -150,7 +150,7 @@
             "type": "app-menu-item",
             "name": "App menu item",
             "settings": {
-              "action": "open_menu",
+              "action": "link",
               "link": "shopify://collections/all",
               "show_count": true,
               "icon": "category",
