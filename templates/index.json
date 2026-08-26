@@ -490,28 +490,28 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/grid-category-img2.webp",
-            "link": ""
+            "link": "shopify://pages/about-us"
           }
         },
         "item_RehJFE": {
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/grid-category-img3.webp",
-            "link": ""
+            "link": "shopify://pages/about-us"
           }
         },
         "item_KyaCYB": {
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/grid-category-img4.webp",
-            "link": ""
+            "link": "shopify://pages/about-us"
           }
         },
         "item_DCrYG9": {
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/grid-category-img5.webp",
-            "link": ""
+            "link": "shopify://pages/about-us"
           }
         }
       },
