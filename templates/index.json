@@ -336,7 +336,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img10.jpg",
             "title": "Kids kurti",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_8UFaaT": {
@@ -344,7 +344,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img11.jpg",
             "title": "kids girls clothing",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_Mpq8Mb": {
@@ -352,7 +352,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img12.jpg",
             "title": "Kids boys clothing",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_hjkn7N": {
@@ -360,7 +360,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img13.jpg",
             "title": "Kids accessories",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_y8BVAD": {
@@ -368,7 +368,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img14.jpg",
             "title": "kids footwear",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_YLnWgw": {
@@ -376,7 +376,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img15.jpg",
             "title": "baby clothing set",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_byBymg": {
@@ -384,7 +384,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img16.jpg",
             "title": "babys shoes",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_jwp987": {
@@ -392,7 +392,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img17.jpg",
             "title": "baby accessories",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_TkX9Ep": {
@@ -400,7 +400,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img18.jpg",
             "title": "baby winter wear",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         }
       },
