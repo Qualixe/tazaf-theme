@@ -246,7 +246,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img1.jpg",
             "title": "Women Fashion",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_XAGqmV": {
@@ -254,7 +254,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img2.jpg",
             "title": "Women bottom",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_8zWJN4": {
@@ -262,7 +262,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img3.jpg",
             "title": "Men topwear",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_kHYji8": {
@@ -270,7 +270,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img4.jpg",
             "title": "Women footwear",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_aXLKeU": {
@@ -278,7 +278,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img5.jpg",
             "title": "Men bottomwear",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_bC3dbm": {
@@ -286,7 +286,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img6.jpg",
             "title": "Men fashion accessories",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_yB7Lix": {
@@ -294,7 +294,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img7.jpg",
             "title": "Men footwear",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_fMmDBJ": {
@@ -302,7 +302,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img8.jpg",
             "title": "Women accessories",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "category_nej9fw": {
@@ -310,7 +310,7 @@
           "settings": {
             "image": "shopify://shop_images/category-img9.jpg",
             "title": "Health & beauty",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         }
       },
