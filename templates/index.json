@@ -602,7 +602,7 @@
       "settings": {
         "title": "Shop By Brands",
         "view_all_label": "Shop All Brands",
-        "view_all_link": ""
+        "view_all_link": "shopify://collections/all"
       }
     },
     "tab_section_7bWpBE": {
