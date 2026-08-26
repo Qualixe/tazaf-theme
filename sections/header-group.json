@@ -11,7 +11,6 @@
   "type": "header",
   "name": "t:names.header",
   "sections": {
-    
     "announcement_bar_txTEAF": {
       "type": "announcement-bar",
       "blocks": {
@@ -102,35 +101,35 @@
           "type": "popular_search",
           "settings": {
             "title": "Wall paintings",
-            "link": ""
+            "link": "shopify://collections"
           }
         },
         "popular_search_qbAPwP": {
           "type": "popular_search",
           "settings": {
             "title": "Bedsheets",
-            "link": ""
+            "link": "shopify://collections"
           }
         },
         "popular_search_pPzzQ7": {
           "type": "popular_search",
           "settings": {
             "title": "Rugs & Carpets",
-            "link": ""
+            "link": "shopify://collections/frontpage"
           }
         },
         "popular_search_KgGJCP": {
           "type": "popular_search",
           "settings": {
             "title": "Storage & Organization",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "popular_search_yCf4Bd": {
           "type": "popular_search",
           "settings": {
             "title": "Lamps and lightings",
-            "link": ""
+            "link": "shopify://collections/frontpage"
           }
         }
       },
