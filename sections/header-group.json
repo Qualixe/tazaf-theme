@@ -147,14 +147,6 @@
             "image": "shopify://shop_images/product-slider-img5.webp",
             "link": ""
           }
-        },
-        "search_category_tJmrY8": {
-          "type": "search_category",
-          "settings": {
-            "title": "Slipper",
-            "image": "shopify://shop_images/product-slider-img5.webp",
-            "link": ""
-          }
         }
       },
       "block_order": [
@@ -173,8 +165,7 @@
         "popular_search_KgGJCP",
         "popular_search_yCf4Bd",
         "search_category_KHXiKj",
-        "search_category_qiN9z3",
-        "search_category_tJmrY8"
+        "search_category_qiN9z3"
       ],
       "name": "Header",
       "settings": {}
