@@ -796,6 +796,10 @@ button {
     display: none;
 }
 
+.cart-drawer.blank .cart-drawer-progress {
+    display: none;
+}
+
 .cart-drawer.blank .cart-drawer-footer {
     display: none;
 }
