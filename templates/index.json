@@ -1005,7 +1005,7 @@
         "review_iYCyhP": {
           "type": "review",
           "settings": {
-            "video": "shopify://files/videos/7679838-uhd_2160_4096_25fps.mp4",
+            "video": "shopify://files/videos/video1.mp4",
             "text_before": "why",
             "highlight": "1000+",
             "text_after": "customers trust us",
@@ -1015,6 +1015,7 @@
         "review_rk8fWd": {
           "type": "review",
           "settings": {
+            "video": "shopify://files/videos/video2.mp4",
             "text_before": "Comfort you can",
             "highlight": "feel",
             "text_after": "instantly",
@@ -1024,6 +1025,7 @@
         "review_npXYVF": {
           "type": "review",
           "settings": {
+            "video": "shopify://files/videos/video3.mp4",
             "text_before": "Real people. Real",
             "highlight": "reviews",
             "text_after": "",
