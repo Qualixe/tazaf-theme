@@ -1035,6 +1035,7 @@
         "review_bUqWAE": {
           "type": "review",
           "settings": {
+            "video": "shopify://files/videos/video4.mp4",
             "text_before": "Premium product",
             "highlight": "reviews",
             "text_after": "",
