@@ -218,7 +218,7 @@
             "desktop_image": "shopify://shop_images/hero-slider-banner1.webp",
             "mobile_image": "shopify://shop_images/hero-slider-banner1-mobile.webp",
             "heading": "Premium product",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "slide_C9pV9U": {
@@ -227,7 +227,7 @@
             "desktop_image": "shopify://shop_images/hero-slider-banner1.webp",
             "mobile_image": "shopify://shop_images/hero-slider-banner1-mobile.webp",
             "heading": "Premium product",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         }
       },
