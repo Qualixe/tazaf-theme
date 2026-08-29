@@ -11,7 +11,7 @@
     {% endif %}
     <div class="category-grid-items">
       {% for block in grid_blocks %}
-        <a href="{{ block.settings.link | default: '#' }}" class="category-grid-item" {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.link | default: 'collections/all' }}" class="category-grid-item" {{ block.shopify_attributes }}>
           {% if block.settings.image != blank %}
             <img
               src="{{ block.settings.image | image_url: width: 500 }}"

@@ -1,6 +1,6 @@
 <section class="gifting-banner-section">
   <div class="container">
-    <a href="{{ section.settings.link | default: '#' }}" class="gifting-banner-card">
+    <a href="{{ section.settings.link | default: '/collections/all' }}" class="gifting-banner-card">
       <div class="gifting-banner-content">
         {% if section.settings.badge_prefix != blank or section.settings.brand_name != blank %}
           <div class="gifting-banner-badge">
@@ -27,7 +27,7 @@
     </a>
   </div>
 </section>
-
+ 
 {% schema %}
 {
   "name": "Gifting banner",

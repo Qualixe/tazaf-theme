@@ -73,7 +73,7 @@
     <div class="card-btn">
       <button
         type="button"
-        class="btn add-to-cart-btn"
+        class="btn add-to-cart-btn{% unless current_variant.available %} soldout{% endunless %}"
         data-variant-id="{{ current_variant.id }}"
         {% unless current_variant.available %}
           disabled

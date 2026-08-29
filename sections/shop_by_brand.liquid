@@ -9,7 +9,7 @@
         <h2 class="title">{{ section.settings.title }}</h2>
       {% endif %}
       {% if section.settings.view_all_label != blank %}
-        <a href="{{ section.settings.view_all_link | default: '#' }}" class="shop-by-brand-all-link">
+        <a href="{{ section.settings.view_all_link | default: '/collections/all' }}" class="shop-by-brand-all-link">
           {{ section.settings.view_all_label }} <span>›</span>
         </a>
       {% endif %}
@@ -18,7 +18,7 @@
       <div class="swiper-wrapper">
         {% for block in brand_blocks %}
           <div class="swiper-slide" {{ block.shopify_attributes }}>
-            <a href="{{ block.settings.link | default: '#' }}" class="shop-by-brand-item">
+            <a href="{{ block.settings.link | default: '/collections/all' }}" class="shop-by-brand-item">
               {% if block.settings.logo != blank %}
                 <img
                   src="{{ block.settings.logo | image_url: width: 300 }}"

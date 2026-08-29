@@ -8,7 +8,7 @@
       <div class="swiper-wrapper">
         {% for block in category_blocks %}
           <div class="swiper-slide" {{ block.shopify_attributes }}>
-            <a href="{{ block.settings.link | default: '#' }}" class="image-category-slider-item">
+            <a href="{{ block.settings.link | default: '/collections/all' }}" class="image-category-slider-item">
               <div class="img">
                 {% if block.settings.image != blank %}
                   <img

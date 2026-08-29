@@ -7,7 +7,7 @@
     <div class="grid-banner2-items">
       {% for block in banner_blocks %}
         <div class="grid-banner2-item grid-banner2-item{{ forloop.index }}" {{ block.shopify_attributes }}>
-          <a class="grid-banner2-item-inner" href="{{ block.settings.link | default: '#' }}">
+          <a class="grid-banner2-item-inner" href="{{ block.settings.link | default: '/collections/all' }}">
             <div class="grid-banner2-item-img">
               {% if block.settings.image != blank %}
                 <img

@@ -530,6 +530,7 @@ button {
     width: 20px;
     height: 100%;
     text-align: center;
+    font-size: 12px;
 }
 
 .cart-drawer-item-qty-btn {

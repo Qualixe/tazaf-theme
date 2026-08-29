@@ -1,0 +1,11 @@
+.mega_menu_img {
+    background: #fef2f0;
+}
+
+.add-to-cart-btn.soldout {
+    opacity: 0.5;
+}
+
+.footer-content .footer-list li a {
+    text-transform: none;
+}

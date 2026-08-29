@@ -179,7 +179,7 @@
               <p class="search-history-item-title">most searched</p>
               <div class="search-tags">
                 {% for block in popular_search_blocks %}
-                  <a href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.link | default: '/collections/all' }}" {{ block.shopify_attributes }}>
                     {{ block.settings.title }}
                     <span class="icon">
                       <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -203,7 +203,7 @@
               <p class="search-history-item-title">Explore best category</p>
               <div class="search-categories">
                 {% for block in search_category_blocks %}
-                  <a href="{{ block.settings.link | default: '#' }}" class="search-category" {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.link | default: '/collections/all' }}" class="search-category" {{ block.shopify_attributes }}>
                     <div class="search-category-img">
                       {% if block.settings.image != blank %}
                         <img
@@ -317,6 +317,10 @@
                                 height="100"
                                 loading="lazy"
                               >
+                            </span>
+                            {% else %}
+                            <span class="mobile-menu-tabs-content-item-grid-img">
+                              {{ 'image' |  placeholder_svg_tag: 'mega_menu_img' }}
                             </span>
                           {% endif %}
                           <span class="mobile-menu-tabs-content-item-grid-title">{{ link.title }}</span>
