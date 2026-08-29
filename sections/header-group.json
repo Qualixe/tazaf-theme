@@ -51,7 +51,7 @@
           "type": "menu_item",
           "settings": {
             "title": "Home decor",
-            "link": "",
+            "link": "shopify://collections/home-decor",
             "menu": ""
           }
         },
