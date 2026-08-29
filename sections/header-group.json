@@ -44,7 +44,7 @@
           "settings": {
             "title": "Kids and Toys",
             "link": "shopify://collections/kids-and-toys",
-            "menu": "bedding-megamenu"
+            "menu": "megamenu-for-kids-and-toys"
           }
         },
         "menu_item_GUBMGB": {
@@ -74,8 +74,8 @@
         "menu_item_HGjxfH": {
           "type": "menu_item",
           "settings": {
-            "title": "Home decor",
-            "link": "shopify://collections/home-decor",
+            "title": "Health Care",
+            "link": "shopify://collections/health-care",
             "menu": ""
           }
         },
