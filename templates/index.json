@@ -473,7 +473,7 @@
         "show_countdown": true,
         "countdown_end": "2026-09-05T23:59:59",
         "view_all_label": "View All products",
-        "view_all_link": ""
+        "view_all_link": "shopify://collections/all"
       }
     },
     "category_grid_section_PexNMJ": {
