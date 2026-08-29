@@ -615,7 +615,7 @@
             "icon": "shopify://shop_images/varient-img3.webp",
             "collection": "frontpage",
             "max_products": 6,
-            "view_all_link": ""
+            "view_all_link": "shopify://collections/all"
           }
         },
         "tab_aFiTt4": {
@@ -625,7 +625,7 @@
             "icon": "shopify://shop_images/product-slider-img3.webp",
             "collection": "slippers",
             "max_products": 6,
-            "view_all_link": ""
+            "view_all_link": "shopify://collections/all"
           }
         },
         "tab_dx3r7T": {
@@ -635,7 +635,7 @@
             "icon": "shopify://shop_images/product-slider-img5.webp",
             "collection": "slippers",
             "max_products": 6,
-            "view_all_link": ""
+            "view_all_link": "shopify://collections/all"
           }
         },
         "tab_3mixwd": {
@@ -645,7 +645,7 @@
             "icon": "shopify://shop_images/product-slider-img2.avif",
             "collection": "frontpage",
             "max_products": 6,
-            "view_all_link": ""
+            "view_all_link": "shopify://collections/all"
           }
         }
       },
