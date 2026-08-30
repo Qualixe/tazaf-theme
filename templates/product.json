@@ -185,7 +185,7 @@
               "type": "product-info-specification-tab",
               "settings": {
                 "label": "Specification",
-                "content": "{{ closest.product.metafields.custom.specification | metafield_tag }}"
+                "content": "<p>{{ closest.product.metafields.custom.specification | metafield_tag }}</p>"
               },
               "blocks": {}
             },
@@ -264,6 +264,11 @@
       "settings": {
         "heading": "Explore More in Categories"
       }
+    },
+    "sticky_button_iYEPgU": {
+      "type": "sticky-button",
+      "name": "Product sticky",
+      "settings": {}
     }
   },
   "order": [
@@ -271,6 +276,7 @@
     "review_section_qD8f8A",
     "explore_more_4nBTUH",
     "recently_viewed_product_Q3cwMU",
-    "collection_category_8mjDmJ"
+    "collection_category_8mjDmJ",
+    "sticky_button_iYEPgU"
   ]
 }
