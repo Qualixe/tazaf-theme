@@ -13,8 +13,61 @@
   "sections": {
     "main": {
       "type": "cart-drawer-new",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "cart_drawer_top_gLaHKE": {
+          "type": "cart-drawer-top",
+          "name": "Cart top",
+          "settings": {
+            "title": "Cart"
+          },
+          "blocks": {}
+        },
+        "cart_drawer_progress_LyfxCA": {
+          "type": "cart-drawer-progress",
+          "name": "Cart progress",
+          "settings": {
+            "title": "Free Shipping",
+            "threshold": 350000
+          },
+          "blocks": {}
+        },
+        "cart_drawer_items_yGNmiG": {
+          "type": "cart-drawer-items",
+          "name": "Cart items",
+          "settings": {
+            "title": "You might also like...",
+            "show_recommendations": true,
+            "collection": "cart-product",
+            "limit": 6
+          },
+          "blocks": {}
+        },
+        "cart_drawer_empty_7CJey9": {
+          "type": "cart-drawer-empty",
+          "name": "Cart empty",
+          "settings": {
+            "title": "Your Cart Is Empty",
+            "button_text": "shop now"
+          },
+          "blocks": {}
+        },
+        "cart_drawer_footer_79GXxk": {
+          "type": "cart-drawer-footer",
+          "name": "Cart footer",
+          "settings": {
+            "total_title": "Total",
+            "checkout_text": "Secure checkout"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "cart_drawer_top_gLaHKE",
+        "cart_drawer_progress_LyfxCA",
+        "cart_drawer_items_yGNmiG",
+        "cart_drawer_empty_7CJey9",
+        "cart_drawer_footer_79GXxk"
+      ],
       "name": "Cart drawer",
       "settings": {}
     }

@@ -25,7 +25,7 @@
         "product_info_price_UjtKhD": {
           "type": "product-info-price",
           "settings": {},
-          "blocks": {} 
+          "blocks": {}
         },
         "product_info_variant_picker_nwNVew": {
           "type": "product-info-variant-picker",
@@ -44,9 +44,6 @@
               "type": "product-info-combo-option",
               "settings": {
                 "title": "Buy 1 product",
-                "price": "tk1390.00",
-                "unit_price": "",
-                "savings_text": "",
                 "badge_text": "",
                 "checked": true
               },
@@ -56,9 +53,6 @@
               "type": "product-info-combo-option",
               "settings": {
                 "title": "Buy 2 product",
-                "price": "tk2290.00",
-                "unit_price": "tk1145/pair",
-                "savings_text": "save 15%",
                 "badge_text": "Best Seller",
                 "checked": false
               },
@@ -68,9 +62,6 @@
               "type": "product-info-combo-option",
               "settings": {
                 "title": "Buy 3 product",
-                "price": "tk3030.00",
-                "unit_price": "tk1010/pair",
-                "savings_text": "save 25%",
                 "badge_text": "Best value",
                 "checked": false
               },
@@ -214,10 +205,6 @@
       "type": "review-section",
       "name": "Review tabs",
       "settings": {
-        "heading": "Ratings & Reviews",
-        "write_review_url": "",
-        "all_product_reviews_url": "",
-        "category_collection": "",
         "all_category_reviews_url": ""
       }
     },
@@ -244,11 +231,7 @@
       "type": "collection-category",
       "name": "Category slider",
       "settings": {
-        "heading": "Explore More in Categories",
-        "collection_list": [
-          "frontpage",
-          "slippers"
-        ]
+        "heading": "Explore More in Categories"
       }
     },
     "17877257863705f637": {
