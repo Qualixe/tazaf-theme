@@ -1291,6 +1291,8 @@ document.addEventListener("click", ({ target }) => {
 // review-tab-section js end--
 
 // Sticky Add to Cart
+
+
 (() => {
   const stickyCart = document.querySelector(".sticky-add-to-cart-section");
   if (!stickyCart) return;
@@ -1302,6 +1304,7 @@ document.addEventListener("click", ({ target }) => {
   updateStickyCart();
   window.addEventListener("scroll", updateStickyCart, { passive: true });
 })();
+
 
 (() => {
   const floatingCart = document.querySelector(".product-floating-cart");

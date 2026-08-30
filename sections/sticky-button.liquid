@@ -1,0 +1,216 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign save_percentage = 0
+  if current_variant.compare_at_price > current_variant.price
+    assign save_percentage = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round
+  endif
+
+  assign preorder = false
+  for tag in product.tags
+    if tag contains 'preorder'
+      assign preorder = true
+    else 
+      assign preorder = false
+    endif
+  endfor
+%}
+
+<section
+  class="sticky-add-to-cart-section"
+  data-product-id="{{ product.id }}"
+  data-product-handle="{{ product.handle }}"
+  data-current-variant-id="{{ current_variant.id }}"
+  data-variant-available="{{ current_variant.available }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="sticky-add-to-cart-left">
+    <div class="sticky-prduct-img">
+      {% assign sticky_image = current_variant.featured_image | default: product.featured_image %}
+      {% if sticky_image != blank %}
+        <img
+          src="{{ sticky_image | image_url: width: 200 }}"
+          alt="{{ sticky_image.alt | default: product.title | escape }}"
+          width="80"
+          height="80"
+          loading="lazy"
+        >
+      {% endif %}
+    </div>
+
+    <div class="sticky-prduct-content">
+      <p class="sticky-add-to-cart-title">{{ product.title }}</p>
+      <div class="sticky-prduct-price">
+        <div class="card-price-wrap">
+          <p class="latest-price" data-sticky-price>{{ current_variant.price | money_without_trailing_zeros }}</p>
+
+          {% if current_variant.compare_at_price > current_variant.price %}
+            <p class="previous-price" data-sticky-compare-price>{{ current_variant.compare_at_price | money_without_trailing_zeros }}</p>
+            <p class="product-price-save" data-sticky-save>{{ save_percentage }}% OFF</p>
+          {% else %}
+            <p class="previous-price" data-sticky-compare-price hidden></p>
+            <p class="product-price-save" data-sticky-save hidden></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sticky-add-to-cart-right">
+    <div class="sticky-bar-btn-wrap">
+      <button
+        class="btn sticky-add-to-cart-button"
+        type="button"
+        data-variant-id="{{ current_variant.id }}"
+        data-qty="1"
+        {% unless current_variant.available %}disabled{% endunless %}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="20" r="1"></circle>
+          <circle cx="18" cy="20" r="1"></circle>
+          <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"></path>
+        </svg>
+        <span class="sticky-add-to-cart-label">
+            {% if preorder %}
+                {% if current_variant.available !=true %}
+                    Soldout
+                {% elsif preorder %}
+                    Pre Order
+                {% endif %}
+            {% else %}
+                {% if current_variant.available %}
+                    Add To Cart
+                {% else %}
+                    Sold Out
+                {% endif %}
+            {% endif %}
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const section = document.currentScript && document.currentScript.previousElementSibling;
+    if (!section) return;
+
+    const productId = Number(section.dataset.productId);
+    const button = section.querySelector('.sticky-add-to-cart-button');
+    const priceEl = section.querySelector('[data-sticky-price]');
+    const comparePriceEl = section.querySelector('[data-sticky-compare-price]');
+    const saveEl = section.querySelector('[data-sticky-save]');
+    const imageEl = section.querySelector('.sticky-prduct-img img');
+    const priceLabel = button?.querySelector('.sticky-add-to-cart-label');
+
+    function formatMoney(cents) {
+      const value = Number(cents || 0) / 100;
+      const formatter = new Intl.NumberFormat('en-BD', {
+        style: 'currency',
+        currency: 'BDT',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      });
+      return formatter.format(value);
+    }
+
+    function updatePriceInfo(variant) {
+      if (!variant || !priceEl) return;
+
+      const currentPrice = Number(variant.price || 0);
+      const comparePrice = Number(variant.compare_at_price || 0);
+      const onSale = comparePrice > currentPrice;
+
+      priceEl.textContent = formatMoney(currentPrice);
+
+      if (comparePriceEl) {
+        if (onSale) {
+          comparePriceEl.hidden = false;
+          comparePriceEl.textContent = formatMoney(comparePrice);
+        } else {
+          comparePriceEl.hidden = true;
+          comparePriceEl.textContent = '';
+        }
+      }
+
+      if (saveEl) {
+        if (onSale) {
+          const discount = Math.round(((comparePrice - currentPrice) / comparePrice) * 100);
+          saveEl.hidden = false;
+          saveEl.textContent = `${discount}% OFF`;
+        } else {
+          saveEl.hidden = true;
+          saveEl.textContent = '';
+        }
+      }
+    }
+
+    function updateVariant(variant) {
+      if (!variant || !button) return;
+
+      button.dataset.variantId = variant.id;
+      button.dataset.qty = '1';
+      button.disabled = !variant.available;
+
+      if (priceLabel) {
+        priceLabel.textContent = variant.available ? 'Add to Cart' : 'Sold out';
+      }
+
+      updatePriceInfo(variant);
+
+      if (variant.featured_image && imageEl) {
+        imageEl.src = variant.featured_image.src || imageEl.src;
+      }
+    }
+
+    function handleAddToCart() {
+      const variantId = button?.dataset.variantId;
+      if (!variantId) return;
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: Number(variantId), quantity: Number(button.dataset.qty || 1) })
+      })
+        .then((response) => response.json())
+        .then(() => fetch('/cart.js'))
+        .then((response) => response.json())
+        .then((cart) => {
+          document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart } }));
+          const drawer = document.querySelector('.cart-drawer');
+          if (drawer) {
+            drawer.classList.add('active');
+          }
+        })
+        .catch((error) => {
+          console.error('Sticky add to cart failed:', error);
+        });
+    }
+
+    button?.addEventListener('click', handleAddToCart);
+
+    document.addEventListener('shopify:product:select', function (event) {
+      const detail = event?.detail || {};
+      const selectedProductId = Number(detail.product?.id || productId);
+      if (!productId || selectedProductId !== productId) return;
+
+      const variant = detail.resource || detail.variant;
+      if (!variant) return;
+
+      updateVariant(variant);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product sticky",
+  "enabled_on": {"templates": ["product"]},
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product sticky",
+      "category": "Product"  
+    } 
+  ]
+}
+{% endschema %}
