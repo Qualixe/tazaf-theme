@@ -43,7 +43,9 @@
             "product_info_combo_option_jgQhFG": {
               "type": "product-info-combo-option",
               "settings": {
+                "qty": 1,
                 "title": "Buy 1 product",
+                "discount": 10,
                 "badge_text": "",
                 "checked": true
               },
@@ -52,7 +54,9 @@
             "product_info_combo_option_8FK8C9": {
               "type": "product-info-combo-option",
               "settings": {
+                "qty": 2,
                 "title": "Buy 2 product",
+                "discount": 10,
                 "badge_text": "Best Seller",
                 "checked": false
               },
@@ -61,8 +65,10 @@
             "product_info_combo_option_xeTgdW": {
               "type": "product-info-combo-option",
               "settings": {
+                "qty": 3,
                 "title": "Buy 3 product",
-                "badge_text": "Best value",
+                "discount": 10,
+                "badge_text": "Recommend",
                 "checked": false
               },
               "blocks": {}
@@ -85,22 +91,35 @@
           "blocks": {
             "product_info_add_to_cart_button_X8bEin": {
               "type": "product-info-add-to-cart-button",
-              "settings": {},
+              "settings": {
+                "atc": "Add to Cart",
+                "soldout": "Sold Out",
+                "preorder": "Preorder"
+              },
               "blocks": {}
             },
             "product_info_buy_now_button_wFgggz": {
               "type": "product-info-buy-now-button",
-              "settings": {},
+              "settings": {
+                "buy_now": "Buy Now"
+              },
               "blocks": {}
             },
             "product_info_whatsapp_button_ptamhM": {
               "type": "product-info-whatsapp-button",
-              "settings": {},
+              "settings": {
+                "button": "Order on whatsapp",
+                "number": 8801318552266,
+                "message": "Hello, I want to know the price"
+              },
               "blocks": {}
             },
             "product_info_call_button_BHPjjK": {
               "type": "product-info-call-button",
-              "settings": {},
+              "settings": {
+                "button": "Call for Order",
+                "number": 8801318552266
+              },
               "blocks": {}
             }
           },
