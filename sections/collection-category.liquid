@@ -1,3 +1,7 @@
+{% assign collection_list = product.metafields.custom.collections.value %}
+{% if collection_list.size > 0 %}
+  
+
 <section class="category-section product-category collection-category">
   <div class="container">
     <div class="category-section-heading">
@@ -12,15 +16,21 @@
       <div class="category-slider-wrapper">
         <div class="swiper collection-category-slider">
           <div class="swiper-wrapper">
-            {% for collection in section.settings.collection_list %}
+            {% for collection in collection_list %}
               {% assign collection_image_alt = collection.featured_image.alt | default: collection.title | escape %}
               <div class="swiper-slide">
                 <a href="{{ collection.url }}" class="category-item">
                   <div class="img">
-                    {% if collection.featured_image != blank %}
+                    {% if collection.image != blank %}
+                      {{
+                        collection.image
+                        | image_url: width: 1000
+                        | image_tag: alt: collection_image_alt, loading: 'lazy'
+                      }}
+                    {% else %}
                       {{
                         collection.featured_image
-                        | image_url: width: 300
+                        | image_url: width: 1000
                         | image_tag: alt: collection_image_alt, loading: 'lazy'
                       }}
                     {% endif %}
@@ -39,6 +49,7 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 {% schema %}
 {
@@ -49,11 +60,6 @@
       "id": "heading",
       "label": "Heading",
       "default": "Explore More in Categories"
-    },
-    {
-      "type": "collection_list",
-      "id": "collection_list",
-      "label": "Collections"
     }
   ],
   "presets": [

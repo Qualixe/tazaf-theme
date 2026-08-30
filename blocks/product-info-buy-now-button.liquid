@@ -11,7 +11,7 @@
       <path d="M6 8h12l1 12H5L6 8Z"></path>
       <path d="M9 8a3 3 0 0 1 6 0"></path>
     </svg>
-    buy now
+    {{ block.settings.buy_now }}
   </button>
 </form>
 
@@ -19,7 +19,14 @@
 {
   "name": "Buy now button",
   "tag": null,
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "buy_now",
+      "label": "Buy Now",
+      "default" : "Buy Now"
+    }
+  ],
   "presets": [
     { "name": "Buy now button", "category": "Product" }
   ]

@@ -9,3 +9,125 @@
 .footer-content .footer-list li a {
     text-transform: none;
 }
+
+div#judgeme_product_reviews > .jm-stack {
+    padding: 0;
+}
+
+.card-slider-item {
+    height: 100%;
+}
+
+.swiper-slide {
+    height: auto;
+}
+
+.product-floating-cart {
+    width: 70px;
+    position: fixed;
+    right: 22px;
+    top: 50%;
+    z-index: 2200;
+    transform: translateY(-50%);
+    display: block;
+    align-items: center;
+    justify-content: center;
+    /* padding: 8px 10px; */
+    overflow: hidden;
+    border: 0;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    /* color: #fff; */
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.floating-top {
+    background: var(--brand-color);
+    text-align: center;
+    display: block;
+    padding: 5px;
+}
+
+.product-floating-cart:hover {
+    transform: translateY(-2px);
+}
+
+.product-floating-cart__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.product-floating-cart__icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.product-floating-cart__meta {
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.product-floating-cart__count {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: #fff;
+}
+
+.product-floating-cart__price {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--brand-color);
+    display: block;
+    padding: 5px; 
+}
+
+.pre-order {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+    background: green;
+    color: #fff;
+    font-weight: 600;
+    padding: 5px 10px;
+    line-height: 1;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.card-price-wrap .card-badge {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width: 767px) {
+    .product-floating-cart {
+        right: 16px;
+        padding: 0;
+        border-radius: 5px;
+    }
+
+    .product-floating-cart__count {
+        font-size: 10px;
+    }
+
+    .product-floating-cart__price {
+        font-size: 12px;
+    }
+}

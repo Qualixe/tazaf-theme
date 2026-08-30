@@ -1,11 +1,23 @@
 {% liquid
   assign product = closest.product
   assign current_variant = product.selected_or_first_available_variant
+  assign s = block.settings
+
+  assign preorder = false
+  for tag in product.tags
+    if tag contains 'preorder'
+      assign preorder = true
+    else 
+      assign preorder = false
+    endif
+  endfor
+        
 %}
 <button
   type="button"
   class="btn"
   data-variant-id="{{ current_variant.id }}"
+  data-qty="1"
   {% unless current_variant.available %}
     disabled
   {% endunless %}
@@ -16,18 +28,46 @@
     <circle cx="18" cy="20" r="1"></circle>
     <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"></path>
   </svg>
-  {% if current_variant.available %}
-    Add to Cart
+  {% if preorder %}
+      {% if current_variant.available !=true %}
+          {{ s.soldout }}
+      {% elsif preorder %}
+          {{ s.preorder }}
+      {% endif %}
   {% else %}
-    Sold out
+    {% if current_variant.available %}
+        {{ s.atc }}
+    {% else %}
+        {{ s.soldout }}
+    {% endif %}
   {% endif %}
+  
 </button>
 
 {% schema %}
 {
   "name": "Add to cart button",
   "tag": null,
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "atc",
+      "label": "Add To Cart",
+      "default" : "Add to Cart"
+    },
+    {
+      "type": "text",
+      "id": "soldout",
+      "label": "Soldout",
+      "default" : "Sold Out"
+    },
+    {
+      "type": "text",
+      "id": "preorder",
+      "label": "preorder",
+      "default" : "Preorder"
+    }
+  ],
   "presets": [
     { "name": "Add to cart button", "category": "Product" }
   ]

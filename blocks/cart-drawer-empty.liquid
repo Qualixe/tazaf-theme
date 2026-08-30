@@ -1,0 +1,33 @@
+<div class="cart-drawer-empty" {{ block.shopify_attributes }}>
+  <div class="cart-drawer-empty-text">
+    <p>{{ block.settings.title | default: 'Your Cart Is Empty' }}</p>
+    <a href="{{ routes.all_products_collection_url }}" class="btn">{{ block.settings.button_text | default: 'shop now' }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart empty",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Empty title",
+      "default": "Your Cart Is Empty"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "shop now"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart empty",
+      "category": "Cart drawer"
+    }
+  ]
+}
+{% endschema %}

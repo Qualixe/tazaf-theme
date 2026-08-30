@@ -4,7 +4,7 @@
 %}
 <div class="product-desktop-content" {{ block.shopify_attributes }}>
   <div class="product-price-wrap">
-    <p class="latest-price" data-price>{{ current_variant.price | money }}</p>
+    <p class="latest-price" data-price>{{ current_variant.price | money_without_trailing_zeros }}</p>
     <p
       class="previous-price"
       data-compare-price
@@ -12,7 +12,7 @@
         hidden
       {% endunless %}
     >
-      {{ current_variant.compare_at_price | money }}
+      {{ current_variant.compare_at_price | money_without_trailing_zeros }}
     </p>
     <p
       class="product-price-save"

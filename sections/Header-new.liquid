@@ -3,9 +3,10 @@
   assign search_term_blocks = section.blocks | where: 'type', 'search_term'
   assign popular_search_blocks = section.blocks | where: 'type', 'popular_search'
   assign search_category_blocks = section.blocks | where: 'type', 'search_category'
+  assign tmpt = template.name
 %}
 
-<header class="header home-nav-active home-header">
+<header class="header home-nav-active{% if tmpt contains 'index' %} home-header{% elsif tmpt contains 'product' %} product-page-header{% endif %}">
   <div class="container">
     <nav class="navbar">
       <div class="navbar-left">

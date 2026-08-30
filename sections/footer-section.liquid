@@ -122,10 +122,8 @@
         <p class="copyright-text">
           &copy; Copyright Reserved to
           <a href="{{ routes.root_url }}"><strong>{{ section.settings.copyright_owner | default: shop.name }}</strong></a>
-          {% if section.settings.credit_text != blank %}
             & made by
-            <a href="{{ section.settings.credit_link | default: '/collections/all' }}"><strong>{{ section.settings.credit_text }}</strong></a>
-          {% endif %}.
+            <a href="https://qualixe.com" target="_blank"><strong>Qualixe</strong></a>
         </p>
         <div class="copyright-links">
           {% if shop.shipping_policy != blank %}

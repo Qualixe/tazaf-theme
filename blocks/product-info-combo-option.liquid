@@ -7,23 +7,30 @@
     type="radio"
     name="bundle-{{ section.id }}"
     value="{{ block.id }}"
+    data-qty="{{ block.settings.qty }}"
     id="{{ field_id }}"
+    class="bundle_input"
     {% if block.settings.checked %}
       checked
     {% endif %}
   >
+  {% assign discnt = block.settings.discount %}
+  {% assign qty = block.settings.qty %}
   <label class="bundle-label" for="{{ field_id }}">
     <div class="bundle-content-wrap">
       <div class="bundle-content">
         <p class="bundle-title">{{ block.settings.title }}</p>
-        {% if block.settings.savings_text != blank %}
-          <span class="bundle-savings">{{ block.settings.savings_text }}</span>
+        {% if discnt > 0 %}
+          <span class="bundle-savings">Save {{ discnt }}%</span>
         {% endif %}
       </div>
+      
       <div class="bundle-price">
-        <p class="bundle-total-price">{{ block.settings.price }}</p>
-        {% if block.settings.unit_price != blank %}
-          <p class="bundle-single-price">{{ block.settings.unit_price }}</p>
+        <p class="bundle-total-price">{{ product.selected_or_first_available_variant.price  | times: qty |  money_without_trailing_zeros }}</p>
+        {% if discnt > 0 %}
+          <p class="bundle-single-price">
+            {{ product.selected_or_first_available_variant.price |  divided_by: qty |  money_without_trailing_zeros }} / Pair
+          </p>
         {% endif %}
       </div>
     </div>
@@ -36,31 +43,32 @@
   "tag": null,
   "settings": [
     {
+      "type": "number",
+      "id": "qty",
+      "label": "Value",
+      "default": 1,
+      "placeholder": "Required"
+    },
+    {
       "type": "text",
       "id": "title",
       "label": "Title",
       "default": "Buy 1 product"
     },
     {
-      "type": "text",
-      "id": "price",
-      "label": "Total price",
-      "default": "tk1390.00"
-    },
-    {
-      "type": "text",
-      "id": "unit_price",
-      "label": "Unit price (optional)"
-    },
-    {
-      "type": "text",
-      "id": "savings_text",
-      "label": "Savings text (optional)"
+      "type": "range",
+      "id": "discount",
+      "label": "Discount",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 10
     },
     {
       "type": "text",
       "id": "badge_text",
-      "label": "Badge text (optional)"
+      "label": "Badge Text (optional)"
     },
     {
       "type": "checkbox",

@@ -349,6 +349,11 @@ document
     }
   }
 
+  function getItemVariantTitle(item) {
+    const variantTitle = item?.variant_title ?? item?.variant?.title ?? "";
+    return variantTitle ? String(variantTitle) : "";
+  }
+
   function updateSummary(cart) {
     const countEl = drawer.querySelector(".cart-drawer-title span");
     if (countEl) {
@@ -390,13 +395,14 @@ document
           <div class="cart-drawer-item-content-inner">
             <div class="cart-drawer-item-content">
               <a href="${item.url}" class="cart-drawer-item-title">${item.product_title}</a>
+              <small>${getItemVariantTitle(item)}</small>
               <div class="content-btm">
                 <div class="cart-drawer-item-qty-btn-wrap">
                   <button class="cart-drawer-item-qty-btn" data-action="decrease" type="button">-</button>
                   <input type="text" class="cart-drawer-item-qty-input" value="${item.quantity}" readonly>
                   <button class="cart-drawer-item-qty-btn" data-action="increase" type="button">+</button>
                 </div>
-                <p class="cart-drawer-item-price"></p>
+                <p class="cart-drawer-item-price"></p> 
               </div>
             </div>
           </div>
@@ -467,6 +473,24 @@ document
         const added = cart.items.find((i) => i.variant_id === Number(variantId));
         if (added) upsertRow(added);
         updateSummary(cart);
+
+        const floatingCart = document.querySelector(".product-floating-cart");
+        if (floatingCart) {
+          const countEl = floatingCart.querySelector(".product-floating-cart__count");
+          const priceEl = floatingCart.querySelector(".product-floating-cart__price");
+          if (countEl && priceEl) {
+            const itemCount = Number(cart?.item_count || 0);
+            countEl.textContent = `${itemCount} ${itemCount === 1 ? "Item" : "Items"}`;
+            const value = Math.max(Number(cart?.total_price || 0), 0) / 100;
+            const bdt = value.toLocaleString("en-BD", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            });
+            priceEl.textContent = `৳${bdt}`;
+          }
+        }
+
+        document.dispatchEvent(new CustomEvent("cart:updated", { detail: { cart } }));
         openDrawer();
       })
       .finally(() => {
@@ -515,15 +539,53 @@ document
   // "Add to cart" buttons can live anywhere on the page (product cards, tabs,
   // the cart drawer's own recommendation slider) - all of them add via AJAX
   // and open this drawer on success, instead of navigating to the cart page.
+  function getSelectedBundleQty() {
+    const checkedBundle = document.querySelector('.bundle_input:checked');
+    const value = checkedBundle ? Number.parseInt(checkedBundle.dataset.qty || checkedBundle.value || '', 10) : NaN;
+    return Number.isFinite(value) && value > 0 ? value : null;
+  }
+
+  function syncBundleQtyToForm(bundleQty) {
+    const quantityInputs = document.querySelectorAll('.quantity-count, input[name="quantity"]');
+    quantityInputs.forEach((input) => {
+      if (input instanceof HTMLInputElement) {
+        input.value = String(bundleQty);
+      }
+    });
+
+    const addButtons = document.querySelectorAll('[data-variant-id]');
+    addButtons.forEach((button) => {
+      if (button instanceof HTMLElement) {
+        button.dataset.qty = String(bundleQty);
+      }
+    });
+  }
+
   document.addEventListener("click", (e) => {
     const addBtn = e.target.closest("[data-variant-id]");
     if (!addBtn) return;
 
     e.preventDefault();
+
     const qtyInput = addBtn.closest(".product-content-area")?.querySelector(".quantity-count");
-    const quantity = qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1;
+    const activeBundleQty = getSelectedBundleQty();
+    const inputQty = qtyInput ? Number.parseInt(qtyInput.value, 10) : NaN;
+    const quantity = activeBundleQty !== null
+      ? activeBundleQty
+      : Number.isFinite(inputQty) && inputQty > 0
+        ? inputQty
+        : 1;
+
+    if (activeBundleQty === null && qtyInput) {
+      delete addBtn.dataset.qty;
+    } else {
+      addBtn.dataset.qty = String(quantity);
+    }
+
     addToCart(addBtn.dataset.variantId, addBtn, quantity);
   });
+
+
 })();
 // cart-drawer ajax js end---
 
@@ -1241,6 +1303,45 @@ document.addEventListener("click", ({ target }) => {
   window.addEventListener("scroll", updateStickyCart, { passive: true });
 })();
 
+(() => {
+  const floatingCart = document.querySelector(".product-floating-cart");
+  if (!floatingCart) return;
+
+  const countEl = floatingCart.querySelector(".product-floating-cart__count");
+  const priceEl = floatingCart.querySelector(".product-floating-cart__price");
+
+  const formatMoney = (cents) => {
+    const value = Math.max(cents || 0, 0) / 100;
+    const bdt = value.toLocaleString("en-BD", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    return `৳ ${bdt}`;
+  };
+
+  const updateFloatingCart = (cart) => {
+    if (!countEl || !priceEl) return;
+
+    const itemCount = Number(cart?.item_count || 0);
+    countEl.textContent = `${itemCount} ${itemCount === 1 ? "Item" : "Items"}`;
+    priceEl.textContent = formatMoney(Number(cart?.total_price || 0));
+  };
+
+  const refreshCart = async () => {
+    try {
+      const response = await fetch("/cart.js");
+      const cart = await response.json();
+      updateFloatingCart(cart);
+    } catch (error) {
+      // Ignore cart fetch issues silently while the drawer itself handles realtime updates.
+    }
+  };
+
+  refreshCart();
+  document.addEventListener("cart:updated", refreshCart);
+  document.addEventListener("shopify:section:load", refreshCart);
+})();
+
 // Footer dropdown responsive accordion js start --
 document.addEventListener("DOMContentLoaded", () => {
   const breakpoint = window.matchMedia("(max-width: 992px)");
@@ -1303,3 +1404,58 @@ document.addEventListener("DOMContentLoaded", () => {
   breakpoint.addEventListener("change", setupAccordion);
 });
 // Footer dropdown responsive accordion js end --
+
+
+// quantity update by bundle click
+
+document.addEventListener('change', (event) => {
+  const bundleInput = event.target instanceof HTMLElement ? event.target.closest('.bundle_input') : null;
+
+  if (!bundleInput) return;
+
+  const selectedQty = Number.parseInt(bundleInput.dataset.qty || bundleInput.value || '1', 10);
+  if (!Number.isFinite(selectedQty) || selectedQty < 1) return;
+
+  const form = bundleInput.closest('form');
+  if (form) {
+    const quantityInput = form.querySelector('input[name="quantity"]');
+    if (quantityInput instanceof HTMLInputElement) {
+      quantityInput.value = selectedQty.toString();
+    }
+
+    const quantitySelector = form.querySelector('quantity-selector-component');
+    if (quantitySelector && typeof quantitySelector.setValue === 'function') {
+      quantitySelector.setValue(selectedQty.toString());
+
+      if (typeof quantitySelector.onQuantityChange === 'function') {
+        quantitySelector.onQuantityChange();
+      }
+
+      if (typeof quantitySelector.updateButtonStates === 'function') {
+        quantitySelector.updateButtonStates();
+      }
+    }
+
+    const allQtyInputs = form.querySelectorAll('.quantity-count, input[name="quantity"]');
+    allQtyInputs.forEach((input) => {
+      if (input instanceof HTMLInputElement) {
+        input.value = selectedQty.toString();
+      }
+    });
+
+    const buyNowQtyInput = form.querySelector('[data-buy-now-quantity]');
+    if (buyNowQtyInput instanceof HTMLInputElement) {
+      buyNowQtyInput.value = selectedQty.toString();
+    }
+  }
+
+  const productForm = bundleInput.closest('product-form-component');
+  if (productForm) {
+    productForm.dataset.quantityDefault = selectedQty.toString();
+  }
+
+  const addButton = document.querySelector('[data-variant-id]');
+  if (addButton instanceof HTMLElement) {
+    addButton.dataset.qty = selectedQty.toString();
+  }
+});

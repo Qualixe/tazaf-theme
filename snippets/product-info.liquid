@@ -1,0 +1,139 @@
+<script>
+  (function () {
+    var root = document.querySelector('.product-content-area');
+    var variantsEl = document.querySelector('[data-product-variants]');
+    if (!root || !variantsEl) return;
+
+    var variants = JSON.parse(variantsEl.textContent);
+    var optionInputs = root.querySelectorAll('.product-varient-input');
+    var priceEl = root.querySelector('[data-price]');
+    var comparePriceEl = root.querySelector('[data-compare-price]');
+    var priceSaveEl = root.querySelector('[data-price-save]');
+    var selectedLabels = root.querySelectorAll('[data-selected-value]');
+    var addToCartBtn = root.querySelector('.product-btn-wrap [data-variant-id]');
+    var buyNowForm = root.querySelector('.product-buy-now-form');
+    var buyNowIdInput = buyNowForm ? buyNowForm.querySelector('[data-buy-now-id]') : null;
+    var buyNowQtyInput = buyNowForm ? buyNowForm.querySelector('[data-buy-now-quantity]') : null;
+    var buyNowBtn = buyNowForm ? buyNowForm.querySelector('button') : null;
+    var quantityInput = root.querySelector('.quantity-count');
+
+    function formatMoney(cents) {
+      var format = window.themeMoneyFormat || '${{amount}}';
+      var value = Math.max(cents, 0) / 100;
+      var parts = value.toFixed(2).split('.');
+      var withComma = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return format
+        .replace(/\{\{\s*amount_no_decimals_with_comma_separator\s*\}\}/, withComma)
+        .replace(/\{\{\s*amount_with_comma_separator\s*\}\}/, withComma + '.' + parts[1])
+        .replace(/\{\{\s*amount_no_decimals\s*\}\}/, withComma)
+        .replace(/\{\{\s*amount\s*\}\}/, withComma + '.' + parts[1]);
+    }
+
+    function getSelections() {
+      var selections = [];
+      optionInputs.forEach(function (input) {
+        if (input.checked) selections[Number(input.dataset.optionIndex)] = input.value;
+      });
+      return selections;
+    }
+
+    function findMatchingVariant(selections) {
+      return variants.find(function (variant) {
+        return selections.every(function (value, index) {
+          return value === undefined || variant.options[index] === value;
+        });
+      });
+    }
+
+    function updateAvailability(selections) {
+      optionInputs.forEach(function (input) {
+        var index = Number(input.dataset.optionIndex);
+        var testSelections = selections.slice();
+        testSelections[index] = input.value;
+
+        var available = variants.some(function (variant) {
+          return (
+            variant.available &&
+            testSelections.every(function (value, i) {
+              return value === undefined || variant.options[i] === value;
+            })
+          );
+        });
+
+        input.disabled = !available;
+        var field = input.closest('.product-varient-input-field');
+        if (field) field.classList.toggle('disabled', !available);
+      });
+    }
+
+    function updateUI(variant) {
+      var available = !!(variant && variant.available);
+
+      if (addToCartBtn) {
+        addToCartBtn.dataset.variantId = variant ? variant.id : '';
+        addToCartBtn.disabled = !available;
+        addToCartBtn.lastChild.textContent = available ? 'Add to Cart' : 'Sold out';
+      }
+
+      if (buyNowIdInput) buyNowIdInput.value = variant ? variant.id : '';
+      if (buyNowBtn) buyNowBtn.disabled = !available;
+
+      if (!variant) return;
+
+      if (priceEl) priceEl.textContent = formatMoney(variant.price);
+
+      var onSale = variant.compare_at_price && variant.compare_at_price > variant.price;
+      if (comparePriceEl) {
+        comparePriceEl.hidden = !onSale;
+        if (onSale) comparePriceEl.textContent = formatMoney(variant.compare_at_price);
+      }
+      if (priceSaveEl) {
+        priceSaveEl.hidden = !onSale;
+        if (onSale) {
+          var pct = Math.round(((variant.compare_at_price - variant.price) / variant.compare_at_price) * 100);
+          priceSaveEl.textContent = pct + '% OFF';
+        }
+      }
+
+      selectedLabels.forEach(function (label, i) {
+        if (variant.options[i] !== undefined) label.textContent = variant.options[i];
+      });
+
+      if (variant.featured_image && window.productSwiper) {
+        var slide = document.querySelector('.product-slider [data-media-id="' + variant.featured_image.id + '"]');
+        if (slide) {
+          var index = Array.prototype.indexOf.call(slide.parentElement.children, slide);
+          window.productSwiper.slideToLoop(index);
+        }
+      }
+    }
+
+    root.addEventListener('change', function (e) {
+      if (!e.target.classList.contains('product-varient-input')) return;
+
+      var selections = getSelections();
+      updateAvailability(selections);
+      updateUI(findMatchingVariant(selections));
+    });
+
+    if (quantityInput) {
+      quantityInput.addEventListener('change', function () {
+        const bundleChecked = document.querySelector('.bundle_input:checked');
+        if (bundleChecked) {
+          const bundleQty = Number.parseInt(bundleChecked.dataset.qty || bundleChecked.value || '', 10);
+          if (Number.isFinite(bundleQty) && bundleQty > 0) {
+            quantityInput.value = String(bundleQty);
+          } else {
+            quantityInput.value = Math.max(1, parseInt(quantityInput.value, 10) || 1);
+          }
+        } else {
+          quantityInput.value = Math.max(1, parseInt(quantityInput.value, 10) || 1);
+        }
+
+        if (buyNowQtyInput) buyNowQtyInput.value = quantityInput.value;
+      });
+    }
+
+    updateAvailability(getSelections());
+  })();
+</script>

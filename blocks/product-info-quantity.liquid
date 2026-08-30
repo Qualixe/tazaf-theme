@@ -1,3 +1,6 @@
+{% assign qty_type = product.metafields.custom.quantity_type %}
+
+{% if qty_type contains 'Default' or qty_type ==blank %}
 <div class="product-quantity-wrap" {{ block.shopify_attributes }}>
   <h2 class="product-quantity-title">Quantity:</h2>
   <div class="product-quantity">
@@ -20,12 +23,15 @@
     </button>
   </div>
 </div>
+{% endif %}
 
 {% schema %}
 {
   "name": "Quantity selector",
   "tag": null,
-  "settings": [],
+  "settings": [
+    
+  ],
   "presets": [
     { "name": "Quantity selector", "category": "Product" }
   ]

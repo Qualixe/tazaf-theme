@@ -9,6 +9,8 @@
   assign whatsapp_message = 'Hi, I want to order: ' | append: product.title | append: ' ' | append: absolute_product_url
 %}
 
+{% render 'breadcrumb', type: 'product' %} 
+
 <section class="product-section">
   <div class="container">
     <div class="product-page-content-wrap">
@@ -88,7 +90,7 @@
               {% when 'price' %}
                 <div class="product-desktop-content" {{ block.shopify_attributes }}>
                   <div class="product-price-wrap">
-                    <p class="latest-price" data-price>{{ current_variant.price | money }}</p>
+                    <p class="latest-price" data-price>{{ current_variant.price | money_without_trailing_zeros }}</p>
                     <p
                       class="previous-price"
                       data-compare-price
@@ -96,7 +98,7 @@
                         hidden
                       {% endunless %}
                     >
-                      {{ current_variant.compare_at_price | money }}
+                      {{ current_variant.compare_at_price | money_without_trailing_zeros }}
                     </p>
                     <p
                       class="product-price-save"
@@ -234,6 +236,17 @@
           {% endfor %}
         </div>
 
+        {% liquid
+          assign preorder = false
+          for tag in product.tags
+            if tag contains 'preorder'
+              assign preorder = true
+            else 
+              assign preorder = false
+            endif
+          endfor
+        %}
+
         {% for block in section.blocks %}
           {% if block.type == 'buy_buttons' %}
             <div class="product-btn-wrap" {{ block.shopify_attributes }}>
@@ -250,8 +263,11 @@
                   <circle cx="18" cy="20" r="1"></circle>
                   <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"></path>
                 </svg>
+                
                 {% if current_variant.available %}
                   Add to Cart
+                {% elsif preorder %}
+                    Pre Order
                 {% else %}
                   Sold out
                 {% endif %}
@@ -514,143 +530,6 @@
 {% render 'product-modal' %}
 <script type="application/json" data-product-variants>
   {{ product.variants | json }}
-</script>
-
-<script>
-  (function () {
-    var root = document.querySelector('.product-content-area');
-    var variantsEl = document.querySelector('[data-product-variants]');
-    if (!root || !variantsEl) return;
-
-    var variants = JSON.parse(variantsEl.textContent);
-    var optionInputs = root.querySelectorAll('.product-varient-input');
-    var priceEl = root.querySelector('[data-price]');
-    var comparePriceEl = root.querySelector('[data-compare-price]');
-    var priceSaveEl = root.querySelector('[data-price-save]');
-    var selectedLabels = root.querySelectorAll('[data-selected-value]');
-    var addToCartBtn = root.querySelector('.product-btn-wrap [data-variant-id]');
-    var buyNowForm = root.querySelector('.product-buy-now-form');
-    var buyNowIdInput = buyNowForm ? buyNowForm.querySelector('[data-buy-now-id]') : null;
-    var buyNowQtyInput = buyNowForm ? buyNowForm.querySelector('[data-buy-now-quantity]') : null;
-    var buyNowBtn = buyNowForm ? buyNowForm.querySelector('button') : null;
-    var quantityInput = root.querySelector('.quantity-count');
-
-    function formatMoney(cents) {
-      var format = window.themeMoneyFormat || '${{amount}}';
-      var value = Math.max(cents, 0) / 100;
-      var parts = value.toFixed(2).split('.');
-      var withComma = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      return format
-        .replace(/\{\{\s*amount_no_decimals_with_comma_separator\s*\}\}/, withComma)
-        .replace(/\{\{\s*amount_with_comma_separator\s*\}\}/, withComma + '.' + parts[1])
-        .replace(/\{\{\s*amount_no_decimals\s*\}\}/, withComma)
-        .replace(/\{\{\s*amount\s*\}\}/, withComma + '.' + parts[1]);
-    }
-
-    function getSelections() {
-      var selections = [];
-      optionInputs.forEach(function (input) {
-        if (input.checked) selections[Number(input.dataset.optionIndex)] = input.value;
-      });
-      return selections;
-    }
-
-    function findMatchingVariant(selections) {
-      return variants.find(function (variant) {
-        return selections.every(function (value, index) {
-          return value === undefined || variant.options[index] === value;
-        });
-      });
-    }
-
-    function updateAvailability(selections) {
-      optionInputs.forEach(function (input) {
-        var index = Number(input.dataset.optionIndex);
-        var testSelections = selections.slice();
-        testSelections[index] = input.value;
-
-        var available = variants.some(function (variant) {
-          return (
-            variant.available &&
-            testSelections.every(function (value, i) {
-              return value === undefined || variant.options[i] === value;
-            })
-          );
-        });
-
-        input.disabled = !available;
-        var field = input.closest('.product-varient-input-field');
-        if (field) field.classList.toggle('disabled', !available);
-      });
-    }
-
-    function updateUI(variant) {
-      var available = !!(variant && variant.available);
-
-      if (addToCartBtn) {
-        addToCartBtn.dataset.variantId = variant ? variant.id : '';
-        addToCartBtn.disabled = !available;
-        addToCartBtn.lastChild.textContent = available ? 'Add to Cart' : 'Sold out';
-      }
-
-      if (buyNowIdInput) buyNowIdInput.value = variant ? variant.id : '';
-      if (buyNowBtn) buyNowBtn.disabled = !available;
-
-      if (!variant) return;
-
-      if (priceEl) priceEl.textContent = formatMoney(variant.price);
-
-      var onSale = variant.compare_at_price && variant.compare_at_price > variant.price;
-      if (comparePriceEl) {
-        comparePriceEl.hidden = !onSale;
-        if (onSale) comparePriceEl.textContent = formatMoney(variant.compare_at_price);
-      }
-      if (priceSaveEl) {
-        priceSaveEl.hidden = !onSale;
-        if (onSale) {
-          var pct = Math.round(((variant.compare_at_price - variant.price) / variant.compare_at_price) * 100);
-          priceSaveEl.textContent = pct + '% OFF';
-        }
-      }
-
-      selectedLabels.forEach(function (label, i) {
-        if (variant.options[i] !== undefined) label.textContent = variant.options[i];
-      });
-
-      if (variant.featured_image && window.productSwiper) {
-        var slide = document.querySelector('.product-slider [data-media-id="' + variant.featured_image.id + '"]');
-        if (slide) {
-          var index = Array.prototype.indexOf.call(slide.parentElement.children, slide);
-          window.productSwiper.slideToLoop(index);
-        }
-      }
-    }
-
-    root.addEventListener('change', function (e) {
-      if (!e.target.classList.contains('product-varient-input')) return;
-
-      var selections = getSelections();
-      updateAvailability(selections);
-      updateUI(findMatchingVariant(selections));
-    });
-
-    if (quantityInput) {
-      root.querySelector('.quantity-increase')?.addEventListener('click', function () {
-        quantityInput.value = (parseInt(quantityInput.value, 10) || 1) + 1;
-        if (buyNowQtyInput) buyNowQtyInput.value = quantityInput.value;
-      });
-      root.querySelector('.quantity-decrease')?.addEventListener('click', function () {
-        quantityInput.value = Math.max(1, (parseInt(quantityInput.value, 10) || 1) - 1);
-        if (buyNowQtyInput) buyNowQtyInput.value = quantityInput.value;
-      });
-      quantityInput.addEventListener('change', function () {
-        quantityInput.value = Math.max(1, parseInt(quantityInput.value, 10) || 1);
-        if (buyNowQtyInput) buyNowQtyInput.value = quantityInput.value;
-      });
-    }
-
-    updateAvailability(getSelections());
-  })();
 </script>
 
 {% schema %}

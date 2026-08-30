@@ -1,0 +1,27 @@
+{% liquid
+    if type contains 'product'
+        assign title = product.title
+    elsif type contains 'collection'
+        assign title = collection.title
+    elsif type contains 'page'
+        assign title = page.title
+    endif
+%} 
+
+<div class="product-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="{{ shop.url }}">Home</a> 
+                <span class="breadcrumb-icon">
+                    <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                            fill="black">
+                        </path>
+                    </svg>
+                </span>
+            </li>
+            <li><span class="active">{{ title }}</span> <span class="breadcrumb-icon"></span></li>
+        </ul>
+    </div>
+</div>

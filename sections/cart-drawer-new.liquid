@@ -1,0 +1,35 @@
+{% liquid
+  assign free_shipping_threshold = 350000
+  assign percent = cart.total_price | times: 100 | divided_by: free_shipping_threshold
+  if percent > 100
+    assign percent = 100
+  endif
+  assign remaining = free_shipping_threshold | minus: cart.total_price
+%}
+
+<script>
+  window.themeMoneyFormat = {{ shop.money_format | json }};
+</script> 
+
+<div class="cart-drawer{% if cart.item_count == 0 %} blank{% endif %}">
+  <span class="cart-drawer-close-window-btn"></span>
+  <div class="cart-drawer-inner">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart drawer",
+  "class": "cart-drawer-section",
+  "enabled_on": {"groups": ["aside"]},
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

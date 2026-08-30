@@ -1,3 +1,6 @@
+{% assign qty_type = product.metafields.custom.quantity_type %}
+
+{% if qty_type contains 'Bundle' %}
 <div class="product-varient" {{ block.shopify_attributes }}>
   <div class="product-varient-title-wrap">
     <h2 class="product-varient-title">
@@ -8,6 +11,7 @@
     {% content_for 'blocks' %}
   </div>
 </div>
+{% endif %}
 
 {% schema %}
 {

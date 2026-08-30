@@ -172,7 +172,7 @@
 .product-card .card-content .card-price-wrap .previous-price {
     text-transform: uppercase;
     font-family: var(--paragraph-font);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     text-decoration: line-through;
     line-height: 1;

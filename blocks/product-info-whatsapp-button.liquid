@@ -1,14 +1,21 @@
 {% liquid
   assign product = closest.product
   assign absolute_product_url = shop.url | append: product.url
-  assign whatsapp_message = 'Hi, I want to order: ' | append: product.title | append: ' ' | append: absolute_product_url
+  assign whatsapp_number = block.settings.number | remove: ' ' | remove: '+'
+  assign default_variant = product.selected_or_first_available_variant
+  assign default_variant_title = default_variant.title
 %}
 {% if settings.whatsapp_number != blank %}
   <a
-    href="https://wa.me/{{ settings.whatsapp_number | remove: ' ' | remove: '+' }}?text={{ whatsapp_message | url_encode }}"
-    class="btn"
+    href="#"
+    class="btn product-whatsapp-link"
     target="_blank"
     rel="noopener"
+    data-phone="{{ whatsapp_number }}"
+    data-product-title="{{ product.title | escape }}"
+    data-product-url="{{ absolute_product_url | escape }}"
+    data-variants='{{ product.variants | json | escape }}'
+    data-default-variant-id="{{ default_variant.id }}"
     {{ block.shopify_attributes }}
   >
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -17,8 +24,59 @@
         d="M8.5 8.5c.3-.6.6-.6.9-.1l.7 1.2c.2.3.1.6-.1.8l-.5.5c.6 1.1 1.5 2 2.6 2.6l.5-.5c.2-.2.5-.3.8-.1l1.2.7c.5.3.5.6-.1.9"
       ></path>
     </svg>
-    order on whatsapp
+    {{ block.settings.button }}
   </a>
+
+  <script>
+    (() => {
+      const updateWhatsAppLinks = () => {
+        document.querySelectorAll('.product-whatsapp-link').forEach((link) => {
+          const variants = (() => {
+            try {
+              return JSON.parse(link.dataset.variants || '[]');
+            } catch (error) {
+              return [];
+            }
+          })();
+
+          const productTitle = link.dataset.productTitle || 'Product';
+          const productUrl = link.dataset.productUrl || window.location.href;
+          const phone = link.dataset.phone || '';
+
+          const form = link.closest('form') || document.querySelector('form[action*="/cart/add"]');
+          const selectedVariantId = form?.querySelector('input[name="id"]')?.value || link.dataset.defaultVariantId || '';
+          const selectedVariant = variants.find((variant) => String(variant.id) === String(selectedVariantId)) || variants[0];
+          const variantTitle = selectedVariant && selectedVariant.title && selectedVariant.title !== 'Default Title'
+            ? ` (${selectedVariant.title})`
+            : '';
+
+          const message = `Hi, I want to order: ${productTitle}${variantTitle}.\n${productUrl}`;
+          link.href = phone ? `https://wa.me/${phone}?text=${encodeURIComponent(message)}` : '#';
+        });
+      };
+
+      updateWhatsAppLinks();
+
+      const observer = new MutationObserver((mutations) => {
+        const hasRelevantMutation = mutations.some((mutation) => {
+          if (mutation.type !== 'attributes') return false;
+          const target = mutation.target;
+          return target instanceof HTMLElement && target.matches('input[name="id"]');
+        });
+
+        if (hasRelevantMutation) updateWhatsAppLinks();
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['value']
+      });
+
+      document.addEventListener('change', updateWhatsAppLinks, { passive: true });
+    })();
+  </script>
 {% endif %}
 
 {% schema %}
@@ -27,8 +85,22 @@
   "tag": null,
   "settings": [
     {
-      "type": "paragraph",
-      "content": "Requires the WhatsApp number theme setting to be filled in."
+      "type": "text",
+      "id": "button",
+      "label": "Button",
+      "default" : "Order on whatsapp"
+    },
+    {
+      "type": "number",
+      "id": "number",
+      "label": "Number",
+      "default" : 8801318552266
+    },
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Message",
+      "default" : "Hello, I want to know the price"
     }
   ],
   "presets": [

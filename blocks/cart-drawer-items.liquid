@@ -1,0 +1,124 @@
+<div class="cart-drawer-content" {{ block.shopify_attributes }}>
+  <div class="cart-drawer-items">
+    {% for item in cart.items %}
+      <div class="cart-drawer-item" data-key="{{ item.key }}">
+        <div class="cart-drawer-item-img">
+          {% if item.image != blank %}
+            <img
+              src="{{ item.image | image_url: width: 200 }}"
+              alt="{{ item.image.alt | default: item.product.title | escape }}"
+              width="56"
+              height="56"
+              loading="lazy"
+            >
+          {% endif %}
+        </div>
+        <div class="cart-drawer-item-content-wrap">
+          <div class="cart-drawer-item-content-inner">
+            <div class="cart-drawer-item-content">
+              <a href="{{ item.url }}" class="cart-drawer-item-title">{{ item.product.title }}</a>
+              <small>{{ item.variant.title }}</small>
+              <div class="content-btm">
+                <div class="cart-drawer-item-qty-btn-wrap">
+                  <button class="cart-drawer-item-qty-btn" type="button" data-action="decrease" aria-label="Decrease quantity">-</button>
+                  <input type="text" class="cart-drawer-item-qty-input" value="{{ item.quantity }}" readonly>
+                  <button class="cart-drawer-item-qty-btn" type="button" data-action="increase" aria-label="Increase quantity">+</button>
+                </div>
+                <p class="cart-drawer-item-price">{{ item.final_line_price | money }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="cart-drawer-item-remove-btn-wrap">
+            <button class="cart-drawer-item-remove-btn" type="button" aria-label="Remove item">
+              <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.375 2H0.375C0.275544 2 0.180161 2.03951 0.109835 2.10983C0.0395088 2.18016 0 2.27554 0 2.375C0 2.47446 0.0395088 2.56984 0.109835 2.64017C0.180161 2.71049 0.275544 2.75 0.375 2.75H1V11.875C1 12.1071 1.09219 12.3296 1.25628 12.4937C1.42038 12.6578 1.64294 12.75 1.875 12.75H9.875C10.1071 12.75 10.3296 12.6578 10.4937 12.4937C10.6578 12.3296 10.75 12.1071 10.75 11.875V2.75H11.375C11.4745 2.75 11.5698 2.71049 11.6402 2.64017C11.7105 2.56984 11.75 2.47446 11.75 2.375C11.75 2.27554 11.7105 2.18016 11.6402 2.10983C11.5698 2.03951 11.4745 2 11.375 2ZM10 11.875C10 11.9082 9.98683 11.9399 9.96339 11.9634C9.93995 11.9868 9.90815 12 9.875 12H1.875C1.84185 12 1.81005 11.9868 1.78661 11.9634C1.76317 11.9399 1.75 11.9082 1.75 11.875V2.75H10V11.875ZM3 0.375C3 0.275544 3.03951 0.180161 3.10984 0.109835C3.18016 0.0395088 3.27554 0 3.375 0H8.375C8.47446 0 8.56984 0.0395088 8.64017 0.109835C8.71049 0.180161 8.75 0.275544 8.75 0.375C8.75 0.474456 8.71049 0.569839 8.64017 0.640165C8.56984 0.710491 8.47446 0.75 8.375 0.75H3.375C3.27554 0.75 3.18016 0.710491 3.10984 0.640165C3.03951 0.569839 3 0.474456 3 0.375Z"
+                  fill="black"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% liquid
+    assign last_item = cart.items.last
+    assign suggestion_collection = blank
+    if last_item and last_item.product.collections.size > 0
+      assign suggestion_collection = last_item.product.collections.first
+    endif
+  %}
+
+  {% if block.settings.show_recommendations %}
+    <div class="cart-drawer-slider-area">
+      <div class="cart-drawer-slider-header">
+        <p class="cart-drawer-slider-title">{{ block.settings.title }}</p>
+        <div class="cart-drawer-slider-btn-wrap">
+          <div class="swiper-button-prev cart-drawer-slider-btn-prev"></div>
+          <div class="swiper-button-next cart-drawer-slider-btn-next"></div>
+        </div>
+      </div>
+      <div class="swiper cart-drawer-slider">
+        <div class="swiper-wrapper">
+          {% for product in block.settings.collection.products limit: block.settings.limit %}
+            {% unless product.id == last_item.product_id %}
+              <div class="swiper-slide">
+                <div class="cart-drawer-slider-item">
+                  {% render 'slider-product-card',
+                    product: product,
+                    image_width: 300,
+                    show_badge: false,
+                    add_to_cart_label: 'add',
+                    sold_out_label: 'sold out'
+                  %}
+                </div>
+              </div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Cart items",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "You might also like..."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recommendations",
+      "label": "Show Product",
+      "default": true
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Limit",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart items",
+      "category": "Cart drawer"
+    }
+  ]
+}
+{% endschema %}
