@@ -222,6 +222,18 @@
     },
     "review_section_qD8f8A": {
       "type": "review-section",
+      "blocks": {
+        "product_review_VLgF3V": {
+          "type": "product_review",
+          "settings": {
+            "heading": "Product Reviews",
+            "review_code": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_review_VLgF3V"
+      ],
       "name": "Review tabs",
       "settings": {
         "all_category_reviews_url": ""
