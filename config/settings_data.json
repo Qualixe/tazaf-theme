@@ -162,7 +162,7 @@
             "type": "app-menu-item",
             "name": "App menu item",
             "settings": {
-              "action": "home",
+              "action": "open_search",
               "link": "",
               "show_count": true,
               "icon": "search",
