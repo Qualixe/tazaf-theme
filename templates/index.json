@@ -464,38 +464,57 @@
       "settings": {}
     },
     "card_slider_QK4CtU": {
-      "type": "products",
-      "name": "Deal of the day slider",
+      "type": "card-slider",
       "blocks": {
+        "heading": {
+          "type": "card-slider-heading",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "heading": ""
+          },
+          "blocks": {}
+        },
         "heading_image": {
           "type": "card-slider-heading-image",
+          "static": true,
           "settings": {
             "image": "shopify://shop_images/deal-of-day-header.svg"
-          }
+          },
+          "blocks": {}
         },
         "countdown": {
           "type": "card-slider-countdown",
+          "static": true,
           "settings": {
-            "countdown_end": "2026-09-05T23:59:59"
-          }
+            "countdown_end": "2026-08-29T23:59:59"
+          },
+          "blocks": {}
         },
         "collection": {
           "type": "card-slider-collection",
+          "static": true,
           "settings": {
             "collection": "frontpage",
             "max_products": 8
-          }
+          },
+          "blocks": {}
         },
         "button": {
           "type": "card-slider-button",
+          "static": true,
           "settings": {
             "view_all_label": "View All products",
-            "view_all_link": "shopify://collections/all"
-          }
+            "view_all_link": "shopify://collections/frontpage"
+          },
+          "blocks": {}
         }
       },
-      "block_order": ["heading_image", "countdown", "collection", "button"],
-      "settings": {}
+      "name": "Deal of the day slider",
+      "settings": {
+        "margin": false,
+        "background_color": "#fef2f0"
+      }
     },
     "category_grid_section_PexNMJ": {
       "type": "category-grid-section",
@@ -554,58 +573,49 @@
         "brand_dfJ3ER": {
           "type": "brand",
           "settings": {
-            "logo": "shopify://shop_images/product-brand-logo1.png",
-            "name": "Honeyraj",
-            "link": "/collections/all?vendor=apple"
+            "brand": "honey-raj"
           }
         },
         "brand_QjrJPx": {
           "type": "brand",
           "settings": {
-            "name": "Nestora",
-            "link": ""
+            "brand": "nestora"
           }
         },
         "brand_aGDzCH": {
           "type": "brand",
           "settings": {
-            "name": "Urban Craft",
-            "link": ""
+            "brand": "urban-craft"
           }
         },
         "brand_QqaEK3": {
           "type": "brand",
           "settings": {
-            "name": "Lumiere",
-            "link": ""
+            "brand": "lumiere"
           }
         },
         "brand_V3BtwV": {
           "type": "brand",
           "settings": {
-            "name": "Cozynest",
-            "link": ""
+            "brand": "cozynest"
           }
         },
         "brand_iTwYhW": {
           "type": "brand",
           "settings": {
-            "name": "Weavehome",
-            "link": ""
+            "brand": "urban-craft"
           }
         },
         "brand_xYX6GY": {
           "type": "brand",
           "settings": {
-            "name": "Claymore",
-            "link": ""
+            "brand": "nestora"
           }
         },
         "brand_fJELiF": {
           "type": "brand",
           "settings": {
-            "name": "Driftwood",
-            "link": ""
+            "brand": "cozynest"
           }
         }
       },
@@ -678,6 +688,58 @@
       ],
       "name": "Tabbed collections",
       "settings": {}
+    },
+    "card_slider_haxE4i": {
+      "type": "card-slider",
+      "blocks": {
+        "heading": {
+          "type": "card-slider-heading",
+          "static": true,
+          "settings": {
+            "heading": "Featured Products"
+          },
+          "blocks": {}
+        },
+        "heading_image": {
+          "type": "card-slider-heading-image",
+          "disabled": true,
+          "static": true,
+          "settings": {},
+          "blocks": {}
+        },
+        "countdown": {
+          "type": "card-slider-countdown",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "countdown_end": "2026-08-29T23:59:59"
+          },
+          "blocks": {}
+        },
+        "collection": {
+          "type": "card-slider-collection",
+          "static": true,
+          "settings": {
+            "collection": "frontpage",
+            "max_products": 8
+          },
+          "blocks": {}
+        },
+        "button": {
+          "type": "card-slider-button",
+          "static": true,
+          "settings": {
+            "view_all_label": "View All products",
+            "view_all_link": "shopify://collections/frontpage"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Products",
+      "settings": {
+        "margin": false,
+        "background_color": "#fef2f0"
+      }
     },
     "category_grid_section_CFLQY3": {
       "type": "category-grid-section",
@@ -1088,6 +1150,7 @@
     "category_grid_section_PexNMJ",
     "shop_by_brand_eXpXg6",
     "tab_section_7bWpBE",
+    "card_slider_haxE4i",
     "category_grid_section_CFLQY3",
     "category_banner2_DM87AE",
     "gift_banner_section_XpEe3k",
