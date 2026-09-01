@@ -7,6 +7,8 @@
   type "List of collections". The namespace/key below must match what you create there.
 {%- enddoc -%}
 
+test {{ collection.metafields.shopify }}
+
 {% liquid
   assign metafield = collection.metafields[block.settings.metafield_namespace][block.settings.metafield_key]
   assign category_list = metafield.value
