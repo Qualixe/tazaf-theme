@@ -19,6 +19,15 @@
   assign featured_alt = product.featured_image.alt | default: product.title | escape
   assign title_escaped = product.title | escape
   assign current_variant = product.selected_or_first_available_variant
+
+  assign preorder = false
+  for tag in product.tags
+    if tag contains 'preorder'
+      assign preorder = true
+    else 
+      assign preorder = false
+    endif
+  endfor
 %}
 <div class="product-card card_hover">
   <div class="card-image-wrap">
@@ -27,18 +36,24 @@
         {% render 'review', product: product %}
       </div>
     
-    <div class="card-img">
-      <a class="main-img" href="{{ product.url }}">
-        {% if product.featured_image != blank %}
-          {{ product.featured_image | image_url: width: image_width | image_tag: class: 'card_img', alt: featured_alt, loading: 'lazy' }}
-        {% endif %}
-      </a>
-      <a class="hover-img" href="{{ product.url }}">
-        {% if hover_image != blank %}
-          {{ hover_image | image_url: width: image_width | image_tag: class: 'card_hover_img', alt: title_escaped, loading: 'lazy' }}
-        {% endif %}
-      </a>
-    </div>
+      <div class="card-img">
+        <a class="main-img" href="{{ product.url }}">
+          {% if product.featured_image != blank %}
+            {{ product.featured_image | image_url: width: image_width | image_tag: class: 'card_img', alt: featured_alt, loading: 'lazy' }}
+          {% endif %}
+        </a>
+        <a class="hover-img" href="{{ product.url }}">
+          {% if hover_image != blank %}
+            {{ hover_image | image_url: width: image_width | image_tag: class: 'card_hover_img', alt: title_escaped, loading: 'lazy' }}
+          {% endif %}
+        </a>
+      </div>
+      {% if preorder %}
+      <div class="card-badges">
+        <span class="card-badge preorder">Pre Order</span>
+      </div>
+      {% endif %}
+      
   </div>
   <div class="card-content">
     <div class="card-title-wrap">
@@ -71,11 +86,19 @@
         {% endunless %}
       >
         <span class="btn-label">
-          {% if current_variant.available %}
-            {{ add_to_cart_label }}
-          {% else %}
-            {{ sold_out_label }}
-          {% endif %}
+        {% if preorder %}
+            {% if current_variant.available !=true %}
+                {{ sold_out_label }}
+            {% else %}
+                Pre Order
+            {% endif %}
+        {% else %}
+            {% if current_variant.available %}
+              {{ add_to_cart_label }}
+            {% else %}
+                {{ sold_out_label }}
+            {% endif %}
+        {% endif %}
         </span>
         <span class="btn-spinner" aria-hidden="true"></span>
       </button>

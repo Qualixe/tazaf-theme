@@ -1,13 +1,74 @@
-{% liquid assign product = closest.product %}
+{% liquid 
+  assign product = closest.product 
+  assign preorder = false
+  for tag in product.tags
+    if tag contains 'preorder'
+      assign preorder = true
+    else 
+      assign preorder = false
+    endif
+  endfor
+  %}
+
 <div class="product-desktop-content" {{ block.shopify_attributes }}>
   <h1 class="product-title">{{ product.title }}</h1>
+
+  {% if preorder %}
+      {% if block.settings.preorder == 'img' %}
+      <div class="preorder-image">
+        {% if block.settings.image != blank %}
+          {{ block.settings.image | image_url: width: 1000 | image_tag: alt: block.settings.image, loading: 'lazy' }}
+          {% else %}
+          {{ 'image' | placeholder_svg_tag:'preorder-image__placeholder' }}
+        {% endif %} 
+      </div>
+        
+      {% elsif block.settings.preorder == 'text' %}
+        <div class="preorder-text">
+          {{ block.settings.text }}
+        </div>
+      {% endif %}
+  {% endif %}
 </div>
 
 {% schema %}
 {
   "name": "Title",
-  "tag": null,
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "preorder",
+      "label": "Pre Order",
+      "options": [
+        {
+          "label": "None",
+          "value": ""
+        },
+        {
+          "label": "Image",
+          "value": "img"
+        },
+        {
+          "label": "Text",
+          "value": "text"
+        }
+      ],
+      "default": "img"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "visible_if": "{{ block.settings.preorder == 'text' }}",
+      "default": "Pre Order"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "visible_if": "{{ block.settings.preorder == 'img' }}"
+    }
+  ],
   "presets": [
     { "name": "Title", "category": "Product" }
   ]
