@@ -1,0 +1,45 @@
+{%- doc -%}
+  Renders the product slider for the card slider section.
+{%- enddoc -%}
+
+{% if block.settings.collection == blank and request.design_mode %}
+  <p class="card-slider-section-placeholder">Select a collection in the block settings to show products here.</p>
+{% endif %}
+
+<div class="swiper card-slider" {{ block.shopify_attributes }}>
+  <div class="swiper-wrapper">
+    {% for product in block.settings.collection.products limit: block.settings.max_products %}
+      <div class="swiper-slide">
+        <div class="card-slider-item">
+          {% render 'slider-product-card', product: product %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "Maximum products",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "presets": [
+    { "name": "Collection" }
+  ]
+}
+{% endschema %}

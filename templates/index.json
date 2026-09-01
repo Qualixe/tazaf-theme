@@ -464,17 +464,38 @@
       "settings": {}
     },
     "card_slider_QK4CtU": {
-      "type": "card-slider",
+      "type": "products",
       "name": "Deal of the day slider",
-      "settings": {
-        "heading_image": "shopify://shop_images/deal-of-day-header.svg",
-        "collection": "frontpage",
-        "max_products": 8,
-        "show_countdown": true,
-        "countdown_end": "2026-09-05T23:59:59",
-        "view_all_label": "View All products",
-        "view_all_link": "shopify://collections/all"
-      }
+      "blocks": {
+        "heading_image": {
+          "type": "card-slider-heading-image",
+          "settings": {
+            "image": "shopify://shop_images/deal-of-day-header.svg"
+          }
+        },
+        "countdown": {
+          "type": "card-slider-countdown",
+          "settings": {
+            "countdown_end": "2026-09-05T23:59:59"
+          }
+        },
+        "collection": {
+          "type": "card-slider-collection",
+          "settings": {
+            "collection": "frontpage",
+            "max_products": 8
+          }
+        },
+        "button": {
+          "type": "card-slider-button",
+          "settings": {
+            "view_all_label": "View All products",
+            "view_all_link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": ["heading_image", "countdown", "collection", "button"],
+      "settings": {}
     },
     "category_grid_section_PexNMJ": {
       "type": "category-grid-section",

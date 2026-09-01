@@ -1,117 +1,64 @@
-<section class="card-slider-section section-bg">
+<section class="card-slider-section section-bg" style="background-color: {{ section.settings.background_color }}; {% if section.settings.margin %}margin-top: 60px; margin-bottom: 60px;{% endif %}">
   <div class="container">
     <div class="card-slider-section-heading-wrap">
-      {% if section.settings.heading_image != blank %}
-        <div class="img">
-          <img
-            src="{{ section.settings.heading_image | image_url: width: 400 }}"
-            alt="{{ section.settings.heading_image.alt | escape }}"
-            width="{{ section.settings.heading_image.width }}"
-            height="{{ section.settings.heading_image.height }}"
-            loading="lazy"
-          >
-        </div>
-      {% endif %}
-
-      {% if section.settings.show_countdown %}
-        <!-- count-down -->
-        <div class="countdown" data-end="{{ section.settings.countdown_end }}">
-          <span class="countdown-label">Ends In</span>
-          <span class="countdown-time">
-            <span class="countdown-days">00</span>
-            <span class="countdown-unit">d</span>
-            <span class="countdown-separator">:</span>
-            <span class="countdown-hours">00</span>
-            <span class="countdown-unit">h</span>
-            <span class="countdown-separator">:</span>
-            <span class="countdown-minutes">00</span>
-            <span class="countdown-unit">m</span>
-            <span class="countdown-separator">:</span>
-            <span class="countdown-seconds">00</span>
-            <span class="countdown-unit">s</span>
-          </span>
-        </div>
-      {% endif %}
+      {% content_for 'block', type: 'card-slider-heading', id: 'heading' %}
+      {% content_for 'block', type: 'card-slider-heading-image', id: 'heading_image' %}
+      {% content_for 'block', type: 'card-slider-countdown', id: 'countdown' %}
     </div>
 
-    {% if section.settings.collection == blank and request.design_mode %}
-      <p class="card-slider-section-placeholder">Select a collection in the section settings to show products here.</p>
-    {% endif %}
+    {% content_for 'block', type: 'card-slider-collection', id: 'collection' %}
 
-    <div class="swiper card-slider">
-      <div class="swiper-wrapper">
-        {% for product in section.settings.collection.products limit: section.settings.max_products %}
-          <div class="swiper-slide">
-            <div class="card-slider-item">
-              {% render 'slider-product-card', product: product %}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="card-slider-section-btn">
-      <a href="{{ section.settings.view_all_link | default: section.settings.collection.url }}" class="btn">
-        {{ section.settings.view_all_label }}
-      </a>
-    </div>
+    {% content_for 'block', type: 'card-slider-button', id: 'button' %}
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Deal of the day slider",
+  "name": "Products",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "heading_image",
-      "label": "Heading image",
-      "info": "Decorative heading image (e.g. a \"Deal of the Day\" graphic)."
+      "type": "header",
+      "content": "Color"
     },
     {
-      "type": "collection",
-      "id": "collection",
-      "label": "Collection"
+      "type":"checkbox",
+      "id": "margin",
+      "label": "margin",
+      "default": false
     },
     {
-      "type": "range",
-      "id": "max_products",
-      "label": "Maximum products",
-      "min": 2,
-      "max": 20,
-      "step": 1,
-      "default": 8
-    },
-    {
-      "type": "checkbox",
-      "id": "show_countdown",
-      "label": "Show countdown",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "countdown_end",
-      "label": "Countdown end date",
-      "default": "2026-08-29T23:59:59",
-      "info": "Format: YYYY-MM-DDTHH:MM:SS",
-      "visible_if": "{{ section.settings.show_countdown }}"
-    },
-    {
-      "type": "text",
-      "id": "view_all_label",
-      "label": "\"View all\" button label",
-      "default": "View All products"
-    },
-    {
-      "type": "url",
-      "id": "view_all_link",
-      "label": "\"View all\" button link",
-      "info": "Defaults to the collection page if left blank."
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#fef2f0"
     }
+  ],
+  "blocks": [
+    { "type": "card-slider-heading" },
+    { "type": "card-slider-heading-image" },
+    { "type": "card-slider-countdown" },
+    { "type": "card-slider-collection" },
+    { "type": "card-slider-button" }
   ],
   "presets": [
     {
-      "name": "Deal of the day slider"
+      "name": "Products",
+      "blocks": {
+        "heading_image": {
+          "type": "card-slider-heading-image"
+        },
+        "countdown": {
+          "type": "card-slider-countdown"
+        },
+        "collection": {
+          "type": "card-slider-collection",
+          "settings": { "max_products": 8 }
+        },
+        "button": {
+          "type": "card-slider-button" 
+        }
+      },
+      "block_order": ["heading_image", "countdown", "collection", "button"]
     }
   ]
 }

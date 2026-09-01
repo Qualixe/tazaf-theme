@@ -1083,5 +1083,8 @@ label.bundle-label {
     }
 
     /* product section css end */
+    label.bundle-label {
+        padding: 8px;
+    }
 
 }

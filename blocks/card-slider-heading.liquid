@@ -1,0 +1,26 @@
+{%- doc -%}
+  Renders the text heading for the card slider section (e.g. "Deal of the Day").
+{%- enddoc -%}
+
+{% if block.settings.heading != blank %}
+  <div class="card-slider-section-heading" {{ block.shopify_attributes }}>
+    <h2 class="title">{{ block.settings.heading }}</h2>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Section heading",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    }
+  ],
+  "presets": [
+    { "name": "Section heading" }
+  ]
+}
+{% endschema %}

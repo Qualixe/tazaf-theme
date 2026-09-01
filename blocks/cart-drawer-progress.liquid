@@ -1,5 +1,5 @@
 {% liquid
-  assign threshold = block.settings.threshold | default: 350000
+  assign threshold = block.settings.threshold | times: 100
   assign percent_value = cart.total_price | times: 100 | divided_by: threshold
   if percent_value > 100
     assign percent_value = 100
@@ -8,7 +8,7 @@
 %}
 
 <div class="cart-drawer-progress" {{ block.shopify_attributes }}>
-  <div class="cart-drawer-progress-content">
+  <div class="cart-drawer-progress-content" data-remaining="{{ remaining | money }}" data-percent="{{ percent_value }}">
     <span class="icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="20 12 20 22 4 22 4 12"></polyline>
@@ -22,7 +22,7 @@
       <p class="title">{{ block.settings.title | default: 'Free Shipping' }}</p>
       <p class="text">
         {% if remaining > 0 %}
-          Add <strong>{{ remaining | money }}</strong> more to unlock!
+          Add <strong id="remaining-amount">{{ remaining | money }}</strong> more to unlock!
         {% else %}
           You've unlocked free shipping!
         {% endif %}
@@ -44,7 +44,6 @@
 {% schema %}
 {
   "name": "Cart progress",
-  "tag": null,
   "settings": [
     {
       "type": "text",
@@ -55,8 +54,8 @@
     {
       "type": "number",
       "id": "threshold",
-      "label": "Threshold amount",
-      "default": 350000
+      "label": "Free Shipping Amount (BDT)",
+      "default": 3500
     }
   ],
   "presets": [

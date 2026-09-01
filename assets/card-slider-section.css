@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    margin-bottom: 42px;
+    margin-bottom: 25px;
 }
 
 .card-slider-section-heading-wrap .img {
@@ -114,9 +114,6 @@
 @media only screen and (max-width:992px) {
 
     /* card-slider section css start */
-    .card-slider-section .container {
-        padding: 0;
-    }
 
     .card-slider-section-heading,
     .card-slider-section-heading-wrap {

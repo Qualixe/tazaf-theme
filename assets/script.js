@@ -315,7 +315,7 @@ document
   const drawer = document.querySelector(".cart-drawer");
   if (!drawer) return;
 
-  const FREE_SHIPPING_THRESHOLD = 350000; // matches snippets/cart-drawer-new.liquid
+  const FREE_SHIPPING_THRESHOLD = parseFloat(document.querySelector(".cart-drawer-progress-content")?.dataset.remaining); // matches snippets/cart-drawer-new.liquid
 
   function formatMoney(cents) {
     const format = window.themeMoneyFormat || "${{amount}}";
@@ -537,50 +537,21 @@ document
   });
 
   // "Add to cart" buttons can live anywhere on the page (product cards, tabs,
-  // the cart drawer's own recommendation slider) - all of them add via AJAX
-  // and open this drawer on success, instead of navigating to the cart page.
-  function getSelectedBundleQty() {
-    const checkedBundle = document.querySelector('.bundle_input:checked');
-    const value = checkedBundle ? Number.parseInt(checkedBundle.dataset.qty || checkedBundle.value || '', 10) : NaN;
-    return Number.isFinite(value) && value > 0 ? value : null;
-  }
-
-  function syncBundleQtyToForm(bundleQty) {
-    const quantityInputs = document.querySelectorAll('.quantity-count, input[name="quantity"]');
-    quantityInputs.forEach((input) => {
-      if (input instanceof HTMLInputElement) {
-        input.value = String(bundleQty);
-      }
-    });
-
-    const addButtons = document.querySelectorAll('[data-variant-id]');
-    addButtons.forEach((button) => {
-      if (button instanceof HTMLElement) {
-        button.dataset.qty = String(bundleQty);
-      }
-    });
-  }
-
+  // the cart drawer's own recommendation slider, and the sticky bar) - all of
+  // them add via AJAX and open this drawer on success, instead of navigating
+  // to the cart page. Quantity is always resolved fresh at click time from
+  // getCurrentProductQuantity() (defined below), which is page-scoped rather
+  // than tied to the clicked button's ancestry - the sticky button lives in
+  // its own section, not inside .product-content-area, so it needs the same
+  // page-wide lookup the main button uses.
   document.addEventListener("click", (e) => {
     const addBtn = e.target.closest("[data-variant-id]");
     if (!addBtn) return;
 
     e.preventDefault();
 
-    const qtyInput = addBtn.closest(".product-content-area")?.querySelector(".quantity-count");
-    const activeBundleQty = getSelectedBundleQty();
-    const inputQty = qtyInput ? Number.parseInt(qtyInput.value, 10) : NaN;
-    const quantity = activeBundleQty !== null
-      ? activeBundleQty
-      : Number.isFinite(inputQty) && inputQty > 0
-        ? inputQty
-        : 1;
-
-    if (activeBundleQty === null && qtyInput) {
-      delete addBtn.dataset.qty;
-    } else {
-      addBtn.dataset.qty = String(quantity);
-    }
+    const quantity = getCurrentProductQuantity();
+    addBtn.dataset.qty = String(quantity);
 
     addToCart(addBtn.dataset.variantId, addBtn, quantity);
   });
@@ -684,7 +655,7 @@ document
 
 // cart-drawer slider js start--
 var swiper = new Swiper(".cart-drawer-slider", {
-  slidesPerView: 2.1,
+  slidesPerView: 3,
   spaceBetween: 5,
   grabCursor: true,
   loop: true,
@@ -791,11 +762,10 @@ document.querySelectorAll(".countdown").forEach((countdown) => {
 
 // card slider js start--
 var swiper = new Swiper(".card-slider", {
-  effect: "coverflow",
-  slidesPerView: 1.6,
-  centeredSlides: true,
+  slidesPerView: 4.5,
+  centeredSlides: false,
   grabCursor: true,
-  spaceBetween: 16,
+  spaceBetween: 10,
   loop: true,
   speed: 500,
   autoplay: false,
@@ -813,32 +783,27 @@ var swiper = new Swiper(".card-slider", {
   breakpoints: {
     1: {
       effect: "coverflow",
-      slidesPerView: 1.4,
-      centeredSlides: true,
-      spaceBetween: 24,
+      slidesPerView: 2,
+      spaceBetween: 5,
     },
     576: {
       effect: "coverflow",
-      slidesPerView: 2.2,
-      centeredSlides: true,
-      spaceBetween: 16,
+      slidesPerView: 2,
+      spaceBetween: 5,
     },
     768: {
       effect: "slide",
       slidesPerView: 3.2,
-      centeredSlides: false,
       spaceBetween: 10,
     },
     993: {
       effect: "slide",
       slidesPerView: 3.8,
-      centeredSlides: false,
       spaceBetween: 10,
     },
     1200: {
       effect: "slide",
       slidesPerView: 4.5,
-      centeredSlides: false,
       spaceBetween: 10,
     },
   },
@@ -854,6 +819,8 @@ var swiper = new Swiper(".explore-slider", {
   loop: true,
   speed: 500,
   autoplay: false,
+
+
   navigation: {
     nextEl: ".explore-slider-button-next",
     prevEl: ".explore-slider-button-prev",
@@ -929,31 +896,44 @@ var swiper = new Swiper(".image-category-slider", {
 // image-category-slider js end--
 
 // shop-by-brand-slider js start--
-var swiper = new Swiper(".shop-by-brand-slider", {
-  slidesPerView: 5,
-  spaceBetween: 0,
-  grabCursor: true,
-  loop: true,
-  speed: 800,
-  navigation: {
-    nextEl: ".shop-by-brand-slider .swiper-button-next",
-    prevEl: ".shop-by-brand-slider .swiper-button-prev",
-  },
-  breakpoints: {
-    1: {
-      slidesPerView: 2,
-    },
-    576: {
-      slidesPerView: 3,
-    },
-    768: {
-      slidesPerView: 4,
-    },
-    993: {
+// The theme editor re-renders this section's HTML in place whenever a block
+// is edited (add/remove/change a brand), which replaces the DOM the Swiper
+// instance below was bound to. Without re-initializing on that event, the
+// slider looks broken (unstyled stack) until the page is saved/reloaded.
+function initShopByBrandSlider() {
+  document.querySelectorAll(".shop-by-brand-slider").forEach((el) => {
+    if (el.swiper) el.swiper.destroy(true, true);
+
+    new Swiper(el, {
       slidesPerView: 5,
-    },
-  },
-});
+      spaceBetween: 0,
+      grabCursor: true,
+      loop: true,
+      speed: 800,
+      navigation: {
+        nextEl: el.querySelector(".swiper-button-next"),
+        prevEl: el.querySelector(".swiper-button-prev"),
+      },
+      breakpoints: {
+        1: {
+          slidesPerView: 2,
+        },
+        576: {
+          slidesPerView: 3,
+        },
+        768: {
+          slidesPerView: 4,
+        },
+        993: {
+          slidesPerView: 5,
+        },
+      },
+    });
+  });
+}
+
+initShopByBrandSlider();
+document.addEventListener("shopify:section:load", initShopByBrandSlider);
 // shop-by-brand-slider js end--
 
 // community-review popup js start--
@@ -1409,56 +1389,94 @@ document.addEventListener("DOMContentLoaded", () => {
 // Footer dropdown responsive accordion js end --
 
 
-// quantity update by bundle click
+// ----------------------------------------------------------------------
+// Product page quantity: single source of truth shared by the default
+// quantity input (blocks/product-info-quantity.liquid), the bundle radios
+// (blocks/product-info-combo-option.liquid), and BOTH add-to-cart buttons -
+// the main one in .product-content-area and the sticky one in
+// .sticky-add-to-cart-section (sections/sticky-button.liquid). There is no
+// <form> wrapping these blocks, so lookups are page-scoped (there's only
+// ever one product's worth of these elements on a product page) rather than
+// relying on ancestor traversal.
+// ----------------------------------------------------------------------
 
+function getCurrentProductQuantity() {
+  const checkedBundle = document.querySelector('.bundle_input:checked');
+  if (checkedBundle) {
+    const bundleQty = Number.parseInt(checkedBundle.dataset.qty || checkedBundle.value || '', 10);
+    if (Number.isFinite(bundleQty) && bundleQty > 0) return bundleQty;
+  }
+
+  const qtyInput = document.querySelector('.product-content-area .quantity-count');
+  const qty = qtyInput ? Number.parseInt(qtyInput.value, 10) : NaN;
+  return Number.isFinite(qty) && qty > 0 ? qty : 1;
+}
+
+function syncProductAddToCartButtons(qty) {
+  document
+    .querySelectorAll('.product-content-area [data-variant-id], .sticky-add-to-cart-section [data-variant-id]')
+    .forEach((btn) => {
+      btn.dataset.qty = String(qty);
+    });
+
+  const buyNowQtyInput = document.querySelector('[data-buy-now-quantity]');
+  if (buyNowQtyInput instanceof HTMLInputElement) {
+    buyNowQtyInput.value = String(qty);
+  }
+}
+
+// Bundle option selected: force the default quantity input to match and
+// sync both add-to-cart buttons.
 document.addEventListener('change', (event) => {
-  const bundleInput = event.target instanceof HTMLElement ? event.target.closest('.bundle_input') : null;
-
+  const bundleInput = event.target instanceof Element ? event.target.closest('.bundle_input') : null;
   if (!bundleInput) return;
 
   const selectedQty = Number.parseInt(bundleInput.dataset.qty || bundleInput.value || '1', 10);
   if (!Number.isFinite(selectedQty) || selectedQty < 1) return;
 
-  const form = bundleInput.closest('form');
-  if (form) {
-    const quantityInput = form.querySelector('input[name="quantity"]');
-    if (quantityInput instanceof HTMLInputElement) {
-      quantityInput.value = selectedQty.toString();
-    }
+  document.querySelectorAll('.product-content-area .quantity-count').forEach((input) => {
+    if (input instanceof HTMLInputElement) input.value = String(selectedQty);
+  });
 
-    const quantitySelector = form.querySelector('quantity-selector-component');
-    if (quantitySelector && typeof quantitySelector.setValue === 'function') {
-      quantitySelector.setValue(selectedQty.toString());
+  syncProductAddToCartButtons(selectedQty);
+});
 
-      if (typeof quantitySelector.onQuantityChange === 'function') {
-        quantitySelector.onQuantityChange();
-      }
+// Default quantity input: typing directly, or using the input's native
+// number-spinner, syncs both add-to-cart buttons.
+document.addEventListener('input', (event) => {
+  const input = event.target instanceof Element ? event.target.closest('.quantity-count') : null;
+  if (!input || !input.closest('.product-content-area')) return;
 
-      if (typeof quantitySelector.updateButtonStates === 'function') {
-        quantitySelector.updateButtonStates();
-      }
-    }
+  syncProductAddToCartButtons(getCurrentProductQuantity());
+});
 
-    const allQtyInputs = form.querySelectorAll('.quantity-count, input[name="quantity"]');
-    allQtyInputs.forEach((input) => {
-      if (input instanceof HTMLInputElement) {
-        input.value = selectedQty.toString();
-      }
-    });
+// Custom +/- stepper buttons (blocks/product-info-quantity.liquid). Cart
+// page / cart drawer steppers share the same .quantity-decrease /
+// .quantity-increase classes but carry data-quantity-decrease /
+// data-quantity-increase attributes and are handled by their own AJAX
+// listeners elsewhere, so those are excluded here.
+document.addEventListener('click', (event) => {
+  const stepBtn = event.target instanceof Element ? event.target.closest('.quantity-decrease, .quantity-increase') : null;
+  if (!stepBtn) return;
+  if (stepBtn.hasAttribute('data-quantity-decrease') || stepBtn.hasAttribute('data-quantity-increase')) return;
 
-    const buyNowQtyInput = form.querySelector('[data-buy-now-quantity]');
-    if (buyNowQtyInput instanceof HTMLInputElement) {
-      buyNowQtyInput.value = selectedQty.toString();
-    }
-  }
+  const wrapper = stepBtn.closest('.product-quantity');
+  const input = wrapper ? wrapper.querySelector('.quantity-count') : null;
+  if (!(input instanceof HTMLInputElement) || !input.closest('.product-content-area')) return;
 
-  const productForm = bundleInput.closest('product-form-component');
-  if (productForm) {
-    productForm.dataset.quantityDefault = selectedQty.toString();
-  }
+  const min = Number.parseInt(input.min, 10);
+  const max = Number.parseInt(input.max, 10);
+  const step = Number.parseInt(input.step, 10) || 1;
 
-  const addButton = document.querySelector('[data-variant-id]');
-  if (addButton instanceof HTMLElement) {
-    addButton.dataset.qty = selectedQty.toString();
-  }
+  let qty = Number.parseInt(input.value, 10);
+  if (!Number.isFinite(qty)) qty = Number.isFinite(min) ? min : 1;
+
+  qty = stepBtn.classList.contains('quantity-increase') ? qty + step : qty - step;
+  if (Number.isFinite(min)) qty = Math.max(qty, min);
+  if (Number.isFinite(max)) qty = Math.min(qty, max);
+
+  if (String(qty) === input.value) return;
+
+  input.value = String(qty);
+  syncProductAddToCartButtons(qty);
 });

@@ -3,7 +3,7 @@
 %}
 
 <section class="shop-by-brand-section">
-  <div class="container">
+  {% comment %} <div class="container">
     <div class="shop-by-brand-heading">
       {% if section.settings.title != blank %}
         <h2 class="title">{{ section.settings.title }}</h2>
@@ -29,6 +29,43 @@
                 >
               {% else %}
                 <p class="wordmark">{{ block.settings.name }}</p>
+              {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div> {% endcomment %}
+  <div class="container">
+    <div class="shop-by-brand-heading">
+      {% if section.settings.title != blank %}
+        <h2 class="title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.view_all_label != blank %}
+        <a href="{{ section.settings.view_all_link | default: '/collections/all' }}" class="shop-by-brand-all-link">
+          {{ section.settings.view_all_label }} <span>›</span>
+        </a>
+      {% endif %}
+    </div>
+    <div class="swiper shop-by-brand-slider">
+      <div class="swiper-wrapper">
+        {% for block in brand_blocks %}
+          {% assign brand_info = block.settings.brand %}
+
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            <a href="{{ routes.collections_url }}/vendors?q={{ brand_info.name | url_encode }}" class="shop-by-brand-item">
+              {% if  brand_info.logo != blank %}
+                <img
+                  src="{{  brand_info.logo | image_url: width: 1000 }}"
+                  alt="{{  brand_info.logo.alt | default:  brand_info.logo.name | escape }}"
+                  width="{{  brand_info.logo.width }}"
+                  height="{{  brand_info.logo.height }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <p class="wordmark">{{  brand_info.name }}</p>
               {% endif %}
             </a>
           </div>
@@ -68,21 +105,10 @@
       "name": "Brand",
       "settings": [
         {
-          "type": "image_picker",
-          "id": "logo",
-          "label": "Logo",
-          "info": "If left blank, the brand name below is shown as a text wordmark instead."
-        },
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Name",
-          "default": "Brand name"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
+          "type": "metaobject",
+          "id": "brand",
+          "label": "Brand",
+          "metaobject_type": "brand"
         }
       ]
     }
@@ -91,14 +117,15 @@
     {
       "name": "Shop by brand",
       "blocks": [
-        { "type": "brand", "settings": { "name": "Honeyraj" } },
-        { "type": "brand", "settings": { "name": "Nestora" } },
-        { "type": "brand", "settings": { "name": "Urban Craft" } },
-        { "type": "brand", "settings": { "name": "Lumiere" } },
-        { "type": "brand", "settings": { "name": "Cozynest" } },
-        { "type": "brand", "settings": { "name": "Weavehome" } },
-        { "type": "brand", "settings": { "name": "Claymore" } },
-        { "type": "brand", "settings": { "name": "Driftwood" } }
+        { "type": "brand"},
+        { "type": "brand"},
+        { "type": "brand" },
+        { "type": "brand" },
+        { "type": "brand" },
+        { "type": "brand" },
+        { "type": "brand" },
+        { "type": "brand" },
+        { "type": "brand" }
       ]
     }
   ]

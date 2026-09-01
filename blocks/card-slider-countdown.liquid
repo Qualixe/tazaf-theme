@@ -1,0 +1,40 @@
+{%- doc -%}
+  Renders a countdown timer for the card slider section. The ticking is handled
+  by the shared `.countdown[data-end]` script in assets/script.js.
+{%- enddoc -%}
+
+<div class="countdown" data-end="{{ block.settings.countdown_end }}" {{ block.shopify_attributes }}>
+  <span class="countdown-label">Ends In</span>
+  <span class="countdown-time">
+    <span class="countdown-days">00</span>
+    <span class="countdown-unit">d</span>
+    <span class="countdown-separator">:</span>
+    <span class="countdown-hours">00</span>
+    <span class="countdown-unit">h</span>
+    <span class="countdown-separator">:</span>
+    <span class="countdown-minutes">00</span>
+    <span class="countdown-unit">m</span>
+    <span class="countdown-separator">:</span>
+    <span class="countdown-seconds">00</span>
+    <span class="countdown-unit">s</span>
+  </span>
+</div>
+
+{% schema %}
+{
+  "name": "Countdown",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "countdown_end",
+      "label": "Countdown end date",
+      "default": "2026-08-29T23:59:59",
+      "info": "Format: YYYY-MM-DDTHH:MM:SS"
+    }
+  ],
+  "presets": [
+    { "name": "Countdown" }
+  ]
+}
+{% endschema %}

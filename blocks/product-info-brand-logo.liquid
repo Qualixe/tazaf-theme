@@ -1,15 +1,16 @@
-{% if settings.product_brand_logo != blank %}
-  {% assign brand_logo_alt = settings.product_brand_logo.alt | default: shop.name | escape %}
-  <div class="product-brand-logo" {{ block.shopify_attributes }}>
+{% assign brand = product.metafields.custom.brand.value %}
+
+{% if brand.logo != blank %}
+  {% assign brand_logo_alt = brand.logo.alt | default: shop.name | escape %}
+  <a href="{{ routes.collections_url }}/vendors?q={{ product.vendor | url_encode }}" class="product-brand-logo" {{ block.shopify_attributes }}>
     <p>brand:</p>
-    {{ settings.product_brand_logo | image_url: width: 160 | image_tag: alt: brand_logo_alt, loading: 'lazy' }}
-  </div>
+    {{ brand.logo | image_url: width: 160 | image_tag: alt: brand_logo_alt, loading: 'lazy' }}
+  </a>
 {% endif %}
 
 {% schema %}
 {
   "name": "Brand logo",
-  "tag": null,
   "settings": [
     {
       "type": "paragraph",

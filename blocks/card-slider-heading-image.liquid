@@ -1,0 +1,33 @@
+{%- doc -%}
+  Renders a decorative heading image for the card slider section (e.g. a "Deal of the Day" graphic).
+{%- enddoc -%}
+
+{% if block.settings.image != blank %}
+  <div class="img" {{ block.shopify_attributes }}>
+    <img
+      src="{{ block.settings.image | image_url: width: 400 }}"
+      alt="{{ block.settings.image.alt | escape }}"
+      width="{{ block.settings.image.width }}"
+      height="{{ block.settings.image.height }}"
+      loading="lazy"
+    >
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Section heading image",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Heading image",
+      "info": "Decorative heading image (e.g. a \"Deal of the Day\" graphic)."
+    }
+  ],
+  "presets": [
+    { "name": "Section heading image" }
+  ]
+}
+{% endschema %}

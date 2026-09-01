@@ -86,7 +86,7 @@
     background: var(--color-green);
     color: var(--white);
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1;
     text-wrap-mode: nowrap;
@@ -141,7 +141,7 @@
 
     .sticky-prduct-price .card-price-wrap .latest-price,
     .sticky-prduct-price .card-price-wrap .previous-price {
-        font-size: 12px;
+        font-size: 11px;
         line-height: 16px;
     }
 

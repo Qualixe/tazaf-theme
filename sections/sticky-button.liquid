@@ -32,7 +32,7 @@
           alt="{{ sticky_image.alt | default: product.title | escape }}"
           width="80"
           height="80"
-          loading="lazy"
+          loading="lazy" 
         >
       {% endif %}
     </div>
@@ -94,110 +94,65 @@
     const section = document.currentScript && document.currentScript.previousElementSibling;
     if (!section) return;
 
-    const productId = Number(section.dataset.productId);
     const button = section.querySelector('.sticky-add-to-cart-button');
     const priceEl = section.querySelector('[data-sticky-price]');
     const comparePriceEl = section.querySelector('[data-sticky-compare-price]');
     const saveEl = section.querySelector('[data-sticky-save]');
-    const imageEl = section.querySelector('.sticky-prduct-img img');
     const priceLabel = button?.querySelector('.sticky-add-to-cart-label');
 
-    function formatMoney(cents) {
-      const value = Number(cents || 0) / 100;
-      const formatter = new Intl.NumberFormat('en-BD', {
-        style: 'currency',
-        currency: 'BDT',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      });
-      return formatter.format(value);
-    }
+    // Clicking this button is handled by the page-wide [data-variant-id]
+    // click handler in assets/script.js (cart-drawer ajax section), which
+    // also resolves the current quantity (default input or bundle
+    // selection) - no separate click handler or /cart/add.js call here.
+    //
+    // The product page's own variant picker (snippets/product-info.liquid)
+    // is the source of truth for which variant is selected. This section
+    // only mirrors that state - variant id, price, disabled/sold-out -
+    // onto its own markup, since the sticky bar has no variant picker of
+    // its own. Quantity syncing (data-qty) is handled centrally in
+    // assets/script.js for both this button and the main one.
+    function syncFromMainForm() {
+      const mainButton = document.querySelector('.product-content-area .product-btn-wrap [data-variant-id]');
 
-    function updatePriceInfo(variant) {
-      if (!variant || !priceEl) return;
+      if (button && mainButton) {
+        const variantId = mainButton.dataset.variantId;
+        button.dataset.variantId = variantId || '';
+        button.disabled = !variantId || mainButton.disabled;
 
-      const currentPrice = Number(variant.price || 0);
-      const comparePrice = Number(variant.compare_at_price || 0);
-      const onSale = comparePrice > currentPrice;
-
-      priceEl.textContent = formatMoney(currentPrice);
-
-      if (comparePriceEl) {
-        if (onSale) {
-          comparePriceEl.hidden = false;
-          comparePriceEl.textContent = formatMoney(comparePrice);
-        } else {
-          comparePriceEl.hidden = true;
-          comparePriceEl.textContent = '';
+        if (priceLabel) {
+          priceLabel.textContent = button.disabled ? 'Sold out' : 'Add To Cart';
         }
       }
 
-      if (saveEl) {
-        if (onSale) {
-          const discount = Math.round(((comparePrice - currentPrice) / comparePrice) * 100);
-          saveEl.hidden = false;
-          saveEl.textContent = `${discount}% OFF`;
-        } else {
-          saveEl.hidden = true;
-          saveEl.textContent = '';
-        }
+      const mainPriceEl = document.querySelector('.product-content-area [data-price]');
+      const mainComparePriceEl = document.querySelector('.product-content-area [data-compare-price]');
+      const mainSaveEl = document.querySelector('.product-content-area [data-price-save]');
+
+      if (priceEl && mainPriceEl) {
+        priceEl.textContent = mainPriceEl.textContent;
+      }
+      if (comparePriceEl && mainComparePriceEl) {
+        comparePriceEl.hidden = mainComparePriceEl.hidden;
+        comparePriceEl.textContent = mainComparePriceEl.textContent;
+      }
+      if (saveEl && mainSaveEl) {
+        saveEl.hidden = mainSaveEl.hidden;
+        saveEl.textContent = mainSaveEl.textContent;
       }
     }
 
-    function updateVariant(variant) {
-      if (!variant || !button) return;
-
-      button.dataset.variantId = variant.id;
-      button.dataset.qty = '1';
-      button.disabled = !variant.available;
-
-      if (priceLabel) {
-        priceLabel.textContent = variant.available ? 'Add to Cart' : 'Sold out';
+    // The main variant picker's own listener (snippets/product-info.liquid)
+    // is bound directly on the option input and runs first during bubbling,
+    // so by the time this document-level handler fires the main button's
+    // variant id / price DOM is already updated.
+    document.addEventListener('change', function (event) {
+      const target = event.target;
+      if (target instanceof Element && target.classList.contains('product-varient-input')) {
+        syncFromMainForm();
       }
-
-      updatePriceInfo(variant);
-
-      if (variant.featured_image && imageEl) {
-        imageEl.src = variant.featured_image.src || imageEl.src;
-      }
-    }
-
-    function handleAddToCart() {
-      const variantId = button?.dataset.variantId;
-      if (!variantId) return;
-
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: Number(variantId), quantity: Number(button.dataset.qty || 1) })
-      })
-        .then((response) => response.json())
-        .then(() => fetch('/cart.js'))
-        .then((response) => response.json())
-        .then((cart) => {
-          document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart } }));
-          const drawer = document.querySelector('.cart-drawer');
-          if (drawer) {
-            drawer.classList.add('active');
-          }
-        })
-        .catch((error) => {
-          console.error('Sticky add to cart failed:', error);
-        });
-    }
-
-    button?.addEventListener('click', handleAddToCart);
-
-    document.addEventListener('shopify:product:select', function (event) {
-      const detail = event?.detail || {};
-      const selectedProductId = Number(detail.product?.id || productId);
-      if (!productId || selectedProductId !== productId) return;
-
-      const variant = detail.resource || detail.variant;
-      if (!variant) return;
-
-      updateVariant(variant);
     });
+
+    syncFromMainForm();
   })();
 </script>
 

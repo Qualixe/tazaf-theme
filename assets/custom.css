@@ -116,11 +116,21 @@ div#judgeme_product_reviews > .jm-stack {
     transform: translateY(-50%);
 }
 
+.card-slider-section .card-slider-section-heading {
+    text-align: center;
+}
+
+.cart-drawer-slider-item .card-price-wrap .card-badge {
+    opacity: 0;
+}
+
 @media screen and (max-width: 767px) {
     .product-floating-cart {
         right: 16px;
         padding: 0;
         border-radius: 5px;
+        width: 50px;
+        top: 70%;
     }
 
     .product-floating-cart__count {
@@ -128,6 +138,10 @@ div#judgeme_product_reviews > .jm-stack {
     }
 
     .product-floating-cart__price {
-        font-size: 12px;
+        font-size: 10px;
+    }
+    .product-floating-cart__icon {
+        height: 20px;
+        width: 20px;
     }
 }

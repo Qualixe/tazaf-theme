@@ -1,0 +1,35 @@
+{%- doc -%}
+  Renders the "View all" button for the card slider section.
+{%- enddoc -%}
+
+{% if block.settings.view_all_link != blank %}
+  <div class="card-slider-section-btn" {{ block.shopify_attributes }}>
+    <a href="{{ block.settings.view_all_link }}" class="btn">
+      {{ block.settings.view_all_label }}
+    </a>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Button",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "Button label",
+      "default": "View All products"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "Button link",
+      "info": "The button is hidden if left blank."
+    }
+  ],
+  "presets": [
+    { "name": "Button" }
+  ]
+}
+{% endschema %}
