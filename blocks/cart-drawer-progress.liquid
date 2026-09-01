@@ -7,7 +7,7 @@
   assign remaining = threshold | minus: cart.total_price
 %}
 
-<div class="cart-drawer-progress" {{ block.shopify_attributes }}>
+<div class="cart-drawer-progress" data-free-shipping-threshold="{{ threshold }}" {{ block.shopify_attributes }}>
   <div class="cart-drawer-progress-content" data-remaining="{{ remaining | money }}" data-percent="{{ percent_value }}">
     <span class="icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

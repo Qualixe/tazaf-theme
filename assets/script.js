@@ -315,7 +315,11 @@ document
   const drawer = document.querySelector(".cart-drawer");
   if (!drawer) return;
 
-  const FREE_SHIPPING_THRESHOLD = parseFloat(document.querySelector(".cart-drawer-progress-content")?.dataset.remaining); // matches snippets/cart-drawer-new.liquid
+  // Raw threshold in cents, set from Theme settings > Cart > Free shipping progress bar amount
+  // (see settings.free_shipping_threshold in config/settings_schema.json). Read from
+  // data-free-shipping-threshold rather than the drawer's formatted "remaining" text, which
+  // is a money-formatted string (e.g. "$35.00") and not safely parseable as a number.
+  const FREE_SHIPPING_THRESHOLD = parseFloat(document.querySelector(".cart-drawer-progress")?.dataset.freeShippingThreshold); // matches snippets/cart-drawer-new.liquid
 
   function formatMoney(cents) {
     const format = window.themeMoneyFormat || "${{amount}}";
