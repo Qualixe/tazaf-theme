@@ -27,7 +27,7 @@
           "name": "Cart progress",
           "settings": {
             "title": "Free Shipping",
-            "threshold": 350000
+            "threshold": 3500
           },
           "blocks": {}
         },
