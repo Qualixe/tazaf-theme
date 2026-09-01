@@ -19,7 +19,11 @@
         },
         "product_info_title_nNxXtF": {
           "type": "product-info-title",
-          "settings": {},
+          "settings": {
+            "preorder": "img",
+            "text": "Pre Order",
+            "image": "shopify://shop_images/pre-order.png"
+          },
           "blocks": {}
         },
         "product_info_price_UjtKhD": {
