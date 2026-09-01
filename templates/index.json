@@ -689,6 +689,58 @@
       "name": "Tabbed collections",
       "settings": {}
     },
+    "card_slider_haxE4i": {
+      "type": "card-slider",
+      "blocks": {
+        "heading": {
+          "type": "card-slider-heading",
+          "static": true,
+          "settings": {
+            "heading": "Featured Products"
+          },
+          "blocks": {}
+        },
+        "heading_image": {
+          "type": "card-slider-heading-image",
+          "disabled": true,
+          "static": true,
+          "settings": {},
+          "blocks": {}
+        },
+        "countdown": {
+          "type": "card-slider-countdown",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "countdown_end": "2026-08-29T23:59:59"
+          },
+          "blocks": {}
+        },
+        "collection": {
+          "type": "card-slider-collection",
+          "static": true,
+          "settings": {
+            "collection": "frontpage",
+            "max_products": 8
+          },
+          "blocks": {}
+        },
+        "button": {
+          "type": "card-slider-button",
+          "static": true,
+          "settings": {
+            "view_all_label": "View All products",
+            "view_all_link": "shopify://collections/frontpage"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Products",
+      "settings": {
+        "margin": false,
+        "background_color": "#fef2f0"
+      }
+    },
     "category_grid_section_CFLQY3": {
       "type": "category-grid-section",
       "blocks": {
@@ -1098,6 +1150,7 @@
     "category_grid_section_PexNMJ",
     "shop_by_brand_eXpXg6",
     "tab_section_7bWpBE",
+    "card_slider_haxE4i",
     "category_grid_section_CFLQY3",
     "category_banner2_DM87AE",
     "gift_banner_section_XpEe3k",
