@@ -6,6 +6,7 @@
   <input type="hidden" name="id" value="{{ current_variant.id }}" data-buy-now-id>
   <input type="hidden" name="quantity" value="1" data-buy-now-quantity>
   <input type="hidden" name="return_to" value="/checkout">
+  {% if block.settings.on %}
   <button type="submit" class="btn" {% unless current_variant.available %}disabled{% endunless %}>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M6 8h12l1 12H5L6 8Z"></path>
@@ -13,6 +14,7 @@
     </svg>
     {{ block.settings.buy_now }}
   </button>
+{% endif %}
 </form>
 
 {% schema %}
@@ -20,6 +22,12 @@
   "name": "Buy now button",
   "tag": null,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "on",
+      "label": "On",
+      "default" : true
+    },
     {
       "type": "text",
       "id": "buy_now",
