@@ -909,7 +909,7 @@ button {
         width: 100%;
     } */
     .cart-drawer-content {
-        height: calc(100dvh - 242px)
+        height: calc(100dvh - 240px)
     }
 
     /* common-css start */
