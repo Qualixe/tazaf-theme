@@ -1,3 +1,8 @@
+button.btn.addtocart,
+button.btn.callNow
+ {
+    color: var(--white);
+}
 .mega_menu_img {
     background: #fef2f0;
 }
