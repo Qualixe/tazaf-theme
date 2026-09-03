@@ -197,5 +197,17 @@
     {% render 'footer-links' %}
 
     {% sections 'aside-group' %}
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const buttonTitle = document.querySelector(
+          '.cart-drawer-checkout-btn-wrap #es-popup-button .es-button-title'
+        );
+
+        if (buttonTitle) {
+          buttonTitle.textContent = 'Checkout';
+        }
+      });
+      </script>
   </body>
 </html>
