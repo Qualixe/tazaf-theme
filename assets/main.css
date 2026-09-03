@@ -903,13 +903,13 @@ button {
 /* swiper pagination and button css end */
 
 @media only screen and (max-width:600px) {
-    .cart-drawer-footer {
+    /* .cart-drawer-footer {
         position: fixed;
         bottom: 0;
         width: 100%;
-    }
+    } */
     .cart-drawer-content {
-        height: calc(100vh - 238px)
+        height: calc(100vh - 254px)
     }
 
     /* common-css start */
