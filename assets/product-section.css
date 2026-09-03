@@ -569,7 +569,7 @@ label.bundle-label {
     align-items: center;
     justify-content: center;
     gap: 5px;
-    color: var(--white);
+    /* color: var(--white); */
     font-weight: 600;
 }
 
