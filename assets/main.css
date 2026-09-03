@@ -902,7 +902,7 @@ button {
 
 /* swiper pagination and button css end */
 
-@media only screen and (max-width:575px) {
+@media only screen and (max-width:600px) {
     .cart-drawer-footer {
         position: fixed;
         bottom: 0;
