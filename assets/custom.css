@@ -1,3 +1,7 @@
+button.btn.hide_btn {
+    display: none;
+}
+
 button.btn.addtocart,
 .btn.callNow
  {
