@@ -29,7 +29,7 @@
     endif
   endfor
 %}
-<div class="product-card card_hover">
+<div class="product-card">
   <div class="card-image-wrap">
     
       <div class="card-rattings">
@@ -42,11 +42,11 @@
             {{ product.featured_image | image_url: width: image_width | image_tag: class: 'card_img', alt: featured_alt, loading: 'lazy' }}
           {% endif %}
         </a>
-        <a class="hover-img" href="{{ product.url }}">
+        {% comment %} <a class="hover-img" href="{{ product.url }}">
           {% if hover_image != blank %}
             {{ hover_image | image_url: width: image_width | image_tag: class: 'card_hover_img', alt: title_escaped, loading: 'lazy' }}
           {% endif %}
-        </a>
+        </a> {% endcomment %}
       </div>
       {% if preorder %}
       <div class="card-badges">
