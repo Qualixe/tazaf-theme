@@ -104,7 +104,6 @@
             },
             "product_info_buy_now_button_wFgggz": {
               "type": "product-info-buy-now-button",
-              "disabled": true,
               "settings": {
                 "buy_now": "Buy Now"
               },
