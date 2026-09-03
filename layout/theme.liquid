@@ -199,14 +199,23 @@
     {% sections 'aside-group' %}
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
+      const updateButtonText = () => {
         const buttonTitle = document.querySelector(
           '.cart-drawer-checkout-btn-wrap #es-popup-button .es-button-title'
-        ); 
+        );
 
         if (buttonTitle) {
           buttonTitle.textContent = 'Checkout';
         }
+      };
+
+      updateButtonText();
+
+      const observer = new MutationObserver(updateButtonText);
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
       });
       </script>
       <style>
