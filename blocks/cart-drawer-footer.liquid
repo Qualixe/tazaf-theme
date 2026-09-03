@@ -5,7 +5,9 @@
   </div>
   <div class="cart-drawer-checkout-btn-wrap">
     <form action="{{ routes.cart_url }}" method="post">
+      {% if block.settings.enable %}
       <button type="submit" name="checkout" class="btn">{{ block.settings.checkout_text | default: 'secure checkout' }}</button>
+      {% endif %}
     </form>
   </div>
 </div>
@@ -26,6 +28,12 @@
       "id": "checkout_text",
       "label": "Checkout button",
       "default": "secure checkout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Enable Button",
+      "default": true
     }
   ],
   "presets": [
