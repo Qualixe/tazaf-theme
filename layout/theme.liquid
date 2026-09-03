@@ -199,24 +199,15 @@
     {% sections 'aside-group' %}
 
     <script>
-      const updateButtonText = () => {
-        const buttonTitle = document.querySelector(
-          '.cart-drawer-checkout-btn-wrap #es-popup-button .es-button-title'
-        );
+      setTimeout(() => {
+      const buttonTitle = document.querySelector(
+        '.cart-drawer-checkout-btn-wrap #es-popup-button .es-button-title'
+      );
 
-        if (buttonTitle) {
-          buttonTitle.textContent = 'Checkout';
-        }
-      };
-
-      updateButtonText();
-
-      const observer = new MutationObserver(updateButtonText);
-
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
+      if (buttonTitle) {
+        buttonTitle.textContent = 'Checkout';
+      }
+    }, 3000);
       </script>
       <style>
         button#es-sticky {
