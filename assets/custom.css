@@ -3,6 +3,13 @@ button.btn.addtocart,
  {
     color: var(--white);
 }
+
+.product-whatsapp-link {
+    background: var(--color-green);
+    border-color: var(--color-green);
+    color: var(--white);
+}
+
 .mega_menu_img {
     background: #fef2f0;
 }
