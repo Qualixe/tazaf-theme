@@ -27,7 +27,7 @@
 }
 
 .navbar-left .hamburger svg path {
-    stroke: var(--brand-color);
+    /* stroke: var(--brand-color); */
 }
 
 .navbar-logo {
