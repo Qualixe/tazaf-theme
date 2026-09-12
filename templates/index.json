@@ -244,17 +244,17 @@
         "category_EdrPEf": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/category-img1.jpg",
-            "title": "Women Fashion",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_07_24_43_PM.png",
+            "title": "Gadgets",
             "link": "shopify://collections/all"
           }
         },
         "category_XAGqmV": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/category-img2.jpg",
-            "title": "Women bottom",
-            "link": "shopify://collections/all"
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_07_25_40_PM.png",
+            "title": "Wallets",
+            "link": "shopify://collections/wallets"
           }
         },
         "category_8zWJN4": {
@@ -790,7 +790,7 @@
       "name": "Products",
       "settings": {
         "margin": false,
-        "background_color": "#FEFEFE"
+        "background_color": "#fefefe"
       }
     },
     "category_grid_section_CFLQY3": {
