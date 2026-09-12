@@ -246,7 +246,7 @@
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_07_24_43_PM.png",
             "title": "Gadgets",
-            "link": "shopify://collections/gadget"
+            "link": "shopify://collections/all"
           }
         },
         "category_XAGqmV": {
@@ -260,49 +260,49 @@
         "category_8zWJN4": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_11_PM.png",
-            "title": "Watches",
-            "link": "shopify://collections/watches"
+            "image": "shopify://shop_images/category-img3.jpg",
+            "title": "Men topwear",
+            "link": "shopify://collections/all"
           }
         },
         "category_kHYji8": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_46_18_PM.png",
-            "title": "Kids and Toys",
-            "link": "shopify://collections/kids-and-toys"
+            "image": "shopify://shop_images/category-img4.jpg",
+            "title": "Women footwear",
+            "link": "shopify://collections/all"
           }
         },
         "category_aXLKeU": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_25_PM.png",
-            "title": "Bedsheets",
-            "link": "shopify://collections/bedsheet"
+            "image": "shopify://shop_images/category-img5.jpg",
+            "title": "Men bottomwear",
+            "link": "shopify://collections/all"
           }
         },
         "category_bC3dbm": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_19_PM.png",
-            "title": "Home decor",
+            "image": "shopify://shop_images/category-img6.jpg",
+            "title": "Men fashion accessories",
             "link": "shopify://collections/all"
           }
         },
         "category_yB7Lix": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_32_PM.png",
-            "title": "Furnishing",
-            "link": "shopify://collections/study-lamp-copy"
+            "image": "shopify://shop_images/category-img7.jpg",
+            "title": "Men footwear",
+            "link": "shopify://collections/all"
           }
         },
         "category_fMmDBJ": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/12b0c7ec-1f80-4177-8007-01a1ca4bcad3.png",
-            "title": "Dining",
-            "link": "shopify://collections/dining"
+            "image": "shopify://shop_images/category-img8.jpg",
+            "title": "Women accessories",
+            "link": "shopify://collections/all"
           }
         },
         "category_nej9fw": {
@@ -334,7 +334,7 @@
         "category_MgAC3T": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/category-img10.jpg",
+            "image": "shopify://shop_images/kids_kurti.png",
             "title": "Kids kurti",
             "link": "shopify://collections/all"
           }
