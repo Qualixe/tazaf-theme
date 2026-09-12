@@ -428,8 +428,8 @@
             "mobile_image": "shopify://shop_images/grid-banner-img1-mobile.webp",
             "heading": "New premium dress",
             "text": "Explore living",
-            "button_label": "Shop now",
-            "link": "shopify://collections/all"
+            "button_label": "Shop Now",
+            "link": "shopify://collections/watches"
           }
         },
         "banner_Fb7pGz": {
@@ -485,6 +485,7 @@
         },
         "countdown": {
           "type": "card-slider-countdown",
+          "disabled": true,
           "static": true,
           "settings": {
             "countdown_end": "2026-08-29T23:59:59"
