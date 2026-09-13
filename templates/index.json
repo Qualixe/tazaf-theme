@@ -746,6 +746,7 @@
       "blocks": {
         "heading": {
           "type": "card-slider-heading",
+          "disabled": true,
           "static": true,
           "settings": {
             "heading": "Watches"
@@ -754,9 +755,10 @@
         },
         "heading_image": {
           "type": "card-slider-heading-image",
-          "disabled": true,
           "static": true,
-          "settings": {},
+          "settings": {
+            "image": "shopify://shop_images/watches-header.svg"
+          },
           "blocks": {}
         },
         "countdown": {
@@ -790,7 +792,7 @@
       "name": "Products",
       "settings": {
         "margin": false,
-        "background_color": "#fefefe"
+        "background_color": "#FEF1CF"
       }
     },
     "category_grid_section_CFLQY3": {
