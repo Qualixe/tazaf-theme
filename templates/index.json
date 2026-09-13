@@ -783,7 +783,7 @@
           "static": true,
           "settings": {
             "view_all_label": "View All products",
-            "view_all_link": "shopify://collections/frontpage"
+            "view_all_link": "shopify://collections/watches"
           },
           "blocks": {}
         }
