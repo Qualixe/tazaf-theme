@@ -25,6 +25,7 @@
       "block_order": [
         "announcement_M9L6dt"
       ],
+      "disabled": true,
       "name": "Announcement bar",
       "settings": {}
     },
