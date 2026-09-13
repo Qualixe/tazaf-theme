@@ -224,8 +224,8 @@
         "slide_C9pV9U": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/hero-slider-banner1.webp",
-            "mobile_image": "shopify://shop_images/hero-slider-banner1-mobile.webp",
+            "desktop_image": "shopify://shop_images/Untitled_Design_46.png",
+            "mobile_image": "shopify://shop_images/ChatGPT_Image_Sep_13_2026_05_32_36_PM.png",
             "heading": "Premium product",
             "link": "shopify://collections/all"
           }
@@ -513,7 +513,7 @@
       "name": "Deal of the day slider",
       "settings": {
         "margin": false,
-        "background_color": "#FEF1CF"
+        "background_color": "#fef1cf"
       }
     },
     "category_grid_section_PexNMJ": {
@@ -792,7 +792,7 @@
       "name": "Products",
       "settings": {
         "margin": false,
-        "background_color": "#FEF1CF"
+        "background_color": "#fef1cf"
       }
     },
     "category_grid_section_CFLQY3": {
