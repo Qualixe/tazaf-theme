@@ -215,10 +215,10 @@
         "slide_jUjNRD": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/hero-slider-banner1.webp",
-            "mobile_image": "shopify://shop_images/hero-slider-banner1-mobile.webp",
-            "heading": "Premium product",
-            "link": "shopify://collections/all"
+            "desktop_image": "shopify://shop_images/ChatGPT_Image_Sep_13_2026_02_26_11_PM.png",
+            "mobile_image": "shopify://shop_images/ChatGPT_Image_Sep_13_2026_02_28_56_PM.png",
+            "heading": "",
+            "link": "shopify://collections/home-decor"
           }
         },
         "slide_C9pV9U": {
@@ -424,8 +424,8 @@
         "banner_KpiGjp": {
           "type": "banner",
           "settings": {
-            "desktop_image": "shopify://shop_images/grid-banner-img1.webp",
-            "mobile_image": "shopify://shop_images/grid-banner-img1-mobile.webp",
+            "desktop_image": "shopify://shop_images/ChatGPT_Image_Sep_13_2026_02_56_57_PM.png",
+            "mobile_image": "shopify://shop_images/ChatGPT_Image_Sep_13_2026_02_45_45_PM.png",
             "heading": "New premium dress",
             "text": "Explore living",
             "button_label": "Shop Now",
@@ -435,7 +435,7 @@
         "banner_Fb7pGz": {
           "type": "banner",
           "settings": {
-            "desktop_image": "shopify://shop_images/grid-banner-img2_4869aee5-1130-42f5-a33a-88a8e1ca3b7e.webp",
+            "desktop_image": "shopify://shop_images/ChatGPT_Image_Sep_13_2026_02_51_00_PM.png",
             "mobile_image": "shopify://shop_images/grid-banner-img2-mobile_a8c210a8-317b-4dde-82ec-b8818b84e2dc.webp",
             "heading": "Ready to wear",
             "text": "Explore living",
