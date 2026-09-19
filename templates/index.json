@@ -331,20 +331,20 @@
     "category_section_dyThwD": {
       "type": "category-section",
       "blocks": {
-        "category_MgAC3T": {
-          "type": "category",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_09_38_PM.png",
-            "title": "Kitchen Appliances",
-            "link": "shopify://collections/kitchen-appliances"
-          }
-        },
         "category_8UFaaT": {
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_14_49_PM.png",
             "title": "Document Organizer",
             "link": "shopify://collections/document-organiser"
+          }
+        },
+        "category_MgAC3T": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_09_38_PM.png",
+            "title": "Kitchen Appliances",
+            "link": "shopify://collections/kitchen-appliances"
           }
         },
         "category_Mpq8Mb": {
@@ -405,8 +405,8 @@
         }
       },
       "block_order": [
-        "category_MgAC3T",
         "category_8UFaaT",
+        "category_MgAC3T",
         "category_Mpq8Mb",
         "category_hjkn7N",
         "category_y8BVAD",
