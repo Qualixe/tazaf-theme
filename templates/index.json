@@ -284,7 +284,7 @@
         "category_fMmDBJ": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/12b0c7ec-1f80-4177-8007-01a1ca4bcad3.png",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_17_01_PM.png",
             "title": "Dining",
             "link": "shopify://collections/dining"
           }
@@ -815,7 +815,7 @@
       "name": "Products",
       "settings": {
         "margin": false,
-        "background_color": "#FFF8F6"
+        "background_color": "#fff8f6"
       }
     },
     "card_slider_E8HmYm": {
