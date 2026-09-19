@@ -789,7 +789,7 @@
           "disabled": true,
           "static": true,
           "settings": {
-            "countdown_end": "dadada"
+            "countdown_end": "2026-08-29T23:59:59"
           },
           "blocks": {}
         },
