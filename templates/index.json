@@ -719,40 +719,40 @@
           "type": "tab",
           "settings": {
             "title": "Naviforce Watches",
-            "icon": "shopify://shop_images/varient-img3.webp",
+            "icon": "shopify://shop_images/2025-08-12-1755003898167-NAVIFORCE-NF9216T-Casual-Sport-Digital-Alarm-Clock-Durable-Silicone-Waterproof-Luminous-Quartz-Man-W.webp",
             "collection": "watches",
             "max_products": 6,
-            "view_all_link": "shopify://collections/all"
+            "view_all_link": "https://tazaf-shop.myshopify.com/collections/vendors?q=Naviforce"
           }
         },
         "tab_aFiTt4": {
           "type": "tab",
           "settings": {
             "title": "Casio Watches",
-            "icon": "shopify://shop_images/product-slider-img3.webp",
+            "icon": "shopify://shop_images/2025-08-12-1755005171117-Casio-ENTICER-MEN-MTP-VD300L-1EUDF-A1751-Multi-Dial-Watch-1-jpg.webp",
             "collection": "slippers",
             "max_products": 6,
-            "view_all_link": "https://tazaf-shop.myshopify.com/collections/vendors?q=Naviforce"
+            "view_all_link": "https://tazaf-shop.myshopify.com/collections/vendors?q=CASIO"
           }
         },
         "tab_dx3r7T": {
           "type": "tab",
           "settings": {
-            "title": "Artificial Flowers",
-            "icon": "shopify://shop_images/product-slider-img5.webp",
-            "collection": "slippers",
+            "title": "Air Fryer",
+            "icon": "shopify://shop_images/imgi_18_bnywHBZKCJwIHVhdjkwaUGUfgVwFUKPXaM0HmTrY.png",
+            "collection": "air-fryer",
             "max_products": 6,
-            "view_all_link": "shopify://collections/all"
+            "view_all_link": "shopify://collections/air-fryer"
           }
         },
         "tab_3mixwd": {
           "type": "tab",
           "settings": {
-            "title": "Table Lamps",
-            "icon": "shopify://shop_images/product-slider-img2.avif",
-            "collection": "frontpage",
+            "title": "Steamer and Iron",
+            "icon": "shopify://shop_images/imgi_5_philips-3000-series-dst3010-2000w-violet-steam-41767599453.webp",
+            "collection": "steam",
             "max_products": 6,
-            "view_all_link": "shopify://collections/all"
+            "view_all_link": "shopify://collections/steam"
           }
         }
       },
@@ -762,6 +762,7 @@
         "tab_dx3r7T",
         "tab_3mixwd"
       ],
+      "custom_css": [],
       "name": "Tabbed collections",
       "settings": {}
     },
@@ -917,6 +918,7 @@
         "item_athbWg",
         "item_LdxhR6"
       ],
+      "disabled": true,
       "name": "Category grid",
       "settings": {
         "title": "Bed & Bath Essentials"
@@ -973,11 +975,13 @@
         "banner_3yJePH",
         "banner_i7RpwY"
       ],
+      "disabled": true,
       "name": "Grid banner (5 slot)",
       "settings": {}
     },
     "gift_banner_section_XpEe3k": {
       "type": "gift-banner-section",
+      "disabled": true,
       "name": "Gifting banner",
       "settings": {
         "badge_prefix": "Gifting by",
@@ -1209,6 +1213,7 @@
         "category_DgHmXf",
         "category_Epz98D"
       ],
+      "disabled": true,
       "name": "Image category slider",
       "settings": {}
     },
@@ -1262,6 +1267,7 @@
         "review_npXYVF",
         "review_bUqWAE"
       ],
+      "disabled": true,
       "name": "Community reviews",
       "settings": {
         "title": "Community Reviews",
