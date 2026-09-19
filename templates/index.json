@@ -657,7 +657,7 @@
             "text": "<h3>New arrivals</h3>",
             "width": "100%",
             "max_width": "narrow",
-            "alignment": "left",
+            "alignment": "center",
             "type_preset": "h4",
             "font": "var(--font-body--family)",
             "font_size": "",
@@ -680,6 +680,7 @@
       "block_order": [
         "text_Cn33qn"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "t:names.rich_text_section",
       "settings": {
@@ -717,9 +718,9 @@
         "tab_kzc49t": {
           "type": "tab",
           "settings": {
-            "title": "Bath Mats",
+            "title": "Naviforce Watches",
             "icon": "shopify://shop_images/varient-img3.webp",
-            "collection": "frontpage",
+            "collection": "watches",
             "max_products": 6,
             "view_all_link": "shopify://collections/all"
           }
@@ -727,11 +728,11 @@
         "tab_aFiTt4": {
           "type": "tab",
           "settings": {
-            "title": "Mugs and Cups",
+            "title": "Casio Watches",
             "icon": "shopify://shop_images/product-slider-img3.webp",
             "collection": "slippers",
             "max_products": 6,
-            "view_all_link": "shopify://collections/all"
+            "view_all_link": "https://tazaf-shop.myshopify.com/collections/vendors?q=Naviforce"
           }
         },
         "tab_dx3r7T": {
