@@ -503,7 +503,7 @@
           "type": "card-slider-collection",
           "static": true,
           "settings": {
-            "collection": "frontpage",
+            "collection": "kitchen-appliances",
             "max_products": 8
           },
           "blocks": {}
