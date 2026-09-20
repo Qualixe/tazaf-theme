@@ -124,8 +124,8 @@
       "name": "Brands",
       "settings": {
         "title": "Shop By Brands",
-        "view_all_label": "Shop All Brands",
-        "view_all_link": ""
+        "view_all_label": "Shop All",
+        "view_all_link": "shopify://collections/all"
       }
     }
   },
