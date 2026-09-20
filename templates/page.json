@@ -108,6 +108,12 @@
           "settings": {
             "brand": "honey-raj"
           }
+        },
+        "brand_Ub8aG3": {
+          "type": "brand",
+          "settings": {
+            "brand": ""
+          }
         }
       },
       "block_order": [
@@ -118,7 +124,8 @@
         "brand_r6MzFL",
         "brand_Q3MwXU",
         "brand_wbtXA8",
-        "brand_GmQkja"
+        "brand_GmQkja",
+        "brand_Ub8aG3"
       ],
       "name": "Brands",
       "settings": {

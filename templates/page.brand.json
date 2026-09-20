@@ -59,8 +59,78 @@
         "padding-block-end": 80
       }
     },
+    "brands_WmkHit": {
+      "type": "brands",
+      "blocks": {
+        "brand_YpVtzh": {
+          "type": "brand",
+          "settings": {
+            "brand": "philips"
+          }
+        },
+        "brand_44dzyP": {
+          "type": "brand",
+          "settings": {
+            "brand": "panasonic"
+          }
+        },
+        "brand_yjQDKT": {
+          "type": "brand",
+          "settings": {
+            "brand": "sharp"
+          }
+        },
+        "brand_zz7H6X": {
+          "type": "brand",
+          "settings": {
+            "brand": "casio"
+          }
+        },
+        "brand_iAt9Mh": {
+          "type": "brand",
+          "settings": {
+            "brand": "olevs"
+          }
+        },
+        "brand_gBRhHT": {
+          "type": "brand",
+          "settings": {
+            "brand": "poedagar"
+          }
+        },
+        "brand_Y3mxXL": {
+          "type": "brand",
+          "settings": {
+            "brand": "skmei"
+          }
+        },
+        "brand_mNWDgA": {
+          "type": "brand",
+          "settings": {
+            "brand": "poedagar"
+          }
+        }
+      },
+      "block_order": [
+        "brand_YpVtzh",
+        "brand_44dzyP",
+        "brand_yjQDKT",
+        "brand_zz7H6X",
+        "brand_iAt9Mh",
+        "brand_gBRhHT",
+        "brand_Y3mxXL",
+        "brand_mNWDgA"
+      ],
+      "name": "Brands",
+      "settings": {
+        "title": "Shop By Brands",
+        "view_all_label": "Shop All Brands",
+        "view_all_link": ""
+      }
+    }
   },
   "order": [
     "main",
+    "brands_WmkHit"
   ]
 }
