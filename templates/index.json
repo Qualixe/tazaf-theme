@@ -871,7 +871,7 @@
           "type": "card-slider-collection",
           "static": true,
           "settings": {
-            "collection": "frontpage",
+            "collection": "home-appliances",
             "max_products": 8
           },
           "blocks": {}
