@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "main-page",
@@ -21,10 +22,12 @@
             "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-body--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
+            "text_color": "",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -37,7 +40,9 @@
         },
         "page-content": {
           "type": "page-content",
-          "settings": {},
+          "settings": {
+            "text_color": ""
+          },
           "blocks": {}
         }
       },
@@ -52,9 +57,79 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "brands_R4DMyW": {
+      "type": "brands",
+      "blocks": {
+        "brand_TPPUfi": {
+          "type": "brand",
+          "settings": {
+            "brand": "olevs"
+          }
+        },
+        "brand_QgBbRK": {
+          "type": "brand",
+          "settings": {
+            "brand": "skmei"
+          }
+        },
+        "brand_DMAVg7": {
+          "type": "brand",
+          "settings": {
+            "brand": "poedagar"
+          }
+        },
+        "brand_3rB6g6": {
+          "type": "brand",
+          "settings": {
+            "brand": "sharp"
+          }
+        },
+        "brand_r6MzFL": {
+          "type": "brand",
+          "settings": {
+            "brand": "panasonic"
+          }
+        },
+        "brand_Q3MwXU": {
+          "type": "brand",
+          "settings": {
+            "brand": "philips"
+          }
+        },
+        "brand_wbtXA8": {
+          "type": "brand",
+          "settings": {
+            "brand": "urban-craft"
+          }
+        },
+        "brand_GmQkja": {
+          "type": "brand",
+          "settings": {
+            "brand": "honey-raj"
+          }
+        }
+      },
+      "block_order": [
+        "brand_TPPUfi",
+        "brand_QgBbRK",
+        "brand_DMAVg7",
+        "brand_3rB6g6",
+        "brand_r6MzFL",
+        "brand_Q3MwXU",
+        "brand_wbtXA8",
+        "brand_GmQkja"
+      ],
+      "name": "Brands",
+      "settings": {
+        "title": "Shop By Brands",
+        "view_all_label": "Shop All Brands",
+        "view_all_link": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "brands_R4DMyW"
   ]
 }

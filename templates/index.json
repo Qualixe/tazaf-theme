@@ -1222,6 +1222,39 @@
         "view_all_label": "Shop now",
         "view_all_link": ""
       }
+    },
+    "text_section_pHqphe": {
+      "type": "text-section",
+      "blocks": {
+        "heading_BD6NwD": {
+          "type": "heading",
+          "settings": {
+            "heading": "Section Heading",
+            "heading_color": "{{ settings.color_palette.heading }}"
+          },
+          "blocks": {}
+        },
+        "link_UUkrzG": {
+          "type": "link",
+          "settings": {
+            "button": "View All",
+            "link": "",
+            "link_color": "{{ settings.color_palette.heading }}"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_BD6NwD",
+        "link_UUkrzG"
+      ],
+      "name": "Text Section",
+      "settings": {
+        "Background": "{{ settings.color_palette.background }}",
+        "position": "left",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
     }
   },
   "order": [
@@ -1243,6 +1276,7 @@
     "category_section_ng8MYH",
     "category_section_kwTcC6",
     "image_category_section_FriL3P",
-    "community_review_yUmbaM"
+    "community_review_yUmbaM",
+    "text_section_pHqphe"
   ]
 }
