@@ -285,8 +285,48 @@
           "type": "category-item",
           "name": "Category",
           "settings": {
-            "image": "shopify://shop_images/category-img5.jpg",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_25_PM.png",
             "title": "Bedsheets",
+            "link": "shopify://collections/bedsheet"
+          },
+          "blocks": {}
+        },
+        "category_item_dEtffQ": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_17_01_PM.png",
+            "title": "Dining",
+            "link": "shopify://collections/dining"
+          },
+          "blocks": {}
+        },
+        "category_item_6GAK8N": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_21_08_PM.png",
+            "title": "Home decor",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
+        },
+        "category_item_hNdCKB": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_24_04_PM.png",
+            "title": "Furnishing",
+            "link": "shopify://collections/study-lamp-copy"
+          },
+          "blocks": {}
+        },
+        "category_item_Nx9htt": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_26_06_PM.png",
+            "title": "Health & beauty",
             "link": "shopify://collections/all"
           },
           "blocks": {}
@@ -316,14 +356,108 @@
         "category_item_cwkHxz",
         "category_item_QzebCJ",
         "category_item_GmAB98",
-        "category_item_XXxzpG"
+        "category_item_XXxzpG",
+        "category_item_dEtffQ",
+        "category_item_6GAK8N",
+        "category_item_hNdCKB",
+        "category_item_Nx9htt"
       ],
       "name": "Category slider",
       "settings": {}
     },
-    "category_section_dyThwD": {
+    "category_section_JqjMpg": {
       "type": "category-section",
       "blocks": {
+        "category_item_J9bEKf": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_14_49_PM.png",
+            "title": "Document Organizer",
+            "link": "shopify://collections/document-organiser"
+          },
+          "blocks": {}
+        },
+        "category_item_cYqkTn": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_09_38_PM.png",
+            "title": "Kitchen Appliances",
+            "link": "shopify://collections/kitchen-appliances"
+          },
+          "blocks": {}
+        },
+        "category_item_TKFxDE": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_18_04_PM.png",
+            "title": "Home Storages",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
+        },
+        "category_item_mtAbtd": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_09_18_10_PM.png",
+            "title": "Bags and Luggage",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
+        },
+        "category_item_f6VRYT": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/images_1.png",
+            "title": "Ghorerbazar Food",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
+        },
+        "category_item_a3RdA8": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_29_22_PM.png",
+            "title": "Superfood",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
+        },
+        "category_item_hNK9Hg": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_22_PM.png",
+            "title": "Eyewear",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
+        },
+        "category_item_CiLGnz": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_35_37_PM.png",
+            "title": "Home Textiles",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
+        },
+        "category_item_KymqPA": {
+          "type": "category-item",
+          "name": "Category",
+          "settings": {
+            "image": "shopify://shop_images/category-img18.jpg",
+            "title": "Health & Medical",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
+        },
         "spacing": {
           "type": "section-spacing",
           "static": true,
@@ -344,6 +478,17 @@
           "blocks": {}
         }
       },
+      "block_order": [
+        "category_item_J9bEKf",
+        "category_item_cYqkTn",
+        "category_item_TKFxDE",
+        "category_item_mtAbtd",
+        "category_item_f6VRYT",
+        "category_item_a3RdA8",
+        "category_item_hNK9Hg",
+        "category_item_CiLGnz",
+        "category_item_KymqPA"
+      ],
       "name": "Category slider",
       "settings": {}
     },
@@ -1081,7 +1226,7 @@
     "product_list_fa6P9H",
     "hero_section_JGBRHB",
     "category_section_EereCD",
-    "category_section_dyThwD",
+    "category_section_JqjMpg",
     "grid_banner_section_z9MaHG",
     "card_slider_QK4CtU",
     "category_grid_section_PexNMJ",
