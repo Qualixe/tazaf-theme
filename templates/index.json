@@ -1088,6 +1088,7 @@
           "blocks": {}
         }
       },
+      "disabled": true,
       "name": "Category slider",
       "settings": {}
     },
@@ -1114,6 +1115,7 @@
           "blocks": {}
         }
       },
+      "disabled": true,
       "name": "Category slider",
       "settings": {}
     },
