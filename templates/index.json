@@ -718,7 +718,7 @@
       "settings": {
         "title": "Shop By Brands",
         "view_all_label": "Shop All Brands",
-        "view_all_link": "shopify://collections/all"
+        "view_all_link": "shopify://pages/brands"
       }
     },
     "section_hnqbrf": {
