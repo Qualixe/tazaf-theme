@@ -828,13 +828,31 @@
             "max_products": 4,
             "view_all_link": "shopify://collections/steam"
           }
+        },
+        "spacing_LTeCcU": {
+          "type": "spacing",
+          "settings": {
+            "padding_top_desktop": 0,
+            "padding_bottom_desktop": 40,
+            "margin_top_desktop": 0,
+            "margin_bottom_desktop": 0,
+            "padding_top_tablet": 0,
+            "padding_bottom_tablet": 0,
+            "margin_top_tablet": 0,
+            "margin_bottom_tablet": 0,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 20,
+            "margin_top_mobile": 0,
+            "margin_bottom_mobile": 0
+          }
         }
       },
       "block_order": [
         "tab_kzc49t",
         "tab_aFiTt4",
         "tab_dx3r7T",
-        "tab_3mixwd"
+        "tab_3mixwd",
+        "spacing_LTeCcU"
       ],
       "custom_css": [],
       "name": "Tabbed collections",
