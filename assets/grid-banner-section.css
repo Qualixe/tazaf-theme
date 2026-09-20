@@ -17,6 +17,7 @@
 .grid-banner-item {
     position: relative;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .grid-banner-item1 {

@@ -12,6 +12,10 @@
 
 <div class="product-desktop-content" {{ block.shopify_attributes }}>
   <h1 class="product-title">{{ product.title }}</h1>
+  {% assign badge = product.metafields.custom.badge %}
+   {% if badge !=blank %}
+      <h6 class="product-badge">{{ badge }}</h6>
+    {% endif %}
 
   {% if preorder %}
       {% if block.settings.preorder == 'img' %}

@@ -177,7 +177,116 @@ div#judgeme_product_reviews > .jm-stack {
     text-transform: uppercase;
 }
 
+.product-badge {
+    font-size: 16px;
+}
+
+.text-section-heading.content-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.text-section-heading .title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* brand  */
+.brand-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+}
+
+
+.brand-item {
+    box-shadow: 0 0 40px 10px #e6e6e6;
+    background: #fff;
+}
+
+.brand-item-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+
+.brand-item-link img {
+    object-fit: contain;
+}
+
+.brand-item-link p {
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+.collection-load-more-btn {
+    text-align: center;
+    display: block;
+    margin-top: 40px;
+}
+
+.section.search-section {
+    padding: 0;
+    padding-top: 25px;
+}
+
+results-list.section.product-grid-container {
+    padding-top: 20px;
+}
+
+#search_results .category-section-heading {
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+section#search_results {
+    padding-top: 0;
+}
+.filter-option.filter_disable {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.text-section-heading.content-center {
+    display: block;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.text-section-heading.content-right {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+} 
+
 @media screen and (max-width: 767px) {
+    .section.search-section {
+        padding-top: 15px;
+    }
+    .spacing-style.search-page__header h4 {
+        font-size: 18px;
+    }
+
+    .brand-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .brand-item-link img {
+        max-height: 90px;
+    }
+
+    .brand-item-link p {
+        font-size: 18px;
+    }
     .product-floating-cart {
         right: 16px;
         padding: 0;

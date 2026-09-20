@@ -1,0 +1,28 @@
+{% if block.settings.heading != blank %}
+    <h2 class="title" style="color: {{ block.settings.heading_color }}">{{ block.settings.heading }}</h2>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Heading",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default" : "Section Heading"
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "{{ settings.color_palette.heading }}"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Heading"
+        }
+    ]
+}
+{% endschema %}

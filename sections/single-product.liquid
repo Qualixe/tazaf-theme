@@ -83,8 +83,13 @@
                 {% endif %}
 
               {% when 'title' %}
+                {% assign badge = product.metafields.custom.badge %}
                 <div class="product-desktop-content" {{ block.shopify_attributes }}>
-                  <h1 class="product-title">{{ product.title }}</h1>
+                  <h1 class="product-title">{{ product.title }}</h1> dd
+                  {% if badge !=blank %}
+                    <h6 class="product-badge">{{ badge }}</h6>
+                  {% endif %}
+                  
                 </div>
 
               {% when 'price' %}

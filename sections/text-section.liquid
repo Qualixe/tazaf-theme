@@ -1,0 +1,92 @@
+
+{% assign s = section.settings %}
+<section class="text-section" id="section_{{ section.id }}">
+  <div class="container">
+    <div class="text-section-heading content-{{ section.settings.position }}">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</section>
+
+<style>
+    #section_{{ section.id }} {
+        padding-top: {{ s.padding_top }}px;
+        padding-bottom: {{ s.padding_bottom }}px;
+    }
+    @media (max-width:600px) {
+        #section_{{ section.id }} {
+            padding-top: {{ s.padding_top  |  divided_by: 2 }}px;
+            padding-bottom: {{ s.padding_bottom |  divided_by: 2 }}px;
+        }
+    }
+    
+</style>
+
+{% schema %}
+{
+  "name": "Text Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "Background",
+      "label": "Background",
+      "default": "{{ settings.color_palette.background }}"
+    },
+    {
+        "type": "select",
+        "id": "position",
+        "label": "Position",
+        "options": [
+            {
+                "label": "Left",
+                "value": "left"
+            },
+            {
+                "label": "Center",
+                "value": "center"
+            },
+            {
+                "label": "Right",
+                "value": "right"
+            }
+        ],
+        "default" : "left"
+    },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "max": 100,
+        "min": 0,
+        "step": 2,
+        "unit": "px",
+        "default" : 50
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "max": 100,
+        "min": 0,
+        "step": 2,
+        "unit": "px",
+        "default" : 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Section",
+      "blocks": [
+        { "type": "heading"},
+        { "type": "link"},
+        
+      ]
+    }
+  ]
+}
+{% endschema %}

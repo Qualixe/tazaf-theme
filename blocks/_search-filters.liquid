@@ -1,5 +1,5 @@
 {%- doc -%}
-  Renders the collection filter sidebar contents (list/boolean checkboxes + price range).
+  Renders the search results filter sidebar contents (list/boolean checkboxes + price range).
   Structural block: must be rendered inside the section's #CollectionFilterForm so these
   inputs submit as real query params.
 {%- enddoc -%}
@@ -29,7 +29,7 @@
   </h6>
   <div class="filter-accordion">
     <div class="filter-accordion-items">
-      {% for filter in collection.filters %}
+      {% for filter in search.filters %}
         <div class="filter-accordion-item active">
           <div class="item-title-wrapper accordion-toggle-btn">
             <h6 class="item-title">{{ filter.label }}</h6>
@@ -82,7 +82,7 @@
                     endif
                   %}
                   <div class="filter-options">
-                    <div class="filter-option {% if is_disabled %} filter_disable{% endif %}">
+                    <div class="filter-option{% if is_disabled %} filter_disable{% endif %}">
                       <input
                         type="checkbox"
                         id="{{ input_id }}"
@@ -112,7 +112,7 @@
 
 {% schema %}
 {
-  "name": "Collection filters",
+  "name": "Search filters",
   "tag": null,
   "settings": []
 }

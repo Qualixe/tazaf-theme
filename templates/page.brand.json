@@ -6,24 +6,31 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
-    "search": {
-      "type": "search-header",
+    "main": {
+      "type": "main-page",
       "blocks": {
         "heading": {
-          "type": "_heading",
-          "static": true,
+          "type": "text",
+          "name": "t:names.title",
           "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-body--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
-            "read_only": true,
-            "alignment": "left",
-            "show_alignment": true,
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -31,52 +38,29 @@
           },
           "blocks": {}
         },
-        "search": {
-          "type": "_search-input",
-          "static": true,
+        "page-content": {
+          "type": "page-content",
           "settings": {
-            "width": "custom",
-            "custom_width": 50
+            "text_color": ""
           },
           "blocks": {}
         }
       },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
       "settings": {
-        "alignment": "flex-start",
+        "content_direction": "column",
+        "gap": 32,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 40,
-        "padding-block-end": 0
+        "padding-block-end": 80
       }
     },
-    "main": {
-      "type": "search-results",
-      "blocks": {
-        "filters": {
-          "type": "_search-filters",
-          "static": true,
-          "settings": {},
-          "blocks": {}
-        },
-        "toolbar": {
-          "type": "_search-toolbar",
-          "static": true,
-          "settings": {},
-          "blocks": {}
-        },
-        "product-grid": {
-          "type": "_search-product-grid",
-          "static": true,
-          "settings": {
-            "products_per_page": 24
-          },
-          "blocks": {}
-        }
-      },
-      "settings": {}
-    }
   },
   "order": [
-    "search",
-    "main"
+    "main",
   ]
 }

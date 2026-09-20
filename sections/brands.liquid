@@ -15,37 +15,34 @@
         </a>
       {% endif %}
     </div>
-    <div class="swiper shop-by-brand-slider">
-      <div class="swiper-wrapper">
-        {% for block in brand_blocks %}
-          {% assign brand_info = block.settings.brand %}
 
-          <div class="swiper-slide" {{ block.shopify_attributes }}>
-            <a href="{{ routes.collections_url }}/vendors?q={{ brand_info.name | url_encode }}" class="shop-by-brand-item">
-              {% if  brand_info.logo != blank %}
-                <img
-                  src="{{  brand_info.logo | image_url: width: 1000 }}"
-                  alt="{{  brand_info.logo.alt | default:  brand_info.logo.name | escape }}"
-                  width="{{  brand_info.logo.width }}"
-                  height="{{  brand_info.logo.height }}"
-                  loading="lazy"
-                >
-              {% else %}
-                <p class="wordmark">{{  brand_info.name }}</p>
-              {% endif %}
+    <div class="brand-wrapper">
+    {% for block in brand_blocks %}
+        {% assign brand_info = block.settings.brand %}
+
+        <div class="brand-item" {{ block.shopify_attributes }}>
+            <a href="{{ routes.collections_url }}/vendors?q={{ brand_info.name | url_encode }}" class="brand-item-link">
+                {% if  brand_info.logo != blank %}
+                    <img
+                        src="{{  brand_info.logo | image_url: width: 1000 }}"
+                        alt="{{  brand_info.logo.alt | default:  brand_info.logo.name | escape }}"
+                        width="{{  brand_info.logo.width }}"
+                        height="{{  brand_info.logo.height }}"
+                        loading="lazy"
+                    >
+                {% else %}
+                    <p class="wordmark">{{  brand_info.name }}</p>
+                {% endif %}
             </a>
-          </div>
-        {% endfor %}
-      </div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+        </div>
+    {% endfor %}
     </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Shop by brand",
+  "name": "Brands",
   "settings": [
     {
       "type": "text",
@@ -81,7 +78,7 @@
   ],
   "presets": [
     {
-      "name": "Shop by brand",
+      "name": "Brands",
       "blocks": [
         { "type": "brand"},
         { "type": "brand"},

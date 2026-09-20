@@ -2,9 +2,12 @@
   Renders the paginated product grid, empty state, and pagination controls.
 {%- enddoc -%}
 
+
+<script src="{{ 'ajaxinate.js' | asset_url }}" defer></script>
+
 <div {{ block.shopify_attributes }}>
   {% paginate collection.products by block.settings.products_per_page %}
-    <div class="product-items">
+    <div class="product-items collection-products">
       {% for product in collection.products %}
         <div class="product-item">
           {% render 'slider-product-card', product: product %}
@@ -16,7 +19,7 @@
       <p class="collection-empty-message">No products found. Try removing some filters.</p>
     {% endif %}
 
-    {% if paginate.pages > 1 %}
+    {% comment %} {% if paginate.pages > 1 %}
       <div class="collection-pagination">
         {% if paginate.previous %}
           <a href="{{ paginate.previous.url }}" class="btn pagination-btn">Previous</a>
@@ -26,14 +29,44 @@
           <a href="{{ paginate.next.url }}" class="btn pagination-btn">Next</a>
         {% endif %}
       </div>
-    {% endif %}
+    {% endif %} {% endcomment %}
+
+    <div id="infinite-Pagination" class="infinite-Pagination">
+      {% if paginate.next %}
+      <a href="{{ paginate.next.url }}" class="collection-load-more-btn">Loading More</a>
+      {% endif %}   
+    </div>
+
   {% endpaginate %}
 </div>
+
+<script>
+  // product scrolling
+  document.addEventListener('DOMContentLoaded', function () {
+    new Ajaxinate({
+      container: '.collection-products',
+      pagination: '.infinite-Pagination'
+    });
+
+    // On desktop (>=990px) base.css locks html/body and scrolls inside
+    // .page-wrapper, so the window never fires "scroll" and Ajaxinate (which
+    // listens on document) never triggers. Forward the wrapper's scroll.
+    var pageWrapper = document.querySelector('.page-wrapper');
+    if (pageWrapper) {
+      pageWrapper.addEventListener(
+        'scroll',
+        function () {
+          document.dispatchEvent(new Event('scroll'));
+        },
+        { passive: true }
+      );
+    }
+  });
+</script>
 
 {% schema %}
 {
   "name": "Collection product grid",
-  "tag": null,
   "settings": [
     {
       "type": "range",

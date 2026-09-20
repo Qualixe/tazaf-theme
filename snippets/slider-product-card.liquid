@@ -19,6 +19,7 @@
   assign featured_alt = product.featured_image.alt | default: product.title | escape
   assign title_escaped = product.title | escape
   assign current_variant = product.selected_or_first_available_variant
+  assign badge = product.metafields.custom.badge
 
   assign preorder = false
   for tag in product.tags
@@ -31,11 +32,7 @@
 %}
 <div class="product-card">
   <div class="card-image-wrap">
-    
-      <div class="card-rattings">
-        {% render 'review', product: product %}
-      </div>
-    
+      {% render 'review', product: product %}
       <div class="card-img">
         <a class="main-img" href="{{ product.url }}">
           {% if product.featured_image != blank %}
@@ -48,9 +45,14 @@
           {% endif %}
         </a> {% endcomment %}
       </div>
-      {% if preorder %}
+      {% if preorder or badge !=blank %}
       <div class="card-badges">
-        <span class="card-badge preorder">Pre Order</span>
+        {% if preorder %}
+          <span class="card-badge preorder">Pre Order</span>
+        {% endif %}
+        {% if badge !=blank %}
+          <span class="card-badge badge">{{ badge }}</span>
+        {% endif %}
       </div>
       {% endif %}
       

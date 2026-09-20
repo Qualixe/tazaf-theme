@@ -242,7 +242,7 @@
       "type": "category-section",
       "blocks": {
         "category_EdrPEf": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_07_24_43_PM.png",
             "title": "Gadgets",
@@ -250,7 +250,7 @@
           }
         },
         "category_XAGqmV": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_07_25_40_PM.png",
             "title": "Wallets",
@@ -258,7 +258,7 @@
           }
         },
         "category_8zWJN4": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_11_PM.png",
             "title": "Watches",
@@ -266,7 +266,7 @@
           }
         },
         "category_kHYji8": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_19_53_PM.png",
             "title": "Kids and Toys",
@@ -274,7 +274,7 @@
           }
         },
         "category_aXLKeU": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_25_PM.png",
             "title": "Bedsheets",
@@ -282,7 +282,7 @@
           }
         },
         "category_fMmDBJ": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_17_01_PM.png",
             "title": "Dining",
@@ -290,7 +290,7 @@
           }
         },
         "category_bC3dbm": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_21_08_PM.png",
             "title": "Home decor",
@@ -298,7 +298,7 @@
           }
         },
         "category_yB7Lix": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_24_04_PM.png",
             "title": "Furnishing",
@@ -306,7 +306,7 @@
           }
         },
         "category_nej9fw": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_26_06_PM.png",
             "title": "Health & beauty",
@@ -332,7 +332,7 @@
       "type": "category-section",
       "blocks": {
         "category_8UFaaT": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_14_49_PM.png",
             "title": "Document Organizer",
@@ -340,7 +340,7 @@
           }
         },
         "category_MgAC3T": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_09_38_PM.png",
             "title": "Kitchen Appliances",
@@ -348,7 +348,7 @@
           }
         },
         "category_Mpq8Mb": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_18_04_PM.png",
             "title": "Home Storages",
@@ -356,7 +356,7 @@
           }
         },
         "category_hjkn7N": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_09_18_10_PM.png",
             "title": "Bags and Luggage",
@@ -364,7 +364,7 @@
           }
         },
         "category_y8BVAD": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/images_1.png",
             "title": "Ghorerbazar Food",
@@ -372,7 +372,7 @@
           }
         },
         "category_YLnWgw": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_29_22_PM.png",
             "title": "Superfood",
@@ -380,7 +380,7 @@
           }
         },
         "category_byBymg": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_22_PM.png",
             "title": "Eyewear",
@@ -388,7 +388,7 @@
           }
         },
         "category_jwp987": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_35_37_PM.png",
             "title": "Home Textiles",
@@ -396,7 +396,7 @@
           }
         },
         "category_TkX9Ep": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img18.jpg",
             "title": "Health & Medical",
@@ -995,7 +995,7 @@
       "type": "category-section",
       "blocks": {
         "category_eXEyt9": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img1.jpg",
             "title": "Women Fashion",
@@ -1003,7 +1003,7 @@
           }
         },
         "category_QEtB6y": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img2.jpg",
             "title": "Women bottom",
@@ -1011,7 +1011,7 @@
           }
         },
         "category_DJbdph": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img3.jpg",
             "title": "Men topwear",
@@ -1019,7 +1019,7 @@
           }
         },
         "category_FWiDtk": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img4.jpg",
             "title": "Women footwear",
@@ -1027,7 +1027,7 @@
           }
         },
         "category_yjcGNF": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img5.jpg",
             "title": "Men bottomwear",
@@ -1035,7 +1035,7 @@
           }
         },
         "category_98NW4V": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img6.jpg",
             "title": "Men fashion accessories",
@@ -1043,7 +1043,7 @@
           }
         },
         "category_VNcBbx": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img7.jpg",
             "title": "Men footwear",
@@ -1051,7 +1051,7 @@
           }
         },
         "category_y7XUR8": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img8.jpg",
             "title": "Women accessories",
@@ -1059,7 +1059,7 @@
           }
         },
         "category_xnp4G4": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img9.jpg",
             "title": "Health & beauty",
@@ -1085,7 +1085,7 @@
       "type": "category-section",
       "blocks": {
         "category_iAFPAV": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img10.jpg",
             "title": "Kids kurti",
@@ -1093,7 +1093,7 @@
           }
         },
         "category_M8dBUD": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img11.jpg",
             "title": "kids girls clothing",
@@ -1101,7 +1101,7 @@
           }
         },
         "category_7ME6kx": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img12.jpg",
             "title": "Kids boys clothing",
@@ -1109,7 +1109,7 @@
           }
         },
         "category_VBFCzy": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img13.jpg",
             "title": "Kids accessories",
@@ -1117,7 +1117,7 @@
           }
         },
         "category_GdYAR4": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img14.jpg",
             "title": "kids footwear",
@@ -1125,7 +1125,7 @@
           }
         },
         "category_Rfxacj": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img15.jpg",
             "title": "baby clothing set",
@@ -1133,7 +1133,7 @@
           }
         },
         "category_WUBGEN": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img16.jpg",
             "title": "babys shoes",
@@ -1141,7 +1141,7 @@
           }
         },
         "category_TNJY6E": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img17.jpg",
             "title": "baby accessories",
@@ -1149,7 +1149,7 @@
           }
         },
         "category_4DGWHw": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/category-img18.jpg",
             "title": "baby winter wear",
@@ -1175,7 +1175,7 @@
       "type": "image-category-section",
       "blocks": {
         "category_4Q6GcL": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/image-category-img1.avif",
             "title": "Joints Bones Muscles",
@@ -1183,7 +1183,7 @@
           }
         },
         "category_DYhFAh": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/image-category-img2.avif",
             "title": "Skincare",
@@ -1191,7 +1191,7 @@
           }
         },
         "category_DgHmXf": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/image-category-img3.avif",
             "title": "Weight Management",
@@ -1199,7 +1199,7 @@
           }
         },
         "category_Epz98D": {
-          "type": "category",
+          "type": "category-item",
           "settings": {
             "image": "shopify://shop_images/image-category-img4.avif",
             "title": "Exercise & performance",

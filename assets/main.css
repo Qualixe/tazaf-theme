@@ -233,6 +233,7 @@ button {
     border: 1px solid var(--btn-color);
     border-radius: 5px;
     overflow: hidden;
+    max-width: fit-content;
 }
 
 .btn:hover {

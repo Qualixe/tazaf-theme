@@ -1,0 +1,33 @@
+{%- doc -%}
+  Outputs the padding/margin CSS for a section, per breakpoint.
+
+  @param {object} settings - block settings containing the spacing ranges
+  @param {string} section_id - id of the section being styled
+{%- enddoc -%}
+
+<style>
+  #shopify-section-{{ section_id }} > * {
+    padding-top: {{ settings.padding_top_desktop }}px;
+    padding-bottom: {{ settings.padding_bottom_desktop }}px;
+    margin-top: {{ settings.margin_top_desktop }}px;
+    margin-bottom: {{ settings.margin_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 991px) {
+    #shopify-section-{{ section_id }} > * {
+      padding-top: {{ settings.padding_top_tablet }}px;
+      padding-bottom: {{ settings.padding_bottom_tablet }}px;
+      margin-top: {{ settings.margin_top_tablet }}px;
+      margin-bottom: {{ settings.margin_bottom_tablet }}px;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    #shopify-section-{{ section_id }} > * {
+      padding-top: {{ settings.padding_top_mobile }}px;
+      padding-bottom: {{ settings.padding_bottom_mobile }}px;
+      margin-top: {{ settings.margin_top_mobile }}px;
+      margin-bottom: {{ settings.margin_bottom_mobile }}px;
+    }
+  }
+</style>

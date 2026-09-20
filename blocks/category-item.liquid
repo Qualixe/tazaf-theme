@@ -1,0 +1,50 @@
+{%- doc -%}
+  Renders one category slide (image + title) for the category slider section.
+{%- enddoc -%}
+
+<div class="swiper-slide" {{ block.shopify_attributes }}>
+  <a href="{{ block.settings.link | default: '/collections/all' }}" class="category-item">
+    <div class="img">
+      {% if block.settings.image != blank %}
+        <img
+          src="{{ block.settings.image | image_url: width: 300 }}"
+          alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+          width="{{ block.settings.image.width }}"
+          height="{{ block.settings.image.height }}"
+          loading="lazy"
+        >
+      {% endif %}
+    </div>
+    <div class="content">
+      <p class="title">{{ block.settings.title }}</p>
+    </div>
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "Category",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Category"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    { "name": "Category" }
+  ]
+}
+{% endschema %}
