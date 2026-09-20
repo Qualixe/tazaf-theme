@@ -241,89 +241,82 @@
     "category_section_EereCD": {
       "type": "category-section",
       "blocks": {
-        "category_EdrPEf": {
+        "category_item_RFMq8h": {
           "type": "category-item",
+          "name": "Category",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_07_24_43_PM.png",
             "title": "Gadgets",
             "link": "shopify://collections/gadget"
-          }
+          },
+          "blocks": {}
         },
-        "category_XAGqmV": {
+        "category_item_cwkHxz": {
           "type": "category-item",
+          "name": "Category",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_07_25_40_PM.png",
             "title": "Wallets",
             "link": "shopify://collections/wallets"
-          }
+          },
+          "blocks": {}
         },
-        "category_8zWJN4": {
+        "category_item_QzebCJ": {
           "type": "category-item",
+          "name": "Category",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_11_PM.png",
             "title": "Watches",
             "link": "shopify://collections/watches"
-          }
+          },
+          "blocks": {}
         },
-        "category_kHYji8": {
+        "category_item_GmAB98": {
           "type": "category-item",
+          "name": "Category",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_19_53_PM.png",
             "title": "Kids and Toys",
             "link": "shopify://collections/kids-and-toys"
-          }
+          },
+          "blocks": {}
         },
-        "category_aXLKeU": {
+        "category_item_XXxzpG": {
           "type": "category-item",
+          "name": "Category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_25_PM.png",
+            "image": "shopify://shop_images/category-img5.jpg",
             "title": "Bedsheets",
-            "link": "shopify://collections/bedsheet"
-          }
-        },
-        "category_fMmDBJ": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_17_01_PM.png",
-            "title": "Dining",
-            "link": "shopify://collections/dining"
-          }
-        },
-        "category_bC3dbm": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_21_08_PM.png",
-            "title": "Home decor",
             "link": "shopify://collections/all"
-          }
+          },
+          "blocks": {}
         },
-        "category_yB7Lix": {
-          "type": "category-item",
+        "spacing": {
+          "type": "section-spacing",
+          "static": true,
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_24_04_PM.png",
-            "title": "Furnishing",
-            "link": "shopify://collections/study-lamp-copy"
-          }
-        },
-        "category_nej9fw": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_06_26_06_PM.png",
-            "title": "Health & beauty",
-            "link": "shopify://collections/all"
-          }
+            "padding_top_desktop": 0,
+            "padding_bottom_desktop": 0,
+            "margin_top_desktop": 0,
+            "margin_bottom_desktop": 0,
+            "padding_top_tablet": 0,
+            "padding_bottom_tablet": 0,
+            "margin_top_tablet": 0,
+            "margin_bottom_tablet": 0,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "margin_top_mobile": 0,
+            "margin_bottom_mobile": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "category_EdrPEf",
-        "category_XAGqmV",
-        "category_8zWJN4",
-        "category_kHYji8",
-        "category_aXLKeU",
-        "category_fMmDBJ",
-        "category_bC3dbm",
-        "category_yB7Lix",
-        "category_nej9fw"
+        "category_item_RFMq8h",
+        "category_item_cwkHxz",
+        "category_item_QzebCJ",
+        "category_item_GmAB98",
+        "category_item_XXxzpG"
       ],
       "name": "Category slider",
       "settings": {}
@@ -331,90 +324,26 @@
     "category_section_dyThwD": {
       "type": "category-section",
       "blocks": {
-        "category_8UFaaT": {
-          "type": "category-item",
+        "spacing": {
+          "type": "section-spacing",
+          "static": true,
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_14_49_PM.png",
-            "title": "Document Organizer",
-            "link": "shopify://collections/document-organiser"
-          }
-        },
-        "category_MgAC3T": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_09_38_PM.png",
-            "title": "Kitchen Appliances",
-            "link": "shopify://collections/kitchen-appliances"
-          }
-        },
-        "category_Mpq8Mb": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_18_04_PM.png",
-            "title": "Home Storages",
-            "link": "shopify://collections/all"
-          }
-        },
-        "category_hjkn7N": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_09_18_10_PM.png",
-            "title": "Bags and Luggage",
-            "link": "shopify://collections/all"
-          }
-        },
-        "category_y8BVAD": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/images_1.png",
-            "title": "Ghorerbazar Food",
-            "link": "shopify://collections/all"
-          }
-        },
-        "category_YLnWgw": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_29_22_PM.png",
-            "title": "Superfood",
-            "link": "shopify://collections/all"
-          }
-        },
-        "category_byBymg": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_22_PM.png",
-            "title": "Eyewear",
-            "link": "shopify://collections/all"
-          }
-        },
-        "category_jwp987": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_35_37_PM.png",
-            "title": "Home Textiles",
-            "link": "shopify://collections/all"
-          }
-        },
-        "category_TkX9Ep": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img18.jpg",
-            "title": "Health & Medical",
-            "link": "shopify://collections/all"
-          }
+            "padding_top_desktop": 0,
+            "padding_bottom_desktop": 0,
+            "margin_top_desktop": 0,
+            "margin_bottom_desktop": 0,
+            "padding_top_tablet": 0,
+            "padding_bottom_tablet": 0,
+            "margin_top_tablet": 0,
+            "margin_bottom_tablet": 0,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "margin_top_mobile": 0,
+            "margin_bottom_mobile": 0
+          },
+          "blocks": {}
         }
       },
-      "block_order": [
-        "category_8UFaaT",
-        "category_MgAC3T",
-        "category_Mpq8Mb",
-        "category_hjkn7N",
-        "category_y8BVAD",
-        "category_YLnWgw",
-        "category_byBymg",
-        "category_jwp987",
-        "category_TkX9Ep"
-      ],
       "name": "Category slider",
       "settings": {}
     },
@@ -994,180 +923,52 @@
     "category_section_ng8MYH": {
       "type": "category-section",
       "blocks": {
-        "category_eXEyt9": {
-          "type": "category-item",
+        "spacing": {
+          "type": "section-spacing",
+          "static": true,
           "settings": {
-            "image": "shopify://shop_images/category-img1.jpg",
-            "title": "Women Fashion",
-            "link": ""
-          }
-        },
-        "category_QEtB6y": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img2.jpg",
-            "title": "Women bottom",
-            "link": ""
-          }
-        },
-        "category_DJbdph": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img3.jpg",
-            "title": "Men topwear",
-            "link": ""
-          }
-        },
-        "category_FWiDtk": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img4.jpg",
-            "title": "Women footwear",
-            "link": ""
-          }
-        },
-        "category_yjcGNF": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img5.jpg",
-            "title": "Men bottomwear",
-            "link": ""
-          }
-        },
-        "category_98NW4V": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img6.jpg",
-            "title": "Men fashion accessories",
-            "link": ""
-          }
-        },
-        "category_VNcBbx": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img7.jpg",
-            "title": "Men footwear",
-            "link": ""
-          }
-        },
-        "category_y7XUR8": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img8.jpg",
-            "title": "Women accessories",
-            "link": ""
-          }
-        },
-        "category_xnp4G4": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img9.jpg",
-            "title": "Health & beauty",
-            "link": ""
-          }
+            "padding_top_desktop": 0,
+            "padding_bottom_desktop": 0,
+            "margin_top_desktop": 0,
+            "margin_bottom_desktop": 0,
+            "padding_top_tablet": 0,
+            "padding_bottom_tablet": 0,
+            "margin_top_tablet": 0,
+            "margin_bottom_tablet": 0,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "margin_top_mobile": 0,
+            "margin_bottom_mobile": 0
+          },
+          "blocks": {}
         }
       },
-      "block_order": [
-        "category_eXEyt9",
-        "category_QEtB6y",
-        "category_DJbdph",
-        "category_FWiDtk",
-        "category_yjcGNF",
-        "category_98NW4V",
-        "category_VNcBbx",
-        "category_y7XUR8",
-        "category_xnp4G4"
-      ],
       "name": "Category slider",
       "settings": {}
     },
     "category_section_kwTcC6": {
       "type": "category-section",
       "blocks": {
-        "category_iAFPAV": {
-          "type": "category-item",
+        "spacing": {
+          "type": "section-spacing",
+          "static": true,
           "settings": {
-            "image": "shopify://shop_images/category-img10.jpg",
-            "title": "Kids kurti",
-            "link": ""
-          }
-        },
-        "category_M8dBUD": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img11.jpg",
-            "title": "kids girls clothing",
-            "link": ""
-          }
-        },
-        "category_7ME6kx": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img12.jpg",
-            "title": "Kids boys clothing",
-            "link": ""
-          }
-        },
-        "category_VBFCzy": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img13.jpg",
-            "title": "Kids accessories",
-            "link": ""
-          }
-        },
-        "category_GdYAR4": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img14.jpg",
-            "title": "kids footwear",
-            "link": ""
-          }
-        },
-        "category_Rfxacj": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img15.jpg",
-            "title": "baby clothing set",
-            "link": ""
-          }
-        },
-        "category_WUBGEN": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img16.jpg",
-            "title": "babys shoes",
-            "link": ""
-          }
-        },
-        "category_TNJY6E": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img17.jpg",
-            "title": "baby accessories",
-            "link": ""
-          }
-        },
-        "category_4DGWHw": {
-          "type": "category-item",
-          "settings": {
-            "image": "shopify://shop_images/category-img18.jpg",
-            "title": "baby winter wear",
-            "link": ""
-          }
+            "padding_top_desktop": 0,
+            "padding_bottom_desktop": 0,
+            "margin_top_desktop": 0,
+            "margin_bottom_desktop": 0,
+            "padding_top_tablet": 0,
+            "padding_bottom_tablet": 0,
+            "margin_top_tablet": 0,
+            "margin_bottom_tablet": 0,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "margin_top_mobile": 0,
+            "margin_bottom_mobile": 0
+          },
+          "blocks": {}
         }
       },
-      "block_order": [
-        "category_iAFPAV",
-        "category_M8dBUD",
-        "category_7ME6kx",
-        "category_VBFCzy",
-        "category_GdYAR4",
-        "category_Rfxacj",
-        "category_WUBGEN",
-        "category_TNJY6E",
-        "category_4DGWHw"
-      ],
       "name": "Category slider",
       "settings": {}
     },
@@ -1175,7 +976,7 @@
       "type": "image-category-section",
       "blocks": {
         "category_4Q6GcL": {
-          "type": "category-item",
+          "type": "category",
           "settings": {
             "image": "shopify://shop_images/image-category-img1.avif",
             "title": "Joints Bones Muscles",
@@ -1183,7 +984,7 @@
           }
         },
         "category_DYhFAh": {
-          "type": "category-item",
+          "type": "category",
           "settings": {
             "image": "shopify://shop_images/image-category-img2.avif",
             "title": "Skincare",
@@ -1191,7 +992,7 @@
           }
         },
         "category_DgHmXf": {
-          "type": "category-item",
+          "type": "category",
           "settings": {
             "image": "shopify://shop_images/image-category-img3.avif",
             "title": "Weight Management",
@@ -1199,7 +1000,7 @@
           }
         },
         "category_Epz98D": {
-          "type": "category-item",
+          "type": "category",
           "settings": {
             "image": "shopify://shop_images/image-category-img4.avif",
             "title": "Exercise & performance",
