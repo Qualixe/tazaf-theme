@@ -35,9 +35,9 @@
         "menu_item_izYU9f": {
           "type": "menu_item",
           "settings": {
-            "title": "Bedsheet",
-            "link": "shopify://collections/bedsheet",
-            "menu": "bedding-megamenu"
+            "title": "Watches",
+            "link": "shopify://collections/watches",
+            "menu": "megamenu-for-watches"
           }
         },
         "menu_item_dWEmbN": {
