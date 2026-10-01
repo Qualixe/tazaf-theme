@@ -1257,6 +1257,7 @@
         },
         "link_UUkrzG": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "button": "View All",
             "link": "",
@@ -1269,6 +1270,7 @@
         "heading_BD6NwD",
         "link_UUkrzG"
       ],
+      "disabled": true,
       "name": "Text Section",
       "settings": {
         "Background": "{{ settings.color_palette.background }}",
