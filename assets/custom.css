@@ -1,6 +1,7 @@
 .product-accordion-item-content-inner h3 {
     font-size: 17px;
     margin: 10px 0;
+     font-weight: 500;
 }
 
 button.btn.hide_btn {
