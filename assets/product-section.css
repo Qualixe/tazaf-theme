@@ -755,6 +755,7 @@ label.bundle-label {
 .product-accordion-item-content ul li {
     list-style-type: disc;
     margin: 0 0 10px 0;
+    line-height: 1.2;
 }
 
 .product-accordion-item-content ul li:last-child {
