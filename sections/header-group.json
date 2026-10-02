@@ -37,7 +37,7 @@
           "settings": {
             "title": "Watches",
             "link": "shopify://collections/watches",
-            "menu": "megamenu-for-food-grocery"
+            "menu": "megamenu-for-watches"
           }
         },
         "menu_item_dWEmbN": {
@@ -85,7 +85,7 @@
           "settings": {
             "title": "Food & Grocery",
             "link": "shopify://collections/ghorerbazar",
-            "menu": "honey"
+            "menu": ""
           }
         },
         "search_term_MNgFXV": {
