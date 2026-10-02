@@ -576,6 +576,7 @@ label.bundle-label {
 .product-btn-wrap .btn:first-child {
     background: var(--brand-color);
     border-color: var(--brand-color);
+    max-width:100%;
 }
 
 .product-btn-wrap .btn:nth-child(2) {
@@ -591,6 +592,7 @@ label.bundle-label {
 .product-btn-wrap .btn:last-child {
     background: var(--color-pink);
     border-color: var(--color-pink);
+    max-width: 100%;
 }
 
 .product-btn-wrap .btn:hover {
