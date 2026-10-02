@@ -571,6 +571,7 @@ label.bundle-label {
     gap: 5px;
     /* color: var(--white); */
     font-weight: 600;
+    max-width: 100%;
 }
 
 .product-btn-wrap .btn:first-child {
