@@ -32,6 +32,14 @@
     "header_new_LjDybW": {
       "type": "Header-new",
       "blocks": {
+        "menu_item_kgAzAb": {
+          "type": "menu_item",
+          "settings": {
+            "title": "Food & Grocery",
+            "link": "shopify://collections/ghorerbazar",
+            "menu": ""
+          }
+        },
         "menu_item_izYU9f": {
           "type": "menu_item",
           "settings": {
@@ -78,12 +86,6 @@
             "title": "Health Care",
             "link": "shopify://collections/health-care",
             "menu": "megamenu-for-kids-and-toys"
-          }
-        },
-        "search_term_Jakk7a": {
-          "type": "search_term",
-          "settings": {
-            "text": "smart phone"
           }
         },
         "search_term_MNgFXV": {
@@ -183,13 +185,13 @@
         }
       },
       "block_order": [
+        "menu_item_kgAzAb",
         "menu_item_izYU9f",
         "menu_item_dWEmbN",
         "menu_item_GUBMGB",
         "menu_item_dJRqce",
         "menu_item_XEQPVH",
         "menu_item_HGjxfH",
-        "search_term_Jakk7a",
         "search_term_MNgFXV",
         "search_term_ktAJRD",
         "popular_search_j4WfnV",
