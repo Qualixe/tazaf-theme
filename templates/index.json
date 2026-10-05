@@ -1021,6 +1021,60 @@
         "background_color": "#FDF8F6"
       }
     },
+    "card_slider_qByRpC": {
+      "type": "card-slider",
+      "blocks": {
+        "heading": {
+          "type": "card-slider-heading",
+          "static": true,
+          "settings": {
+            "heading": "Shosthi"
+          },
+          "blocks": {}
+        },
+        "heading_image": {
+          "type": "card-slider-heading-image",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "image": "shopify://shop_images/Untitled_Design_44.png"
+          },
+          "blocks": {}
+        },
+        "countdown": {
+          "type": "card-slider-countdown",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "countdown_end": "2026-08-29T23:59:59"
+          },
+          "blocks": {}
+        },
+        "collection": {
+          "type": "card-slider-collection",
+          "static": true,
+          "settings": {
+            "collection": "shosti",
+            "max_products": 8
+          },
+          "blocks": {}
+        },
+        "button": {
+          "type": "card-slider-button",
+          "static": true,
+          "settings": {
+            "view_all_label": "View All products",
+            "view_all_link": "shopify://collections/watches"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Products",
+      "settings": {
+        "margin": false,
+        "background_color": "#FBF2D3"
+      }
+    },
     "category_grid_section_CFLQY3": {
       "type": "category-grid-section",
       "blocks": {
@@ -1348,6 +1402,7 @@
     "card_slider_haxE4i",
     "card_slider_E8HmYm",
     "card_slider_r4rNCt",
+    "card_slider_qByRpC",
     "category_grid_section_CFLQY3",
     "category_banner2_DM87AE",
     "gift_banner_section_XpEe3k",
