@@ -138,16 +138,16 @@
         "search_category_KHXiKj": {
           "type": "search_category",
           "settings": {
-            "title": "Beedsheet",
-            "image": "shopify://shop_images/product-slider-img4.webp",
-            "link": "shopify://collections/frontpage"
+            "title": "Watches",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_12_2026_09_44_11_PM.png",
+            "link": "shopify://collections/watches"
           }
         },
         "search_category_qiN9z3": {
           "type": "search_category",
           "settings": {
-            "title": "Slipper",
-            "image": "shopify://shop_images/product-slider-img5.webp",
+            "title": "Air Fryer",
+            "image": "shopify://shop_images/imgi_25_2259397_panasonic-air-fryer-nf-cc450-capacity-45-ltr_1f69f442-67e8-4cc4-935c-a508980d07e5.png",
             "link": ""
           }
         },
