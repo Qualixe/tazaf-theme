@@ -215,8 +215,8 @@
         "slide_jUjNRD": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/Untitled_Design_42.png",
-            "mobile_image": "shopify://shop_images/ChatGPT_Image_Sep_13_2026_02_28_56_PM.png",
+            "desktop_image": "shopify://shop_images/A.png",
+            "mobile_image": "shopify://shop_images/Untitled_Design_49.png",
             "heading": "",
             "link": "shopify://collections/home-decor"
           }
@@ -1018,7 +1018,7 @@
       "name": "Products",
       "settings": {
         "margin": false,
-        "background_color": "#FDF8F6"
+        "background_color": "#fdf8f6"
       }
     },
     "card_slider_qByRpC": {
@@ -1072,7 +1072,7 @@
       "name": "Products",
       "settings": {
         "margin": false,
-        "background_color": "#FBF2D3"
+        "background_color": "#fbf2d3"
       }
     },
     "category_grid_section_CFLQY3": {
