@@ -82,7 +82,6 @@
         },
         "menu_item_kgAzAb": {
           "type": "menu_item",
-          "disabled": true,
           "settings": {
             "title": "Food & Grocery",
             "link": "shopify://collections/ghorerbazar",
