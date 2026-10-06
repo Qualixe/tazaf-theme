@@ -91,48 +91,48 @@
         "search_term_MNgFXV": {
           "type": "search_term",
           "settings": {
-            "text": "home decoration"
+            "text": "document organiser"
           }
         },
         "search_term_ktAJRD": {
           "type": "search_term",
           "settings": {
-            "text": "gadgets"
+            "text": "Naviforce watches"
           }
         },
         "popular_search_j4WfnV": {
           "type": "popular_search",
           "settings": {
-            "title": "Wall paintings",
-            "link": "shopify://collections"
+            "title": "Naviforce Watch",
+            "link": "https://tazaf.com/collections/vendors?q=NAVIFORCE"
           }
         },
         "popular_search_qbAPwP": {
           "type": "popular_search",
           "settings": {
-            "title": "Bedsheets",
-            "link": "shopify://collections"
+            "title": "Air fryer",
+            "link": "shopify://collections/air-fryer"
           }
         },
         "popular_search_pPzzQ7": {
           "type": "popular_search",
           "settings": {
-            "title": "Rugs & Carpets",
-            "link": "shopify://collections/frontpage"
+            "title": "Document organizer",
+            "link": "shopify://collections/document-organiser"
           }
         },
         "popular_search_KgGJCP": {
           "type": "popular_search",
           "settings": {
-            "title": "Storage & Organization",
-            "link": "shopify://collections/all"
+            "title": "Casio Watches",
+            "link": "https://tazaf.com/collections/vendors?q=CASIO"
           }
         },
         "popular_search_yCf4Bd": {
           "type": "popular_search",
           "settings": {
-            "title": "Lamps and lightings",
-            "link": "shopify://collections/frontpage"
+            "title": "Honey nut",
+            "link": "shopify://products/honey-nuts-800gm"
           }
         },
         "search_category_KHXiKj": {
