@@ -112,6 +112,14 @@
             "menu": "megamenu-for-food-grocery"
           }
         },
+        "menu_item_gkK7Cq": {
+          "type": "menu_item",
+          "settings": {
+            "title": "Health Care",
+            "link": "shopify://collections/health-care",
+            "menu": "megamenu-for-kids-and-toys"
+          }
+        },
         "menu_item_yzQbqp": {
           "type": "menu_item",
           "settings": {
@@ -227,6 +235,7 @@
         "menu_item_QL8p94",
         "menu_item_pryDc8",
         "menu_item_t3QJdJ",
+        "menu_item_gkK7Cq",
         "menu_item_yzQbqp",
         "search_term_MNgFXV",
         "search_term_ktAJRD",
