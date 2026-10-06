@@ -64,6 +64,30 @@
             "menu": "megamenu-for-kids-and-toys"
           }
         },
+        "menu_item_atqCWY": {
+          "type": "menu_item",
+          "settings": {
+            "title": "Furnishing",
+            "link": "shopify://collections/study-lamp-copy",
+            "menu": "megamenu-for-kids-and-toys"
+          }
+        },
+        "menu_item_WradeK": {
+          "type": "menu_item",
+          "settings": {
+            "title": "Furnishing",
+            "link": "shopify://collections/study-lamp-copy",
+            "menu": "megamenu-for-kids-and-toys"
+          }
+        },
+        "menu_item_jKDd6D": {
+          "type": "menu_item",
+          "settings": {
+            "title": "Furnishing",
+            "link": "shopify://collections/study-lamp-copy",
+            "menu": "megamenu-for-kids-and-toys"
+          }
+        },
         "menu_item_XEQPVH": {
           "type": "menu_item",
           "settings": {
@@ -113,6 +137,14 @@
           }
         },
         "menu_item_gkK7Cq": {
+          "type": "menu_item",
+          "settings": {
+            "title": "Health Care",
+            "link": "shopify://collections/health-care",
+            "menu": "megamenu-for-kids-and-toys"
+          }
+        },
+        "menu_item_mNw6RW": {
           "type": "menu_item",
           "settings": {
             "title": "Health Care",
@@ -229,6 +261,9 @@
         "menu_item_dWEmbN",
         "menu_item_GUBMGB",
         "menu_item_dJRqce",
+        "menu_item_atqCWY",
+        "menu_item_WradeK",
+        "menu_item_jKDd6D",
         "menu_item_XEQPVH",
         "menu_item_HGjxfH",
         "menu_item_kgAzAb",
@@ -236,6 +271,7 @@
         "menu_item_pryDc8",
         "menu_item_t3QJdJ",
         "menu_item_gkK7Cq",
+        "menu_item_mNw6RW",
         "menu_item_yzQbqp",
         "search_term_MNgFXV",
         "search_term_ktAJRD",
