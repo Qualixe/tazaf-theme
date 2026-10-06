@@ -148,39 +148,39 @@
           "settings": {
             "title": "Air Fryer",
             "image": "shopify://shop_images/imgi_25_2259397_panasonic-air-fryer-nf-cc450-capacity-45-ltr_1f69f442-67e8-4cc4-935c-a508980d07e5.png",
-            "link": ""
+            "link": "shopify://collections/air-fryer"
           }
         },
         "search_category_BAL9r4": {
           "type": "search_category",
           "settings": {
-            "title": "Beedsheet",
-            "image": "shopify://shop_images/product-slider-img4.webp",
-            "link": "shopify://collections/frontpage"
+            "title": "Document Organiser",
+            "image": "shopify://shop_images/CamelLeatherFolioonMarblePedestal.png",
+            "link": "shopify://collections/document-organiser"
           }
         },
         "search_category_kD8pPi": {
           "type": "search_category",
           "settings": {
-            "title": "Slipper",
-            "image": "shopify://shop_images/product-slider-img5.webp",
-            "link": ""
+            "title": "Shorisha Oil",
+            "image": "shopify://shop_images/1767248022I4Jdh.jpg",
+            "link": "shopify://collections/oil-ghee"
           }
         },
         "search_category_pKtqQr": {
           "type": "search_category",
           "settings": {
-            "title": "Beedsheet",
-            "image": "shopify://shop_images/product-slider-img4.webp",
-            "link": "shopify://collections/frontpage"
+            "title": "Honey",
+            "image": "shopify://shop_images/imgi_10_1787041466ER5mA-light-1000x1000.jpg",
+            "link": "shopify://collections/honey"
           }
         },
         "search_category_YhYqQz": {
           "type": "search_category",
           "settings": {
-            "title": "Slipper",
-            "image": "shopify://shop_images/product-slider-img5.webp",
-            "link": ""
+            "title": "Kitchen Appliances",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_19_2026_08_09_38_PM.png",
+            "link": "shopify://collections/kitchen-appliances"
           }
         }
       },
