@@ -1010,7 +1010,7 @@
           "static": true,
           "settings": {
             "view_all_label": "View All products",
-            "view_all_link": "shopify://collections/watches"
+            "view_all_link": "shopify://collections/honey"
           },
           "blocks": {}
         }
@@ -1064,7 +1064,7 @@
           "static": true,
           "settings": {
             "view_all_label": "View All products",
-            "view_all_link": "shopify://collections/watches"
+            "view_all_link": "shopify://collections/shosti"
           },
           "blocks": {}
         }
