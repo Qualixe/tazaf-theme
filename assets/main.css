@@ -585,6 +585,9 @@ button {
     flex-direction: column;
     gap: 16px;
     padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .cart-drawer-slider-area {
