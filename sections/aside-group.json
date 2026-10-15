@@ -37,7 +37,7 @@
           "name": "Cart items",
           "settings": {
             "title": "You might also like...",
-            "show_recommendations": true,
+            "show_recommendations": false,
             "collection": "cart-product",
             "limit": 6
           },
