@@ -381,6 +381,7 @@
 .navbar-icons {
     display: flex;
     align-items: center;
+    justify-content: right;
 }
 
 .navbar-icon {
