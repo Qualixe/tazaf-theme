@@ -7,13 +7,13 @@
   <input type="hidden" name="quantity" value="1" data-buy-now-quantity>
   <input type="hidden" name="return_to" value="/checkout">
   {% if block.settings.on %}
-  <button type="submit" class="btn" {% unless current_variant.available %}disabled{% endunless %}>
+  {% comment %} <button type="submit" class="btn" {% unless current_variant.available %}disabled{% endunless %}>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M6 8h12l1 12H5L6 8Z"></path>
       <path d="M9 8a3 3 0 0 1 6 0"></path>
     </svg>
     {% comment %} {{ block.settings.buy_now }} {% endcomment %}
-  </button>
+  </button> {% endcomment %}
 {% endif %}
 </form>
 
