@@ -5,6 +5,10 @@
      margin-top: 20px;
 }
 
+.cod-btn-wrapper.cod-btn-wrapper--product {
+    margin: 0;
+}
+
 button.btn.hide_btn {
     display: none;
 }
