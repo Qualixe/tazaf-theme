@@ -105,8 +105,8 @@
             "product_info_buy_now_button_wFgggz": {
               "type": "product-info-buy-now-button",
               "settings": {
-                "on": false,
-                "buy_now": "Buy Now"
+                "on": true,
+                "buy_now": ""
               },
               "blocks": {}
             },
