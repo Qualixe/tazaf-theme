@@ -2,7 +2,8 @@
   assign product = closest.product
   assign current_variant = product.selected_or_first_available_variant
 %}
-<form action="{{ routes.cart_add_url }}" method="post" class="product-buy-now-form" {{ block.shopify_attributes }}>
+{%  form 'product', product, class:'product-buy-now-form' %}
+{% comment %} <form action="{{ routes.cart_add_url }}" method="post" class="product-buy-now-form" {{ block.shopify_attributes }}> {% endcomment %}
   <input type="hidden" name="id" value="{{ current_variant.id }}" data-buy-now-id>
   <input type="hidden" name="quantity" value="1" data-buy-now-quantity>
   <input type="hidden" name="return_to" value="/checkout">
@@ -14,9 +15,9 @@
     </svg>
     {% comment %} {{ block.settings.buy_now }} {% endcomment %}
   </button> {% endcomment %}
-  {{  form | payment_button }}
+  {{ form | payment_button }}
 {% endif %}
-</form>
+{%  endform %}
 
 <style>
   div#es-popup-button {
